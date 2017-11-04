@@ -41,11 +41,7 @@ public class ContinuousAction extends RegistAction {
 	public String handle() throws ServletException, IOException,
 		SalesManagementApplicationException, SalesManagementSystemException, SalesManagementRuntimeException {
 
-		// リクエストパラメータからCreateBeanの作成
-		setParamsToLeadBean();
-
-		// 登録処理
-		regist();
+		super.handle();
 
 		return JspPath.Lead.CREATE;
 	}
