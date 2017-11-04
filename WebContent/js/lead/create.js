@@ -5,17 +5,17 @@ $(function() {
 
 	// 連続登録ボタン押下
 	$('#continuousbutton').click(function() {
-		submitAction('#leadform', '/SFAMock/lead.create.continuous.action');
+		submitAction('#leadform', '/SFA/lead.create.continuous.action');
 	});
 
 	// 登録ボタン押下
 	$('#insertbutton').click(function() {
-		submitAction('#leadform', '/SFAMock/lead.create.regist.action');
+		submitAction('#leadform', '/SFA/lead.create.regist.action');
 	});
 
 	// 戻るボタン押下
 	$('#returnbutton').click(function() {
-		submitAction('#leadform', '/SFAMock/lead.create.return.action');
+		submitAction('#leadform', '/SFA/lead.create.return.action');
 	});
 
 });
