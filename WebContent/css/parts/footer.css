@@ -1,0 +1,13 @@
+.footerarea {
+	background-color: #00008b;
+	display: table;
+	height: 40px;
+	text-align: center;
+	width: 100%;
+}
+
+.footerarea > .copy {
+	color: #FFFFFF;
+	display: table-cell;
+	vertical-align: middle;
+}

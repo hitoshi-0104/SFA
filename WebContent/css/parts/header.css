@@ -1,0 +1,13 @@
+.headerarea {
+	background-color: #00008b;
+	color: #FFFFFF;
+	display: table;
+	height: 60px;
+	width: 100%;
+}
+
+.logoarea {
+	display: table-cell;
+	padding-left: 5px;
+	vertical-align: middle;
+}

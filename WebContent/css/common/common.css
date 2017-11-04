@@ -1,0 +1,168 @@
+/****************************
+* 画面共通
+*****************************/
+
+/* ボディ部共通 */
+body {
+	font-family: "メイリオ", sans-serif;
+	min-width: 1400px;
+	width: 100%;
+}
+
+/* テキスト共通 */
+input[type="text"] {
+	border: solid 1px #a9a9a9;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	padding-left: 5px;
+}
+
+/* コンテンツエリア */
+.contentsarea {
+}
+
+/* コンテンツエリアの見出し */
+.contentsarea .subtitle {
+	background-color: #4169e1;
+	color: #FFFFFF;
+	display: table;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	height: 40px;
+	width: 100%;
+}
+
+/* コンテンツエリアの見出し名 */
+.contentsarea .subtitle > .subtitlelabel {
+	display: table-cell;
+	font-size: 18px;
+	padding-left: 10px;
+	vertical-align: middle;
+}
+
+/* コンテンツエリア：１列表示 */
+.contentsarea .onecolumn {
+	margin-left: 10px;
+	margin-top: 10px;
+	width: 90%;
+}
+
+/* コンテンツエリア：２列表示 */
+.contentsarea .twocolumns {
+	float: left;
+	margin-left: 10px;
+	margin-top: 10px;
+	width: 45%;
+}
+
+/* コンテンツエリア：行定義 */
+.contentsarea .content-item {
+	display: table;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	width: 100%;
+}
+
+/* コンテンツエリアのキャプション */
+.contentsarea .caption {
+	font-size: 14px;
+	text-align: right;
+	width: 200px;
+}
+.contentsarea .caption-top {
+	font-size: 14px;
+	text-align: right;
+	vertical-align: top;
+	width: 200px;
+}
+
+/* コンテンツエリアのテキスト */
+.contentsarea .text1 {
+	font-size: 14px;
+	width: 100px;
+}
+.contentsarea .text2 {
+	font-size: 14px;
+	width: 200px;
+}
+.contentsarea .text3 {
+	font-size: 14px;
+	width: 300px;
+}
+.contentsarea .text4 {
+	font-size: 14px;
+	width: 400px;
+}
+.contentsarea .text5 {
+	font-size: 14px;
+	width: 800px;
+}
+
+/* コンテンツエリアのセレクトボックス */
+.contentsarea .select1 {
+	font-size: 14px;
+	width: 100px;
+}
+.contentsarea .select2 {
+	font-size: 14px;
+	width: 200px;
+}
+.contentsarea .select3 {
+	font-size: 14px;
+	width: 300px;
+}
+.contentsarea .select4 {
+	font-size: 14px;
+	width: 400px;
+}
+.contentsarea .select5 {
+	font-size: 14px;
+	width: 800px;
+}
+
+/* コンテンツエリアのテキストエリア */
+.contentsarea .textarea1 {
+	font-size: 14px;
+	width: 100px;
+}
+.contentsarea .textarea2 {
+	font-size: 14px;
+	width: 200px;
+}
+.contentsarea .textarea3 {
+	font-size: 14px;
+	width: 300px;
+}
+.contentsarea .textarea4 {
+	font-size: 14px;
+	width: 400px;
+}
+.contentsarea .textarea5 {
+	font-size: 14px;
+	width: 800px;
+}
+
+/* コンテンツエリアの登録・更新・削除ボタン表示エリア */
+.contentsarea .buttonarea {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	text-align: right;
+}
+
+/* コンテンツエリアのボタン */
+.contentsarea .button1 {
+	width: 50px;
+}
+.contentsarea .button2 {
+	width: 100px;
+}
+.contentsarea .button3 {
+	width: 150px;
+}
+.contentsarea .button4 {
+	width: 200px;
+}
+.contentsarea .button5 {
+	width: 250px;
+}

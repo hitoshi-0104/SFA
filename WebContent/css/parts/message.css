@@ -1,0 +1,7 @@
+.messagearea {
+	width: 100%;
+}
+
+.messagearea .msg {
+	color: #ff0000;
+}
