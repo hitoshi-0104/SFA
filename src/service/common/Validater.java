@@ -1,8 +1,8 @@
 package service.common;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
-import java.util.stream.Stream;
 
 import util.message.MessageReader;
 import util.validate.StringValidater;
@@ -29,10 +29,10 @@ public class Validater {
 	public static void validate(Object val, String errorId, String itemName,
 			Integer digitFrom, Integer digitTo, ValidationType[] types, Map<String, String> messageMap) {
 
-		Stream<ValidationType> validationTypeStream = Arrays.stream(types);
+		List<ValidationType> validationTypeList = Arrays.asList(types);
 
 		// 必須入力チェック
-		if (validationTypeStream.anyMatch(ValidationType.REQURIRED::equals)) {
+		if (validationTypeList.contains(ValidationType.REQURIRED)) {
 			if (StringValidater.isEmpty(String.valueOf(val))) {
 				messageMap.put(errorId + VALID_TYPE_ID_REQURIRED,
 						String.format(MessageReader.read("E001"), itemName));
@@ -41,7 +41,7 @@ public class Validater {
 		}
 
 		// 最大桁数チェック
-		if (validationTypeStream.anyMatch(ValidationType.MAXLENGTH::equals)) {
+		if (validationTypeList.contains(ValidationType.MAXLENGTH)) {
 			if (StringValidater.isOverflow(String.valueOf(val), digitTo)) {
 				messageMap.put(errorId + VALID_TYPE_ID_MAXLENGTH,
 						String.format(MessageReader.read("E002"), itemName, digitTo));
@@ -50,7 +50,7 @@ public class Validater {
 		}
 
 		// 桁数のFROM, TOチェック
-		if (validationTypeStream.anyMatch(ValidationType.FROMTO::equals)) {
+		if (validationTypeList.contains(ValidationType.FROMTO)) {
 			if (StringValidater.isUnderflow(String.valueOf(val), digitFrom) ||
 				StringValidater.isOverflow(String.valueOf(val), digitTo)) {
 				messageMap.put(errorId + VALID_TYPE_ID_FROMTO,
@@ -60,7 +60,7 @@ public class Validater {
 		}
 
 		// 数値のみチェック
-		if (validationTypeStream.anyMatch(ValidationType.NUMERICONLY::equals)) {
+		if (validationTypeList.contains(ValidationType.NUMERICONLY)) {
 			if (!StringValidater.isNumericOnly(String.valueOf(val))) {
 				messageMap.put(errorId + VALID_TYPE_ID_NUMERICONLY,
 						String.format(MessageReader.read("E004"), itemName));
