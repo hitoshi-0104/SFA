@@ -21,6 +21,10 @@ public class Validater {
 	private static final String VALID_TYPE_ID_FROMTO = "03";
 	/** バリデーションID：数値のみ */
 	private static final String VALID_TYPE_ID_NUMERICONLY = "04";
+	/** バリデーションID：メールアドレスフォーマット */
+	private static final String VALID_TYPE_ID_MAIL = "05";
+	/** バリデーションID：URLフォーマット */
+	private static final String VALID_TYPE_ID_URL = "06";
 
 	/**
 	 * バリデート
@@ -64,6 +68,24 @@ public class Validater {
 			if (!StringValidater.isNumericOnly(String.valueOf(val))) {
 				messageMap.put(errorId + VALID_TYPE_ID_NUMERICONLY,
 						String.format(MessageReader.read("E004"), itemName));
+				return;
+			}
+		}
+
+		// メールフォーマットチェック
+		if (validationTypeList.contains(ValidationType.MAIL_FORMAT)) {
+			if (!StringValidater.isMailAddressFormat(String.valueOf(val))) {
+				messageMap.put(errorId + VALID_TYPE_ID_MAIL,
+						String.format(MessageReader.read("E007"), itemName));
+				return;
+			}
+		}
+
+		// URL
+		if (validationTypeList.contains(ValidationType.URL_FORMAT)) {
+			if (!StringValidater.isUrlFormat(String.valueOf(val))) {
+				messageMap.put(errorId + VALID_TYPE_ID_URL,
+						String.format(MessageReader.read("E009"), itemName));
 				return;
 			}
 		}
