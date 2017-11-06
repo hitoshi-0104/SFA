@@ -1,6 +1,6 @@
 package dao;
 
-import entity.LeadEntity;
+import dao.entity.LeadEntity;
 
 /**
  * 見込み客Dao
