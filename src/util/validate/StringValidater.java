@@ -25,7 +25,7 @@ public class StringValidater {
 	 * @return
 	 */
 	public static boolean isUnderflow(String str, Integer digit) {
-		if (str == null || str.length() < digit) {
+		if (str != null && str.length() < digit) {
 			return true;
 		}
 		return false;
@@ -38,7 +38,7 @@ public class StringValidater {
 	 * @return
 	 */
 	public static boolean isOverflow(String str, Integer digit) {
-		if (str == null || str.length() > digit) {
+		if (str != null && str.length() > digit) {
 			return true;
 		}
 		return false;
