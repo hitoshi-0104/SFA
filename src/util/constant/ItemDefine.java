@@ -31,6 +31,18 @@ public class ItemDefine {
 		public static final String MAILADDRESS = "メール";
 		/** URL */
 		public static final String URL = "URL";
+		/** 年間売上 */
+		public static final String AMOUNT = "年間売上";
+		/** 従業員数 */
+		public static final String EMPLOYEE = "従業員数";
+		/** 郵便番号 */
+		public static final String POSTAL_CODE = "郵便番号";
+		/** 市区町村 */
+		public static final String CITY = "市区町村";
+		/** 町名・番地・建物 */
+		public static final String TOWN = "町名・番地・建物";
+		/** その他 */
+		public static final String NOTE = "その他";
 	}
 
 	/**
@@ -56,6 +68,18 @@ public class ItemDefine {
 		public static final int MAILADDRESS = 256;
 		/** URL */
 		public static final int URL = 2048;
+		/** 年間売上 */
+		public static final int AMOUNT = 13;
+		/** 従業員数 */
+		public static final int EMPLOYEE = 7;
+		/** 郵便番号 */
+		public static final int POSTAL_CODE = 7;
+		/** 市区町村 */
+		public static final int CITY = 10;
+		/** 町名・番地・建物 */
+		public static final int TOWN = 500;
+		/** その他 */
+		public static final int NOTE = 1000;
 	}
 
 }
