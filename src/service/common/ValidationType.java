@@ -12,5 +12,9 @@ public enum ValidationType {
 	// 桁数FROM, TOチェック
 	FROMTO,
 	// 数値入力チェック
-	NUMERICONLY
+	NUMERICONLY,
+	// メールフォーマットチェック
+	MAIL_FORMAT,
+	// URLフォーマットチェック
+	URL_FORMAT
 }
