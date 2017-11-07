@@ -18,6 +18,8 @@ public class SingleTableBaseEntity extends BaseEntity {
 	private String updaterId;
 	/** 更新日時 */
 	private LocalDateTime updateDate;
+	/** 削除フラグ */
+	private Integer deleteFlag;
 
 	/**
 	 * @return id
@@ -78,6 +80,18 @@ public class SingleTableBaseEntity extends BaseEntity {
 	 */
 	public void setUpdateDate(LocalDateTime updateDate) {
 		this.updateDate = updateDate;
+	}
+	/**
+	 * @return deleteFlag
+	 */
+	public Integer getDeleteFlag() {
+		return deleteFlag;
+	}
+	/**
+	 * @param deleteFlag セットする deleteFlag
+	 */
+	public void setDeleteFlag(Integer deleteFlag) {
+		this.deleteFlag = deleteFlag;
 	}
 
 }
