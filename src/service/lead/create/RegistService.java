@@ -1,12 +1,24 @@
 package service.lead.create;
 
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+
+import dao.LeadDao;
+import dao.entity.LeadEntity;
+import exception.SalesManagementApplicationException;
+import exception.SalesManagementRuntimeException;
+import exception.SalesManagementSystemException;
 import service.common.Validater;
 import service.common.ValidationType;
 import service.lead.dto.CreateDto;
 import util.constant.ItemDefine;
+import util.session.SessionInfo;
 
 /**
  * 見込み客新規顧客用のモデルクラス
@@ -110,8 +122,65 @@ public class RegistService {
 	 * 見込み客新規登録画面の登録処理
 	 * @return true : 成功  false : 失敗
 	 */
-	public boolean insert(CreateDto dto) {
-		return true;
+	public boolean insert(HttpServletRequest request, CreateDto dto) throws ServletException, IOException,
+		SalesManagementApplicationException, SalesManagementSystemException, SalesManagementRuntimeException {
+
+		LeadEntity entity = new LeadEntity();
+
+		// 姓
+		entity.setLastName(dto.getLastName());
+		// 名
+		entity.setFirstName(dto.getFirstName());
+		// 会社名
+		entity.setCompanyName(dto.getCompanyName());
+		// 役職名
+		entity.setPosition(dto.getPosition());
+		// ソース
+		entity.setSourceCode(dto.getSourceCode());
+		// 状況
+		entity.setStatusCode(dto.getStatusCode());
+		// 評価
+		entity.setEstimationCode(dto.getEstimationCode());
+		// 電話
+		entity.setPhone(dto.getPhone());
+		// 携帯
+		entity.setMobilePhone(dto.getMobilePhone());
+		// FAX
+		entity.setFax(dto.getFax());
+		// メール
+		entity.setMailAddress(dto.getMailAddress());
+		// URL
+		entity.setUrl(dto.getUrl());
+		// 業種
+		entity.setIndustryCode(dto.getIndustryCode());
+		// 年間売上
+		entity.setAmount(dto.getAmount());
+		// 従業員数
+		entity.setEmployees(dto.getEmployees());
+		// 郵便番号
+		entity.setPostalCode(dto.getPostalCode());
+		// 都道府県
+		entity.setDivisionCode(dto.getDivisionCode());
+		// 市区郡
+		entity.setCity(dto.getCity());
+		// 町名・番地・建物名
+		entity.setTown(dto.getTown());
+		// その他
+		entity.setNote(dto.getNote());
+
+		SessionInfo si = (SessionInfo)request.getAttribute(SessionInfo.SESSION_ATTRIBUTE_NAME);
+
+		// 作成者ID
+		entity.setCreaterId(si.getLoginUserId());
+		// 作成日時
+		entity.setCreateDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd HHmmss.sss")));
+		// 更新者ID
+		entity.setUpdaterId(si.getLoginUserId());
+		// 更新日時
+		entity.setUpdateDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd HHmmss.sss")));
+
+		LeadDao dao = new LeadDao();
+		return dao.insert(entity);
 	}
 
 }

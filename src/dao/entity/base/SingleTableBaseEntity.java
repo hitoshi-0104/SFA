@@ -1,7 +1,5 @@
 package dao.entity.base;
 
-import java.time.LocalDateTime;
-
 /**
  * 単一テーブルのエンティティ基底クラス
  *
@@ -13,11 +11,11 @@ public class SingleTableBaseEntity extends BaseEntity {
 	/** 作成者ID */
 	private String createrId;
 	/** 作成日時 */
-	private LocalDateTime createDate;
+	private String createDate;
 	/** 更新者ID */
 	private String updaterId;
 	/** 更新日時 */
-	private LocalDateTime updateDate;
+	private String updateDate;
 	/** 削除フラグ */
 	private Integer deleteFlag;
 
@@ -48,13 +46,13 @@ public class SingleTableBaseEntity extends BaseEntity {
 	/**
 	 * @return createDate
 	 */
-	public LocalDateTime getCreateDate() {
+	public String getCreateDate() {
 		return createDate;
 	}
 	/**
 	 * @param createDate セットする createDate
 	 */
-	public void setCreateDate(LocalDateTime createDate) {
+	public void setCreateDate(String createDate) {
 		this.createDate = createDate;
 	}
 	/**
@@ -72,13 +70,13 @@ public class SingleTableBaseEntity extends BaseEntity {
 	/**
 	 * @return updateDate
 	 */
-	public LocalDateTime getUpdateDate() {
+	public String getUpdateDate() {
 		return updateDate;
 	}
 	/**
 	 * @param updateDate セットする updateDate
 	 */
-	public void setUpdateDate(LocalDateTime updateDate) {
+	public void setUpdateDate(String updateDate) {
 		this.updateDate = updateDate;
 	}
 	/**

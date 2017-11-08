@@ -16,5 +16,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="C:/pleiades/tomcat/9/lib/jsp-api.jar"/>
 	<classpathentry kind="lib" path="C:/pleiades/tomcat/9/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="C:/pleiades/tomcat/9/lib/sqlite-jdbc-3.8.7.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

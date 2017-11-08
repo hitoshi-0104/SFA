@@ -15,6 +15,7 @@ import service.lead.create.RegistService;
 import service.lead.dto.CreateDto;
 import util.constant.JspPath;
 import util.converter.StringConverter;
+import util.message.MessageReader;
 
 /**
  * 見込み客新規登録画面：登録コントローラ
@@ -120,7 +121,12 @@ public class RegistAction extends CreateAction {
     		throw new SalesManagementApplicationException(messageMap);
     	}
 
-    	// 登録
-    	service.insert(dto);
+    	try {
+	    	// 登録
+	    	service.insert(request, dto);
+    	} catch (Exception e) {
+    		messageMap.put("E00190001", String.format(MessageReader.read("E801")));
+    		throw new SalesManagementSystemException(messageMap);
+    	}
 	}
 }
