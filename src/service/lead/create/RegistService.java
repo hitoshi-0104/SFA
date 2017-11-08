@@ -1,19 +1,15 @@
 package service.lead.create;
 
-import java.io.IOException;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
 import dao.LeadDao;
 import dao.entity.LeadEntity;
-import exception.SalesManagementApplicationException;
-import exception.SalesManagementRuntimeException;
-import exception.SalesManagementSystemException;
 import service.common.Validater;
 import service.common.ValidationType;
 import service.lead.dto.CreateDto;
@@ -122,8 +118,7 @@ public class RegistService {
 	 * 見込み客新規登録画面の登録処理
 	 * @return true : 成功  false : 失敗
 	 */
-	public boolean insert(HttpServletRequest request, CreateDto dto) throws ServletException, IOException,
-		SalesManagementApplicationException, SalesManagementSystemException, SalesManagementRuntimeException {
+	public boolean insert(HttpServletRequest request, CreateDto dto) throws ClassNotFoundException, SQLException {
 
 		LeadEntity entity = new LeadEntity();
 

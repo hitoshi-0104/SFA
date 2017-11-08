@@ -18,7 +18,7 @@ public class LeadDao {
 	 * @param entity
 	 * @return
 	 */
-	public boolean insert(LeadEntity entity) {
+	public boolean insert(LeadEntity entity) throws ClassNotFoundException, SQLException {
 
 		Connection connection = null;
 		PreparedStatement statement = null;
@@ -84,23 +84,23 @@ public class LeadDao {
 			statement.executeUpdate();
 
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+			throw e;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw e;
 		} finally {
 			try {
 				if (statement != null) {
 					statement.close();
 				}
 			} catch (SQLException e) {
-				e.printStackTrace();
+				throw e;
 			}
 			try {
 				if (connection != null) {
 					connection.close();
 				}
 			} catch (SQLException e) {
-				e.printStackTrace();
+				throw e;
 			}
 		}
 
