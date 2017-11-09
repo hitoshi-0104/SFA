@@ -118,7 +118,23 @@ public class RegistService {
 	 * 見込み客新規登録画面の登録処理
 	 * @return true : 成功  false : 失敗
 	 */
-	public boolean insert(HttpServletRequest request, CreateDto dto) throws ClassNotFoundException, SQLException {
+	public void insert(HttpServletRequest request, CreateDto dto) throws ClassNotFoundException, SQLException {
+
+		// エンティティの作成
+		LeadEntity entity = createLeadEntityForInsert(request, dto);
+
+		LeadDao dao = new LeadDao();
+		dao.connection();
+		dao.insert(entity);
+		dao.close();
+	}
+
+	/**
+	 * 登録処理用にLeadEntityを生成する
+	 * @param dto
+	 * @return
+	 */
+	private LeadEntity createLeadEntityForInsert(HttpServletRequest request, CreateDto dto) {
 
 		LeadEntity entity = new LeadEntity();
 
@@ -168,14 +184,14 @@ public class RegistService {
 		// 作成者ID
 		entity.setCreaterId(si.getLoginUserId());
 		// 作成日時
-		entity.setCreateDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd HHmmss.sss")));
+		entity.setCreateDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss.sss")));
 		// 更新者ID
 		entity.setUpdaterId(si.getLoginUserId());
 		// 更新日時
-		entity.setUpdateDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd HHmmss.sss")));
+		entity.setUpdateDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss.sss")));
 
-		LeadDao dao = new LeadDao();
-		return dao.insert(entity);
+		return entity;
+
 	}
 
 }
