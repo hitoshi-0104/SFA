@@ -1,5 +1,6 @@
 package dao;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -24,7 +25,8 @@ public class LeadDao {
 	 */
 	public LeadEntity selectById(Integer Id) throws Exception {
 
-		try (ConnectionProvider cp = ConnectionProvider.getInstance();
+		ConnectionProvider cp = ConnectionProvider.getInstance();
+		try (Connection conn = cp.getConnection();
 				PreparedStatement statement = cp.getPreparedStatement(SELECT_BY_ID_SQL);) {
 
 			// ID
@@ -35,7 +37,7 @@ public class LeadDao {
 			if (rs.next()) {
 				LeadEntity entity = new LeadEntity();
 				// ID
-				entity.setId(rs.getString("LEAD_ID"));
+				entity.setId(rs.getInt("LEAD_ID"));
 				// 姓
 				entity.setLastName(rs.getString("LAST_NAME"));
 				// 名
@@ -79,11 +81,11 @@ public class LeadDao {
 				// 作成日
 				entity.setCreateDate(rs.getString("CREATE_DATE"));
 				// 作成者
-				entity.setCreaterId(rs.getString("CREATER_ID"));
+				entity.setCreaterId(rs.getInt("CREATER_ID"));
 				// 更新日
 				entity.setUpdateDate(rs.getString("UPDATE_DATE"));
 				// 更新者
-				entity.setUpdaterId("UPDATER_ID");
+				entity.setUpdaterId(rs.getInt("UPDATER_ID"));
 
 				return entity;
 			}
@@ -99,7 +101,8 @@ public class LeadDao {
 	 */
 	public void insert(LeadEntity entity) throws Exception {
 
-		try (ConnectionProvider cp = ConnectionProvider.getInstance();
+		ConnectionProvider cp = ConnectionProvider.getInstance();
+		try (Connection conn = cp.getConnection();
 				PreparedStatement statement = cp.getPreparedStatement(INSERT_SQL);) {
 			// 姓
 			statement.setString(1, entity.getLastName());
@@ -144,11 +147,11 @@ public class LeadDao {
 			// 作成日
 			statement.setString(21, entity.getCreateDate());
 			// 作成者
-			statement.setString(22, entity.getCreaterId());
+			statement.setInt(22, entity.getCreaterId());
 			// 更新日
 			statement.setString(23, entity.getUpdateDate());
 			// 更新者
-			statement.setString(24, entity.getUpdaterId());
+			statement.setInt(24, entity.getUpdaterId());
 
 			// SQL実行
 			statement.executeUpdate();
