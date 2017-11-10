@@ -10,7 +10,7 @@ import java.sql.Savepoint;
  * データアクセス補助クラス
  *
  */
-public class ConnectionProvider implements AutoCloseable {
+public class ConnectionProvider {
 
 	/** データアクセス補助クラス */
 	private static ConnectionProvider instance;
@@ -101,19 +101,6 @@ public class ConnectionProvider implements AutoCloseable {
 	 */
 	public void rollback(Savepoint sp) throws SQLException {
 		connection.rollback(sp);
-	}
-
-	/**
-	 * クローズ処理
-	 */
-	@Override
-	public void close() throws Exception {
-		if (statement != null) {
-			statement.close();
-		}
-		if (connection != null) {
-			connection.close();
-		}
 	}
 
 }
