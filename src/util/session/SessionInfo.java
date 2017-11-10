@@ -10,19 +10,19 @@ public class SessionInfo {
 	public static final String SESSION_ATTRIBUTE_NAME = "session";
 
 	/** ログインユーザーID */
-	private String loginUserId;
+	private Integer loginUserId;
 
 	/**
 	 * @return loginUserId
 	 */
-	public String getLoginUserId() {
+	public Integer getLoginUserId() {
 		return loginUserId;
 	}
 
 	/**
 	 * @param loginUserId セットする loginUserId
 	 */
-	public void setLoginUserId(String loginUserId) {
+	public void setLoginUserId(Integer loginUserId) {
 		this.loginUserId = loginUserId;
 	}
 

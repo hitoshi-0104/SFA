@@ -7,13 +7,13 @@ package dao.entity.base;
 public class SingleTableBaseEntity extends BaseEntity {
 
 	/** ID */
-	private String id;
+	private Integer id;
 	/** 作成者ID */
-	private String createrId;
+	private Integer createrId;
 	/** 作成日時 */
 	private String createDate;
 	/** 更新者ID */
-	private String updaterId;
+	private Integer updaterId;
 	/** 更新日時 */
 	private String updateDate;
 	/** 削除フラグ */
@@ -22,25 +22,25 @@ public class SingleTableBaseEntity extends BaseEntity {
 	/**
 	 * @return id
 	 */
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 	/**
 	 * @param id セットする id
 	 */
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	/**
 	 * @return createrId
 	 */
-	public String getCreaterId() {
+	public Integer getCreaterId() {
 		return createrId;
 	}
 	/**
 	 * @param createrId セットする createrId
 	 */
-	public void setCreaterId(String createrId) {
+	public void setCreaterId(Integer createrId) {
 		this.createrId = createrId;
 	}
 	/**
@@ -58,13 +58,13 @@ public class SingleTableBaseEntity extends BaseEntity {
 	/**
 	 * @return updaterId
 	 */
-	public String getUpdaterId() {
+	public Integer getUpdaterId() {
 		return updaterId;
 	}
 	/**
 	 * @param updaterId セットする updaterId
 	 */
-	public void setUpdaterId(String updaterId) {
+	public void setUpdaterId(Integer updaterId) {
 		this.updaterId = updaterId;
 	}
 	/**
