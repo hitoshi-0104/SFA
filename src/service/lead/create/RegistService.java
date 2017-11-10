@@ -1,6 +1,5 @@
 package service.lead.create;
 
-import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.LinkedHashMap;
@@ -117,16 +116,15 @@ public class RegistService {
 	/**
 	 * 見込み客新規登録画面の登録処理
 	 * @return true : 成功  false : 失敗
+	 * @throws Exception
 	 */
-	public void insert(HttpServletRequest request, CreateDto dto) throws ClassNotFoundException, SQLException {
+	public void insert(HttpServletRequest request, CreateDto dto) throws Exception {
 
 		// エンティティの作成
 		LeadEntity entity = createLeadEntityForInsert(request, dto);
 
 		LeadDao dao = new LeadDao();
-		dao.connection();
 		dao.insert(entity);
-		dao.close();
 	}
 
 	/**
