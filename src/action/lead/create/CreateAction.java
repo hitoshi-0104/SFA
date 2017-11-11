@@ -44,7 +44,9 @@ abstract class CreateAction extends BaseAction {
     	bean.setDivisionMap(dto.getDivisionMap());
 
     	// BEANのセット
-    	request.setAttribute(LEAD_BEAN, bean);
+    	if (request != null) {
+    		request.setAttribute(LEAD_BEAN, bean);
+    	}
 
     }
 
@@ -108,7 +110,7 @@ abstract class CreateAction extends BaseAction {
      */
     private CreateBean getCreateBeanInstance() {
 		CreateBean bean;
-    	if (request.getAttribute(LEAD_BEAN) == null) {
+    	if (request == null || request.getAttribute(LEAD_BEAN) == null) {
     		bean = new CreateBean();
     	} else {
     		bean = (CreateBean)request.getAttribute(LEAD_BEAN);
