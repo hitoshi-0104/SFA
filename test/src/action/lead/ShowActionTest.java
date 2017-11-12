@@ -3,7 +3,10 @@ package action.lead;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.mock.web.MockHttpServletRequest;
+import org.springframework.mock.web.MockHttpServletResponse;
 
+import action.lead.bean.CreateBean;
 import action.lead.create.ShowAction;
 import util.constant.JspPath;
 
@@ -19,7 +22,10 @@ class ShowActionTest {
 	@Test
 	void testHandle() {
 
-		ShowAction sa = new ShowAction(null, null);
+		MockHttpServletRequest request = new MockHttpServletRequest();
+		MockHttpServletResponse response = new MockHttpServletResponse();
+
+		ShowAction sa = new ShowAction(request, response);
 		String ret = "";
 		try {
 			ret = sa.handle();
@@ -29,6 +35,20 @@ class ShowActionTest {
 		}
 
 		assertEquals(JspPath.Lead.CREATE, ret);
+
+		CreateBean bean = (CreateBean)request.getAttribute("leadBean");
+		assertNotEquals(null, bean);
+
+		// ソース
+		assertNotEquals(null, bean.getSourceMap());
+		// 状況
+		assertNotEquals(null, bean.getStatusMap());
+		// 評価
+		assertNotEquals(null, bean.getEstimationMap());
+		// 業種
+		assertNotEquals(null, bean.getIndustryMap());
+		// 都道府県
+		assertNotEquals(null, bean.getDivisionMap());
 	}
 
 }
