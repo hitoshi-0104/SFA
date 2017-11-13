@@ -91,7 +91,7 @@ public class RegistAction extends CreateAction {
 		// 電話
 		dto.setPhone(request.getParameter(ReqParam.Create.PHONE));
 		// 携帯
-		dto.setMobilePhone(request.getParameter(ReqParam.Create.MOBLIE_PHONE));
+		dto.setMobilePhone(request.getParameter(ReqParam.Create.MOBILE_PHONE));
 		// FAX
 		dto.setFax(request.getParameter(ReqParam.Create.FAX));
 		// メール

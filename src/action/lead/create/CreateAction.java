@@ -74,7 +74,7 @@ abstract class CreateAction extends BaseAction {
     	// 電話
     	bean.setPhone(request.getParameter(ReqParam.Create.PHONE));
     	// 携帯
-    	bean.setMobilePhone(request.getParameter(ReqParam.Create.MOBLIE_PHONE));
+    	bean.setMobilePhone(request.getParameter(ReqParam.Create.MOBILE_PHONE));
     	// FAX
     	bean.setFax(request.getParameter(ReqParam.Create.FAX));
     	// メール

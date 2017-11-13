@@ -28,7 +28,7 @@ public class ReqParam {
 		/** 電話 */
 		public static final String PHONE = "phone";
 		/** 携帯 */
-		public static final String MOBLIE_PHONE = "mobilephone";
+		public static final String MOBILE_PHONE = "mobilephone";
 		/** FAX */
 		public static final String FAX = "fax";
 		/** メール */
