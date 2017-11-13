@@ -74,7 +74,7 @@ public class StringValidater {
 	 * @return
 	 */
 	public static boolean isUrlFormat(String str) {
-		if (str == null || str.matches("/^(http|https|ftp):\\/\\/([A-Z0-9][A-Z0-9_-]*(?:\\.[A-Z0-9][A-Z0-9_-]*)+):?(\\d+)?\\/?/i")) {
+		if (str == null || str.matches("https?://[\\w/:%#\\$&\\?\\(\\)~\\.=\\+\\-]+")) {
 			return true;
 		}
 		return false;
