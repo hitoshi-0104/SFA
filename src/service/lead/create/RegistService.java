@@ -182,11 +182,11 @@ public class RegistService {
 		// 作成者ID
 		entity.setCreaterId(si.getLoginUserId());
 		// 作成日時
-		entity.setCreateDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss.sss")));
+		entity.setCreateDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss.SSS")));
 		// 更新者ID
 		entity.setUpdaterId(si.getLoginUserId());
 		// 更新日時
-		entity.setUpdateDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss.sss")));
+		entity.setUpdateDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss.SSS")));
 
 		return entity;
 
