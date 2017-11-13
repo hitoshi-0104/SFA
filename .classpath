@@ -19,5 +19,8 @@
 	<classpathentry kind="lib" path="C:/pleiades/tomcat/9/lib/servlet-api.jar"/>
 	<classpathentry kind="lib" path="C:/pleiades/tomcat/9/lib/sqlite-jdbc-3.8.7.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
+	<classpathentry kind="lib" path="C:/pleiades/tomcat/9/lib/spring-test-5.0.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/pleiades/tomcat/9/lib/spring-core-5.0.1.RELEASE.jar"/>
+	<classpathentry kind="lib" path="C:/pleiades/tomcat/9/lib/commons-logging-1.2.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
