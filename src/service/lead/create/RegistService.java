@@ -35,7 +35,7 @@ public class RegistService {
 				new ValidationType[] { ValidationType.REQURIRED, ValidationType.MAXLENGTH },
 				messageMap);
 		// 名：最大桁数チェック
-		Validater.validate(dto.getLastName(), "E001003", ItemDefine.Name.FIRST_NAME,
+		Validater.validate(dto.getFirstName(), "E001003", ItemDefine.Name.FIRST_NAME,
 				null, ItemDefine.Digit.FIRST_NAME,
 				new ValidationType[] { ValidationType.MAXLENGTH },
 				messageMap);
