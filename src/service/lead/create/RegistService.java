@@ -44,67 +44,67 @@ public class RegistService {
 				null, ItemDefine.Digit.COMPANY_NAME,
 				new ValidationType[] { ValidationType.REQURIRED, ValidationType.MAXLENGTH },
 				messageMap);
-		// 役職名
+		// 役職名：最大桁数チェック
 		Validater.validate(dto.getPosition(), "E001005", ItemDefine.Name.POSITION,
 				null, ItemDefine.Digit.POSITION,
 				new ValidationType[] { ValidationType.MAXLENGTH },
 				messageMap);
-		// 状況
+		// 状況：必須入力チェック
 		Validater.validate(dto.getStatusCode(), "E001007", ItemDefine.Name.STATUS,
 				null, null,
 				new ValidationType[] { ValidationType.REQURIRED },
 				messageMap);
-		// 電話
+		// 電話：最大桁数・数値のみチェック
 		Validater.validate(dto.getPhone(), "E001009", ItemDefine.Name.PHONE,
 				null, ItemDefine.Digit.PHONE,
 				new ValidationType[] { ValidationType.MAXLENGTH, ValidationType.NUMERICONLY },
 				messageMap);
-		// 携帯
+		// 携帯：最大桁数・数値のみチェック
 		Validater.validate(dto.getMobilePhone(), "E001010", ItemDefine.Name.MOBILE_PHONE,
 				null, ItemDefine.Digit.MOBILE_PHONE,
 				new ValidationType[] { ValidationType.MAXLENGTH, ValidationType.NUMERICONLY },
 				messageMap);
-		// FAX
+		// FAX：最大桁数・数値のみチェック
 		Validater.validate(dto.getFax(), "E001011", ItemDefine.Name.FAX,
 				null, ItemDefine.Digit.FAX,
 				new ValidationType[] { ValidationType.MAXLENGTH, ValidationType.NUMERICONLY },
 				messageMap);
-		// メール
+		// メール：最大桁数・メールアドレスフォーマットチェック
 		Validater.validate(dto.getMailAddress(), "E001012", ItemDefine.Name.MAILADDRESS,
 				null, ItemDefine.Digit.MAILADDRESS,
 				new ValidationType[] { ValidationType.MAXLENGTH, ValidationType.MAIL_FORMAT },
 				messageMap);
-		// URL
+		// URL：最大桁数・URLフォーマットチェック
 		Validater.validate(dto.getUrl(), "E001013", ItemDefine.Name.URL,
 				null, ItemDefine.Digit.URL,
 				new ValidationType[] { ValidationType.MAXLENGTH, ValidationType.URL_FORMAT },
 				messageMap);
-		// 年間売上
+		// 年間売上：最大桁数チェック
 		Validater.validate(dto.getAmount(), "E001014", ItemDefine.Name.AMOUNT,
 				null, ItemDefine.Digit.AMOUNT,
 				new ValidationType[] { ValidationType.MAXLENGTH },
 				messageMap);
-		// 従業員数
+		// 従業員数：最大桁数・数値のみチェック
 		Validater.validate(dto.getEmployees(), "E001016", ItemDefine.Name.EMPLOYEE,
 				null, ItemDefine.Digit.EMPLOYEE,
 				new ValidationType[] { ValidationType.MAXLENGTH, ValidationType.NUMERICONLY },
 				messageMap);
-		// 郵便番号
+		// 郵便番号：最大桁数・数値のみチェック
 		Validater.validate(dto.getPostalCode(), "E001017", ItemDefine.Name.POSTAL_CODE,
 				null, ItemDefine.Digit.POSTAL_CODE,
 				new ValidationType[] { ValidationType.MAXLENGTH, ValidationType.NUMERICONLY },
 				messageMap);
-		// 市区町村
+		// 市区町村：最大桁数チェック
 		Validater.validate(dto.getCity(), "E001019", ItemDefine.Name.CITY,
 				null, ItemDefine.Digit.CITY,
 				new ValidationType[] { ValidationType.MAXLENGTH },
 				messageMap);
-		// 町名・番地・建物名
+		// 町名・番地・建物名：最大桁数チェック
 		Validater.validate(dto.getCity(), "E001020", ItemDefine.Name.TOWN,
 				null, ItemDefine.Digit.TOWN,
 				new ValidationType[] { ValidationType.MAXLENGTH },
 				messageMap);
-		// その他
+		// その他：最大桁数チェック
 		Validater.validate(dto.getCity(), "E001021", ItemDefine.Name.NOTE,
 				null, ItemDefine.Digit.NOTE,
 				new ValidationType[] { ValidationType.MAXLENGTH },
