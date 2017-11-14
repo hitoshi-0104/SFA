@@ -79,10 +79,10 @@ public class RegistService {
 				null, ItemDefine.Digit.URL,
 				new ValidationType[] { ValidationType.MAXLENGTH, ValidationType.URL_FORMAT },
 				messageMap);
-		// 年間売上：最大桁数チェック
+		// 年間売上：最大桁数・数値のみチェック
 		Validater.validate(dto.getAmount(), "E001014", ItemDefine.Name.AMOUNT,
 				null, ItemDefine.Digit.AMOUNT,
-				new ValidationType[] { ValidationType.MAXLENGTH },
+				new ValidationType[] { ValidationType.MAXLENGTH, ValidationType.NUMERICONLY },
 				messageMap);
 		// 従業員数：最大桁数・数値のみチェック
 		Validater.validate(dto.getEmployees(), "E001016", ItemDefine.Name.EMPLOYEE,
