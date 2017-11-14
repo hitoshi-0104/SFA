@@ -14,6 +14,8 @@ public class LeadDao {
 
 	/** selectByIdメソッドで使用するSQL */
 	private static final String SELECT_BY_ID_SQL = "SELECT * FROM T_LEAD WHERE LEAD_ID = ?";
+	/** countAllメソッドで使用するSQL */
+	private static final String COUNT_BY_ID_SQL = "SELECT COUNT(*) FROM T_LEAD";
 	/** insertメソッドで使用するSQL */
 	private static final String INSERT_SQL = "INSERT INTO T_LEAD(LAST_NAME, FIRST_NAME, COMPANY_NAME, POSITION, SOURCE, STATUS, ESTIMATION, PHONE, MOBILE_PHONE, FAX, MAIL, URL, INDUSTRY, AMOUNT, EMPLOYEE, POSTAL_CODE, DIVISION, CITY, TOWN, NOTE, CREATE_DATE, CREATER_ID, UPDATE_DATE, UPDATER_ID) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -94,6 +96,26 @@ public class LeadDao {
 	}
 
 	/**
+	 * 見込み客テーブルの件数取得
+	 * @return
+	 * @throws Exception
+	 */
+	public Integer countAll() throws Exception {
+
+		ConnectionProvider cp = ConnectionProvider.getInstance();
+		try (Connection conn = cp.getConnection();
+				PreparedStatement statement = cp.getPreparedStatement(COUNT_BY_ID_SQL);) {
+
+			// SQL実行
+			ResultSet rs = statement.executeQuery();
+			if (rs.next()) {
+				return rs.getInt(1);
+			}
+		}
+		return null;
+	}
+
+	/**
 	 * 新規登録
 	 * @param entity
 	 * @return
@@ -131,9 +153,17 @@ public class LeadDao {
 			// 業種
 			statement.setString(13, entity.getIndustryCode());
 			// 年間売上
-			statement.setLong(14, entity.getAmount());
+			if (entity.getAmount() == null) {
+				statement.setNull(14, java.sql.Types.NULL);
+			} else {
+				statement.setLong(14, entity.getAmount());
+			}
 			// 従業員数
-			statement.setInt(15, entity.getEmployees());
+			if (entity.getEmployees() == null) {
+				statement.setNull(15, java.sql.Types.NULL);
+			} else {
+				statement.setInt(15, entity.getEmployees());
+			}
 			// 郵便番号
 			statement.setString(16, entity.getPostalCode());
 			// 都道府県
