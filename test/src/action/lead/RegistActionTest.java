@@ -2,6 +2,8 @@ package action.lead;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Map;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
@@ -9,6 +11,7 @@ import org.springframework.mock.web.MockHttpServletResponse;
 import action.lead.bean.CreateBean;
 import action.lead.constant.ReqParam;
 import action.lead.create.RegistAction;
+import exception.SalesManagementApplicationException;
 import util.constant.JspPath;
 import util.session.SessionInfo;
 
@@ -16,6 +19,9 @@ class RegistActionTest {
 
 	/**
 	 * handleメソッドテスト
+	 * <summary>
+	 * リクエストパラメータに必要項目がセットされているときのテスト
+	 * </summary>
 	 */
 	@Test
 	void testHandle() {
@@ -154,6 +160,38 @@ class RegistActionTest {
 		assertEquals(town, bean.getTown());
 		// その他
 		assertEquals(note, bean.getNote());
+	}
+
+	/**
+	 * handleメソッドテスト２
+	 * <summary>
+	 * リクエストパラメータに必要項目がセットされていないときのテスト
+	 * </summary>
+	 */
+	@Test
+	void testHandle2() {
+
+		MockHttpServletRequest request = new MockHttpServletRequest();
+		MockHttpServletResponse response = new MockHttpServletResponse();
+
+		// SessionInfo
+		SessionInfo si = new SessionInfo();
+		si.setLoginUserId(0);
+		request.setAttribute(SessionInfo.SESSION_ATTRIBUTE_NAME, si);
+
+		RegistAction ra = new RegistAction(request, response);
+		Map<String, String> messageMap = null;
+		try {
+			ra.handle();
+		} catch(SalesManagementApplicationException e) {
+			messageMap = e.getMessages();
+		} catch (Exception e) {
+			fail(e.getMessage());
+			return;
+		}
+
+		assertNotEquals(null, messageMap);
+
 	}
 
 }
