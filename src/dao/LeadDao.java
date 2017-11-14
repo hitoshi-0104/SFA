@@ -67,9 +67,19 @@ public class LeadDao {
 				// 業種
 				entity.setIndustryCode(rs.getString("INDUSTRY"));
 				// 年間売上
-				entity.setAmount(rs.getLong("AMOUNT"));
+				Long l = rs.getLong("AMOUNT");
+				if (rs.wasNull()) {
+					entity.setAmount(null);
+				} else {
+					entity.setAmount(l);
+				}
 				// 従業員数
-				entity.setEmployees(rs.getInt("EMPLOYEE"));
+				Integer i = rs.getInt("EMPLOYEE");
+				if (rs.wasNull()) {
+					entity.setEmployees(null);
+				} else {
+					entity.setEmployees(i);
+				}
 				// 郵便番号
 				entity.setPostalCode(rs.getString("POSTAL_CODE"));
 				// 都道府県
@@ -83,11 +93,21 @@ public class LeadDao {
 				// 作成日
 				entity.setCreateDate(rs.getString("CREATE_DATE"));
 				// 作成者
-				entity.setCreaterId(rs.getInt("CREATER_ID"));
+				i = rs.getInt("CREATER_ID");
+				if (rs.wasNull()) {
+					entity.setCreaterId(null);
+				} else {
+					entity.setCreaterId(i);
+				}
 				// 更新日
 				entity.setUpdateDate(rs.getString("UPDATE_DATE"));
 				// 更新者
-				entity.setUpdaterId(rs.getInt("UPDATER_ID"));
+				i = rs.getInt("UPDATER_ID");
+				if (rs.wasNull()) {
+					entity.setUpdaterId(null);
+				} else {
+					entity.setUpdaterId(i);
+				}
 
 				return entity;
 			}
@@ -177,11 +197,19 @@ public class LeadDao {
 			// 作成日
 			statement.setString(21, entity.getCreateDate());
 			// 作成者
-			statement.setInt(22, entity.getCreaterId());
+			if (entity.getCreaterId() == null) {
+				statement.setNull(22, java.sql.Types.NULL);
+			} else {
+				statement.setInt(22, entity.getCreaterId());
+			}
 			// 更新日
 			statement.setString(23, entity.getUpdateDate());
 			// 更新者
-			statement.setInt(24, entity.getUpdaterId());
+			if (entity.getUpdaterId() == null) {
+				statement.setNull(24, java.sql.Types.NULL);
+			} else {
+				statement.setInt(24, entity.getUpdaterId());
+			}
 
 			// SQL実行
 			statement.executeUpdate();
