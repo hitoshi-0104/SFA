@@ -26,10 +26,12 @@ class LeadDaoTest {
 	@Test
 	void testInsert() {
 
+		ConnectionProvider cp = ConnectionProvider.getInstance();
+
 		// シーケンスの取得
-		SequenceDao sDao = new SequenceDao();
+		SequenceDao sDao = new SequenceDao(cp);
 		SequenceEntity se = null;
-		try {
+		try (Connection conn = cp.getConnection()) {
 			se = sDao.selectByName("T_LEAD");
 		} catch (Exception e) {
 			fail(e.getMessage());
@@ -90,23 +92,17 @@ class LeadDaoTest {
 		entity.setUpdateDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss.SSS")));
 
 		LeadEntity chk = null;
-		ConnectionProvider cp = ConnectionProvider.getInstance();
-		try (Connection conn = cp.getConnection();) {
-			LeadDao dao = new LeadDao(cp);
-			try {
-				dao.insert(entity);
-			} catch (Exception e) {
-				fail(e.getMessage());
-				return;
-			}
+		LeadDao dao = new LeadDao(cp);
+		try (Connection conn = cp.getConnection()) {
+			dao.insert(entity);
+		} catch (Exception e) {
+			fail(e.getMessage());
+			return;
+		}
 
-			// チェック
-			try {
-				chk = dao.selectById(id);
-			} catch (Exception e) {
-				fail(e.getMessage());
-				return;
-			}
+		// チェック
+		try (Connection conn = cp.getConnection()) {
+			chk = dao.selectById(id);
 		} catch (Exception e) {
 			fail(e.getMessage());
 			return;
@@ -173,10 +169,12 @@ class LeadDaoTest {
 	@Test
 	void testInsert2() {
 
+		ConnectionProvider cp = ConnectionProvider.getInstance();
+
 		// シーケンスの取得
-		SequenceDao sDao = new SequenceDao();
+		SequenceDao sDao = new SequenceDao(cp);
 		SequenceEntity se = null;
-		try {
+		try (Connection conn = cp.getConnection()) {
 			se = sDao.selectByName("T_LEAD");
 		} catch (Exception e) {
 			fail(e.getMessage());
@@ -188,23 +186,17 @@ class LeadDaoTest {
 		LeadEntity entity = new LeadEntity();
 
 		LeadEntity chk = null;
-		ConnectionProvider cp = ConnectionProvider.getInstance();
-		try (Connection conn = cp.getConnection();) {
-			LeadDao dao = new LeadDao(cp);
-			try {
-				dao.insert(entity);
-			} catch (Exception e) {
-				fail(e.getMessage());
-				return;
-			}
+		LeadDao dao = new LeadDao(cp);
+		try (Connection conn = cp.getConnection()) {
+			dao.insert(entity);
+		} catch (Exception e) {
+			fail(e.getMessage());
+			return;
+		}
 
-			// チェック
-			try {
-				chk = dao.selectById(id);
-			} catch (Exception e) {
-				fail(e.getMessage());
-				return;
-			}
+		// チェック
+		try (Connection conn = cp.getConnection()) {
+			chk = dao.selectById(id);
 		} catch (Exception e) {
 			fail(e.getMessage());
 			return;
