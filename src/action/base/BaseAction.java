@@ -25,7 +25,7 @@ public abstract class BaseAction {
 	 * @param request
 	 * @param response
 	 */
-	protected BaseAction(HttpServletRequest request, HttpServletResponse response) {
+	protected BaseAction(HttpServletRequest request, HttpServletResponse response) throws SalesManagementSystemException {
 		this.request = request;
 		this.response = response;
 		initialize();
@@ -36,7 +36,7 @@ public abstract class BaseAction {
 	 * @param request
 	 * @param response
 	 */
-    protected abstract void initialize();
+    protected abstract void initialize() throws SalesManagementSystemException;
 
     /**
      * ハンドラ

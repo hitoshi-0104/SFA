@@ -1,4 +1,4 @@
-package service.create;
+package service.lead.create;
 
 import static org.junit.jupiter.api.Assertions.*;
 

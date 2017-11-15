@@ -22,7 +22,7 @@ public class ReturnAction extends CreateAction {
 	 * @param request
 	 * @param response
 	 */
-	public ReturnAction(HttpServletRequest request, HttpServletResponse response) {
+	public ReturnAction(HttpServletRequest request, HttpServletResponse response) throws SalesManagementSystemException {
 		super(request, response);
 	}
 

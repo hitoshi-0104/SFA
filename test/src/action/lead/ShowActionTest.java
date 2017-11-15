@@ -25,9 +25,9 @@ class ShowActionTest {
 		MockHttpServletRequest request = new MockHttpServletRequest();
 		MockHttpServletResponse response = new MockHttpServletResponse();
 
-		ShowAction sa = new ShowAction(request, response);
 		String ret = "";
 		try {
+			ShowAction sa = new ShowAction(request, response);
 			ret = sa.handle();
 		} catch (Exception e) {
 			fail(e.getMessage());

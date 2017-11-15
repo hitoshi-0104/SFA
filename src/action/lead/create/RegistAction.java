@@ -28,7 +28,7 @@ public class RegistAction extends CreateAction {
 	 * @param request
 	 * @param response
 	 */
-	public RegistAction(HttpServletRequest request, HttpServletResponse response) {
+	public RegistAction(HttpServletRequest request, HttpServletResponse response) throws SalesManagementSystemException {
 		super(request, response);
 	}
 
@@ -125,7 +125,7 @@ public class RegistAction extends CreateAction {
 	    	// 登録
 	    	service.insert(request, dto);
     	} catch (Exception e) {
-    		messageMap.put("E00190001", String.format(MessageReader.read("E801")));
+    		messageMap.put("E00190002", String.format(MessageReader.read("E801")));
     		throw new SalesManagementSystemException(messageMap);
     	}
 	}

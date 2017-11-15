@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import action.base.BaseAction;
 import action.lead.bean.CreateBean;
 import action.lead.constant.ReqParam;
+import exception.SalesManagementSystemException;
 import service.lead.common.GetSelectItems;
 import service.lead.dto.SelectItemsDto;
 import util.converter.StringConverter;
@@ -21,7 +22,7 @@ abstract class CreateAction extends BaseAction {
 	/**
 	 * コンストラクタ
 	 */
-	protected CreateAction(HttpServletRequest request, HttpServletResponse response) {
+	protected CreateAction(HttpServletRequest request, HttpServletResponse response) throws SalesManagementSystemException {
 		super(request, response);
 	}
 
@@ -29,7 +30,7 @@ abstract class CreateAction extends BaseAction {
      * 初期処理
      */
 	@Override
-    protected void initialize() {
+    protected void initialize() throws SalesManagementSystemException {
 
     	// セレクトボック用のアイテム取得
     	GetSelectItems logic = new GetSelectItems();

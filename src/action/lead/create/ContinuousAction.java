@@ -22,7 +22,7 @@ public class ContinuousAction extends RegistAction {
 	 * @param request
 	 * @param response
 	 */
-	public ContinuousAction(HttpServletRequest request, HttpServletResponse response) {
+	public ContinuousAction(HttpServletRequest request, HttpServletResponse response) throws SalesManagementSystemException {
 		super(request, response);
 	}
 

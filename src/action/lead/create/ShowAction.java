@@ -22,7 +22,7 @@ public class ShowAction extends CreateAction {
 	 * @param request
 	 * @param response
 	 */
-	public ShowAction(HttpServletRequest request, HttpServletResponse response) {
+	public ShowAction(HttpServletRequest request, HttpServletResponse response) throws SalesManagementSystemException {
 		super(request, response);
 	}
 
