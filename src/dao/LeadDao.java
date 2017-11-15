@@ -1,16 +1,16 @@
 package dao;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import dao.base.BaseDao;
 import dao.entity.LeadEntity;
 
 /**
  * 見込み客Dao
  *
  */
-public class LeadDao {
+public class LeadDao extends BaseDao {
 
 	/** selectByIdメソッドで使用するSQL */
 	private static final String SELECT_BY_ID_SQL = "SELECT * FROM T_LEAD WHERE LEAD_ID = ?";
@@ -20,6 +20,14 @@ public class LeadDao {
 	private static final String INSERT_SQL = "INSERT INTO T_LEAD(LAST_NAME, FIRST_NAME, COMPANY_NAME, POSITION, SOURCE, STATUS, ESTIMATION, PHONE, MOBILE_PHONE, FAX, MAIL, URL, INDUSTRY, AMOUNT, EMPLOYEE, POSTAL_CODE, DIVISION, CITY, TOWN, NOTE, CREATE_DATE, CREATER_ID, UPDATE_DATE, UPDATER_ID) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 	/**
+	 * コンストラクタ
+	 * @param cp
+	 */
+	public LeadDao(ConnectionProvider cp) {
+		super(cp);
+	}
+
+	/**
 	 * IDを指定して見込み客を取得
 	 * @param Id
 	 * @return
@@ -27,9 +35,7 @@ public class LeadDao {
 	 */
 	public LeadEntity selectById(Integer Id) throws Exception {
 
-		ConnectionProvider cp = ConnectionProvider.getInstance();
-		try (Connection conn = cp.getConnection();
-				PreparedStatement statement = cp.getPreparedStatement(SELECT_BY_ID_SQL);) {
+		try (PreparedStatement statement = cp.getPreparedStatement(SELECT_BY_ID_SQL);) {
 
 			// ID
 			statement.setInt(1, Id);
@@ -102,9 +108,7 @@ public class LeadDao {
 	 */
 	public Integer countAll() throws Exception {
 
-		ConnectionProvider cp = ConnectionProvider.getInstance();
-		try (Connection conn = cp.getConnection();
-				PreparedStatement statement = cp.getPreparedStatement(COUNT_BY_ID_SQL);) {
+		try (PreparedStatement statement = cp.getPreparedStatement(COUNT_BY_ID_SQL);) {
 
 			// SQL実行
 			ResultSet rs = statement.executeQuery();
@@ -123,9 +127,7 @@ public class LeadDao {
 	 */
 	public void insert(LeadEntity entity) throws Exception {
 
-		ConnectionProvider cp = ConnectionProvider.getInstance();
-		try (Connection conn = cp.getConnection();
-				PreparedStatement statement = cp.getPreparedStatement(INSERT_SQL);) {
+		try (PreparedStatement statement = cp.getPreparedStatement(INSERT_SQL);) {
 			// 姓
 			statement.setObject(1, entity.getLastName());
 			// 名
