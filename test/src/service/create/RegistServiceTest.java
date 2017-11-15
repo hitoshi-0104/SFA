@@ -2,11 +2,13 @@ package service.create;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.sql.Connection;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 
+import dao.ConnectionProvider;
 import dao.LeadDao;
 import service.lead.create.RegistService;
 import service.lead.dto.CreateDto;
@@ -227,9 +229,11 @@ class RegistServiceTest {
 	@Test
 	void testInsert() {
 
-		LeadDao dao = new LeadDao();
+		ConnectionProvider cp = ConnectionProvider.getInstance();
+
+		LeadDao dao = new LeadDao(cp);
 		Integer i = null;
-		try {
+		try (Connection conn = cp.getConnection()) {
 			i = dao.countAll();
 		} catch (Exception e) {
 			fail(e.getMessage());
@@ -244,7 +248,7 @@ class RegistServiceTest {
 		request.setAttribute(SessionInfo.SESSION_ATTRIBUTE_NAME, si);
 
 		RegistService rs = new RegistService();
-		try {
+		try (Connection conn = cp.getConnection()) {
 			rs.insert(request, new CreateDto());
 		} catch (Exception e) {
 			fail(e.getMessage());
@@ -252,7 +256,7 @@ class RegistServiceTest {
 		}
 
 		Integer j = null;
-		try {
+		try (Connection conn = cp.getConnection()) {
 			j = dao.countAll();
 		} catch (Exception e) {
 			fail(e.getMessage());

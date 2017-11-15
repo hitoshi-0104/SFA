@@ -1,5 +1,6 @@
 package service.lead.create;
 
+import java.sql.Connection;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.LinkedHashMap;
@@ -7,6 +8,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import dao.ConnectionProvider;
 import dao.LeadDao;
 import dao.entity.LeadEntity;
 import service.common.Validater;
@@ -123,8 +125,11 @@ public class RegistService {
 		// エンティティの作成
 		LeadEntity entity = createLeadEntityForInsert(request, dto);
 
-		LeadDao dao = new LeadDao();
-		dao.insert(entity);
+		ConnectionProvider cp = ConnectionProvider.getInstance();
+		LeadDao dao = new LeadDao(cp);
+		try (Connection conn = cp.getConnection()) {
+			dao.insert(entity);
+		}
 	}
 
 	/**

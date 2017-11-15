@@ -2,6 +2,7 @@ package dao;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.sql.Connection;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -88,18 +89,24 @@ class LeadDaoTest {
 		// 更新日時
 		entity.setUpdateDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss.SSS")));
 
-		LeadDao dao = new LeadDao();
-		try {
-			dao.insert(entity);
-		} catch (Exception e) {
-			fail(e.getMessage());
-			return;
-		}
-
-		// チェック
 		LeadEntity chk = null;
-		try {
-			chk = dao.selectById(id);
+		ConnectionProvider cp = ConnectionProvider.getInstance();
+		try (Connection conn = cp.getConnection();) {
+			LeadDao dao = new LeadDao(cp);
+			try {
+				dao.insert(entity);
+			} catch (Exception e) {
+				fail(e.getMessage());
+				return;
+			}
+
+			// チェック
+			try {
+				chk = dao.selectById(id);
+			} catch (Exception e) {
+				fail(e.getMessage());
+				return;
+			}
 		} catch (Exception e) {
 			fail(e.getMessage());
 			return;
@@ -156,7 +163,7 @@ class LeadDaoTest {
 		// 更新日時
 		assertEquals(entity.getUpdateDate(), chk.getUpdateDate());
 	}
-	
+
 	/**
 	 * insertメソッドテスト2
 	 * <summary>
@@ -180,18 +187,24 @@ class LeadDaoTest {
 		// insertするデータ作成
 		LeadEntity entity = new LeadEntity();
 
-		LeadDao dao = new LeadDao();
-		try {
-			dao.insert(entity);
-		} catch (Exception e) {
-			fail(e.getMessage());
-			return;
-		}
-
-		// チェック
 		LeadEntity chk = null;
-		try {
-			chk = dao.selectById(id);
+		ConnectionProvider cp = ConnectionProvider.getInstance();
+		try (Connection conn = cp.getConnection();) {
+			LeadDao dao = new LeadDao(cp);
+			try {
+				dao.insert(entity);
+			} catch (Exception e) {
+				fail(e.getMessage());
+				return;
+			}
+
+			// チェック
+			try {
+				chk = dao.selectById(id);
+			} catch (Exception e) {
+				fail(e.getMessage());
+				return;
+			}
 		} catch (Exception e) {
 			fail(e.getMessage());
 			return;
