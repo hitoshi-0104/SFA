@@ -39,75 +39,55 @@ public class LeadDao {
 			if (rs.next()) {
 				LeadEntity entity = new LeadEntity();
 				// ID
-				entity.setId(rs.getInt("LEAD_ID"));
+				entity.setId((Integer)rs.getObject("LEAD_ID"));
 				// 姓
-				entity.setLastName(rs.getString("LAST_NAME"));
+				entity.setLastName((String)rs.getObject("LAST_NAME"));
 				// 名
-				entity.setFirstName(rs.getString("FIRST_NAME"));
+				entity.setFirstName((String)rs.getObject("FIRST_NAME"));
 				// 会社名
-				entity.setCompanyName(rs.getString("COMPANY_NAME"));
+				entity.setCompanyName((String)rs.getObject("COMPANY_NAME"));
 				// 役職
-				entity.setPosition(rs.getString("POSITION"));
+				entity.setPosition((String)rs.getObject("POSITION"));
 				// ソース
-				entity.setSourceCode(rs.getString("SOURCE"));
+				entity.setSourceCode((String)rs.getObject("SOURCE"));
 				// 状態
-				entity.setStatusCode(rs.getString("STATUS"));
+				entity.setStatusCode((String)rs.getObject("STATUS"));
 				// 評価
-				entity.setEstimationCode(rs.getString("ESTIMATION"));
+				entity.setEstimationCode((String)rs.getObject("ESTIMATION"));
 				// 電話
-				entity.setPhone(rs.getString("PHONE"));
+				entity.setPhone((String)rs.getObject("PHONE"));
 				// 携帯
-				entity.setMobilePhone(rs.getString("MOBILE_PHONE"));
+				entity.setMobilePhone((String)rs.getObject("MOBILE_PHONE"));
 				// FAX
-				entity.setFax(rs.getString("FAX"));
+				entity.setFax((String)rs.getObject("FAX"));
 				// メール
-				entity.setMailAddress(rs.getString("MAIL"));
+				entity.setMailAddress((String)rs.getObject("MAIL"));
 				// URL
-				entity.setUrl(rs.getString("URL"));
+				entity.setUrl((String)rs.getObject("URL"));
 				// 業種
-				entity.setIndustryCode(rs.getString("INDUSTRY"));
+				entity.setIndustryCode((String)rs.getObject("INDUSTRY"));
 				// 年間売上
-				Long l = rs.getLong("AMOUNT");
-				if (rs.wasNull()) {
-					entity.setAmount(null);
-				} else {
-					entity.setAmount(l);
-				}
+				entity.setAmount((Long)rs.getObject("AMOUNT"));
 				// 従業員数
-				Integer i = rs.getInt("EMPLOYEE");
-				if (rs.wasNull()) {
-					entity.setEmployees(null);
-				} else {
-					entity.setEmployees(i);
-				}
+				entity.setEmployees((Integer)rs.getObject("EMPLOYEE"));
 				// 郵便番号
-				entity.setPostalCode(rs.getString("POSTAL_CODE"));
+				entity.setPostalCode((String)rs.getObject("POSTAL_CODE"));
 				// 都道府県
-				entity.setDivisionCode(rs.getString("DIVISION"));
+				entity.setDivisionCode((String)rs.getObject("DIVISION"));
 				// 市区郡
-				entity.setCity(rs.getString("CITY"));
+				entity.setCity((String)rs.getObject("CITY"));
 				// 町名・番地・建物名
-				entity.setTown(rs.getString("TOWN"));
+				entity.setTown((String)rs.getObject("TOWN"));
 				// その他
-				entity.setNote(rs.getString("NOTE"));
+				entity.setNote((String)rs.getObject("NOTE"));
 				// 作成日
-				entity.setCreateDate(rs.getString("CREATE_DATE"));
+				entity.setCreateDate((String)rs.getObject("CREATE_DATE"));
 				// 作成者
-				i = rs.getInt("CREATER_ID");
-				if (rs.wasNull()) {
-					entity.setCreaterId(null);
-				} else {
-					entity.setCreaterId(i);
-				}
+				entity.setCreaterId((Integer)rs.getObject("CREATER_ID"));
 				// 更新日
-				entity.setUpdateDate(rs.getString("UPDATE_DATE"));
+				entity.setUpdateDate((String)rs.getObject("UPDATE_DATE"));
 				// 更新者
-				i = rs.getInt("UPDATER_ID");
-				if (rs.wasNull()) {
-					entity.setUpdaterId(null);
-				} else {
-					entity.setUpdaterId(i);
-				}
+				entity.setUpdaterId((Integer)rs.getObject("UPDATER_ID"));
 
 				return entity;
 			}
@@ -147,69 +127,53 @@ public class LeadDao {
 		try (Connection conn = cp.getConnection();
 				PreparedStatement statement = cp.getPreparedStatement(INSERT_SQL);) {
 			// 姓
-			statement.setString(1, entity.getLastName());
+			statement.setObject(1, entity.getLastName());
 			// 名
-			statement.setString(2, entity.getFirstName());
+			statement.setObject(2, entity.getFirstName());
 			// 会社名
-			statement.setString(3, entity.getCompanyName());
+			statement.setObject(3, entity.getCompanyName());
 			// 役職
-			statement.setString(4, entity.getPosition());
+			statement.setObject(4, entity.getPosition());
 			// ソース
-			statement.setString(5, entity.getSourceCode());
+			statement.setObject(5, entity.getSourceCode());
 			// 状態
-			statement.setString(6, entity.getStatusCode());
+			statement.setObject(6, entity.getStatusCode());
 			// 評価
-			statement.setString(7, entity.getEstimationCode());
+			statement.setObject(7, entity.getEstimationCode());
 			// 電話
-			statement.setString(8, entity.getPhone());
+			statement.setObject(8, entity.getPhone());
 			// 携帯
-			statement.setString(9, entity.getMobilePhone());
+			statement.setObject(9, entity.getMobilePhone());
 			// FAX
-			statement.setString(10, entity.getFax());
+			statement.setObject(10, entity.getFax());
 			// メール
-			statement.setString(11, entity.getMailAddress());
+			statement.setObject(11, entity.getMailAddress());
 			// URL
-			statement.setString(12, entity.getUrl());
+			statement.setObject(12, entity.getUrl());
 			// 業種
-			statement.setString(13, entity.getIndustryCode());
+			statement.setObject(13, entity.getIndustryCode());
 			// 年間売上
-			if (entity.getAmount() == null) {
-				statement.setNull(14, java.sql.Types.NULL);
-			} else {
-				statement.setLong(14, entity.getAmount());
-			}
+			statement.setObject(14, entity.getAmount());
 			// 従業員数
-			if (entity.getEmployees() == null) {
-				statement.setNull(15, java.sql.Types.NULL);
-			} else {
-				statement.setInt(15, entity.getEmployees());
-			}
+			statement.setObject(15, entity.getEmployees());
 			// 郵便番号
-			statement.setString(16, entity.getPostalCode());
+			statement.setObject(16, entity.getPostalCode());
 			// 都道府県
-			statement.setString(17, entity.getDivisionCode());
+			statement.setObject(17, entity.getDivisionCode());
 			// 市区郡
-			statement.setString(18, entity.getCity());
+			statement.setObject(18, entity.getCity());
 			// 町名・番地・建物名
-			statement.setString(19, entity.getTown());
+			statement.setObject(19, entity.getTown());
 			// その他
-			statement.setString(20, entity.getNote());
+			statement.setObject(20, entity.getNote());
 			// 作成日
-			statement.setString(21, entity.getCreateDate());
+			statement.setObject(21, entity.getCreateDate());
 			// 作成者
-			if (entity.getCreaterId() == null) {
-				statement.setNull(22, java.sql.Types.NULL);
-			} else {
-				statement.setInt(22, entity.getCreaterId());
-			}
+			statement.setObject(22, entity.getCreaterId());
 			// 更新日
-			statement.setString(23, entity.getUpdateDate());
+			statement.setObject(23, entity.getUpdateDate());
 			// 更新者
-			if (entity.getUpdaterId() == null) {
-				statement.setNull(24, java.sql.Types.NULL);
-			} else {
-				statement.setInt(24, entity.getUpdaterId());
-			}
+			statement.setObject(24, entity.getUpdaterId());
 
 			// SQL実行
 			statement.executeUpdate();
