@@ -38,7 +38,7 @@ public class LeadDao extends BaseDao {
 		try (PreparedStatement statement = cp.getPreparedStatement(SELECT_BY_ID_SQL);) {
 
 			// ID
-			statement.setInt(1, Id);
+			statement.setObject(1, Id);
 
 			// SQL実行
 			ResultSet rs = statement.executeQuery();
