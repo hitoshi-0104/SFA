@@ -1,19 +1,27 @@
 package dao;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import dao.base.BaseDao;
 import dao.entity.SequenceEntity;
 
 /**
  * シーケンスDao
  *
  */
-public class SequenceDao {
+public class SequenceDao extends BaseDao {
 
 	/** selectByNameメソッドで使用するSQL */
 	private static final String SELECT_BY_NAME_SQL = "SELECT * FROM sqlite_sequence WHERE name = ?";
+
+	/**
+	 * コンストラクタ
+	 * @param cp
+	 */
+	public SequenceDao(ConnectionProvider cp) {
+		super(cp);
+	}
 
 	/**
 	 * Nameを指定してシーケンスを取得
@@ -23,9 +31,7 @@ public class SequenceDao {
 	 */
 	public SequenceEntity selectByName(String name) throws Exception {
 
-		ConnectionProvider cp = ConnectionProvider.getInstance();
-		try (Connection conn = cp.getConnection();
-				PreparedStatement statement = cp.getPreparedStatement(SELECT_BY_NAME_SQL);) {
+		try (PreparedStatement statement = cp.getPreparedStatement(SELECT_BY_NAME_SQL);) {
 
 			// name
 			statement.setString(1, name);
