@@ -35,9 +35,9 @@ public class SequenceDao {
 			if (rs.next()) {
 				SequenceEntity entity = new SequenceEntity();
 				// name
-				entity.setName(rs.getString("name"));
+				entity.setName((String)rs.getObject("name"));
 				// seq
-				entity.setSeq(rs.getInt("seq"));
+				entity.setSeq((Integer)rs.getObject("seq"));
 
 				return entity;
 			}
