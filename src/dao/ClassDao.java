@@ -24,6 +24,12 @@ public class ClassDao extends BaseDao {
 		super(cp);
 	}
 
+	/**
+	 * Code1を指定して分類を取得
+	 * @param code1
+	 * @return
+	 * @throws Exception
+	 */
 	public List<ClassEntity> seleceByCode1(String code1) throws Exception {
 
 		try (PreparedStatement statement = cp.getPreparedStatement(SELECT_BY_CODE1_SQL)) {
