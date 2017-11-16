@@ -16,6 +16,8 @@ public class DivisionDao extends BaseDao {
 
 	/** selectAllメソッドで使用するSQL */
 	private static final String SELECT_ALL_SQL = "SELECT * FROM M_DIVISION ORDER BY CODE";
+	/** countAllメソッドで使用するSQL */
+	private static final String COUNT_ALL_SQL = "SELECT COUNT(*) FROM M_DIVISION";
 
 	/**
 	 * コンストラクタ
@@ -60,6 +62,28 @@ public class DivisionDao extends BaseDao {
 			}
 			return list;
 		}
+	}
+
+	/**
+	 * 都道府県テーブルの件数取得
+	 * @return
+	 * @throws Exception
+	 */
+	public Integer countAll() throws Exception {
+
+		Integer ret = null;
+
+		try (PreparedStatement statement = cp.getPreparedStatement(COUNT_ALL_SQL)) {
+
+			// SQL実行
+			ResultSet rs = statement.executeQuery();
+
+			if (rs.next()) {
+				ret = (Integer)rs.getObject(1);
+			}
+		}
+
+		return ret;
 	}
 
 }
