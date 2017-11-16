@@ -26,7 +26,7 @@ public class DivisionDao extends BaseDao {
 	}
 
 	/**
-	 * CODEを指定して都道府県を取得する
+	 * すべての都道府県を取得する
 	 * @param code
 	 * @return
 	 * @throws Exception
