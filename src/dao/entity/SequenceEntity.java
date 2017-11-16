@@ -1,10 +1,12 @@
 package dao.entity;
 
+import dao.entity.base.BaseEntity;
+
 /**
  * シーケンスエンティティ
  *
  */
-public class SequenceEntity {
+public class SequenceEntity extends BaseEntity {
 
 	/** 名称 */
 	private String name;
