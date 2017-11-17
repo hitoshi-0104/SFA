@@ -51,9 +51,29 @@ public class ReqParam {
 		public static final String TOWN = "town";
 		/** その他 */
 		public static final String NOTE = "note";
+	}
 
-		/** action */
-		public static final String ACTION = "action";
+	/**
+	 * 見込み客新規登録画面
+	 *
+	 */
+	public class List {
+		/** 姓 */
+		public static final String LAST_NAME = "lastname";
+		/** 名 */
+		public static final String FIRST_NAME = "firstname";
+		/** 会社名 */
+		public static final String COMPANY_NAME = "companyname";
+		/** ソース */
+		public static final String SOURCE = "source";
+		/** 状況 */
+		public static final String STATUS = "status";
+		/** 評価 */
+		public static final String ESTIMATION = "estimation";
+		/** 業種 */
+		public static final String INDUSTRY = "industry";
+		/** 都道府県 */
+		public static final String DIVISION = "division";
 	}
 
 }

@@ -18,6 +18,8 @@ public class LeadController {
 
 	/** 見込み客新規登録の正規表現 */
 	private static final String CREATE_MATCH = "lead.create.*.action";
+	/** 見込み客検索の正規表現 */
+	private static final String SEARCH_MATCH = "lead.list.*.action";
 
 	/**
 	 * ディスパッチ
@@ -34,7 +36,11 @@ public class LeadController {
 	public void dispatch(String action, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException,
 		SalesManagementApplicationException, SalesManagementSystemException, SalesManagementRuntimeException {
 
-		if (action.matches(CREATE_MATCH)) {
+		if (action.matches(SEARCH_MATCH)) {
+			// 見込み客検索
+			ListController dispatcher = new ListController();
+			dispatcher.dispatch(action, request, response);
+		} else if (action.matches(CREATE_MATCH)) {
 			// 見込み客新規登録
 			CreateController dispatcher = new CreateController();
 			dispatcher.dispatch(action, request, response);
