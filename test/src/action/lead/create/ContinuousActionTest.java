@@ -1,8 +1,6 @@
-package action.lead;
+package action.lead.create;
 
 import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
@@ -10,19 +8,16 @@ import org.springframework.mock.web.MockHttpServletResponse;
 
 import action.lead.bean.CreateBean;
 import action.lead.constant.ReqParam;
-import action.lead.create.RegistAction;
-import exception.SalesManagementApplicationException;
+import action.lead.create.ContinuousAction;
 import util.constant.JspPath;
 import util.session.SessionInfo;
 
-class RegistActionTest {
+/**
+ * ContinuousActionクラスのテストクラス
+ *
+ */
+class ContinuousActionTest {
 
-	/**
-	 * handleメソッドテスト
-	 * <summary>
-	 * リクエストパラメータに必要項目がセットされているときのテスト
-	 * </summary>
-	 */
 	@Test
 	void testHandle() {
 
@@ -97,14 +92,14 @@ class RegistActionTest {
 
 		String ret = "";
 		try {
-			RegistAction ra = new RegistAction(request, response);
+			ContinuousAction ra = new ContinuousAction(request, response);
 			ret = ra.handle();
 		} catch (Exception e) {
 			fail(e.getMessage());
 			return;
 		}
 
-		assertEquals(JspPath.Lead.LIST, ret);
+		assertEquals(JspPath.Lead.CREATE, ret);
 
 		CreateBean bean = (CreateBean)request.getAttribute("leadBean");
 		assertNotEquals(null, bean);
@@ -160,38 +155,6 @@ class RegistActionTest {
 		assertEquals(town, bean.getTown());
 		// その他
 		assertEquals(note, bean.getNote());
-	}
-
-	/**
-	 * handleメソッドテスト２
-	 * <summary>
-	 * リクエストパラメータに必要項目がセットされていないときのテスト
-	 * </summary>
-	 */
-	@Test
-	void testHandle2() {
-
-		MockHttpServletRequest request = new MockHttpServletRequest();
-		MockHttpServletResponse response = new MockHttpServletResponse();
-
-		// SessionInfo
-		SessionInfo si = new SessionInfo();
-		si.setLoginUserId(0);
-		request.setAttribute(SessionInfo.SESSION_ATTRIBUTE_NAME, si);
-
-		Map<String, String> messageMap = null;
-		try {
-			RegistAction ra = new RegistAction(request, response);
-			ra.handle();
-		} catch(SalesManagementApplicationException e) {
-			messageMap = e.getMessages();
-		} catch (Exception e) {
-			fail(e.getMessage());
-			return;
-		}
-
-		assertNotEquals(null, messageMap);
-
 	}
 
 }

@@ -1,4 +1,4 @@
-package action.lead;
+package action.lead.create;
 
 import static org.junit.jupiter.api.Assertions.*;
 
