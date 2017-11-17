@@ -12,7 +12,7 @@ import service.lead.dto.SelectItemsDto;
 import util.converter.StringConverter;
 
 /**
- * Servlet implementation class ListController
+ * 見込み客新規登録のアクションクラス
  */
 abstract class CreateAction extends BaseAction {
 
