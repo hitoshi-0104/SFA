@@ -6,7 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import action.lead.create.ContinuousAction;
+import action.lead.list.SearchAction;
 import action.lead.list.ShowAction;
 import exception.SalesManagementApplicationException;
 import exception.SalesManagementRuntimeException;
@@ -23,7 +23,7 @@ public class ListController {
 	/** 初期表示 */
 	private static final String SHOW_MATCH = "lead.list.show.action";
 	/** 検索 */
-	private static final String SEARCH_MATCH = "lead.list.search.action";
+	private static final String SEARCH_MATCH = "lead.list.search.rest";
 
 	/**
 	 * ディスパッチ
@@ -49,8 +49,8 @@ public class ListController {
 				break;
 			// 検索
 			case SEARCH_MATCH:
-				ContinuousAction ccon = new ContinuousAction(request, response);
-				dispatchUrl = ccon.handle();
+				SearchAction secon = new SearchAction(request, response);
+				dispatchUrl = secon.handle();
 				break;
 			}
 		} finally {

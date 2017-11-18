@@ -10,16 +10,28 @@ import exception.SalesManagementApplicationException;
 import exception.SalesManagementRuntimeException;
 import exception.SalesManagementSystemException;
 
+/**
+ * 見込み客検索のアクションクラス
+ *
+ */
 public class SearchAction extends ListAction {
 
+	/**
+	 * コンストラクタ
+	 * @param request
+	 * @param response
+	 * @throws SalesManagementSystemException
+	 */
 	public SearchAction(HttpServletRequest request, HttpServletResponse response)
 			throws SalesManagementSystemException {
 		super(request, response);
-		// TODO 自動生成されたコンストラクター・スタブ
 	}
 
+	/**
+	 * ハンドル
+	 */
 	@Override
-	protected String handle() throws ServletException, IOException, SalesManagementApplicationException,
+	public String handle() throws ServletException, IOException, SalesManagementApplicationException,
 			SalesManagementSystemException, SalesManagementRuntimeException {
 		// TODO 自動生成されたメソッド・スタブ
 		return null;

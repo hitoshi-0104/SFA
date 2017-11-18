@@ -17,9 +17,9 @@ import exception.SalesManagementSystemException;
 public class LeadController {
 
 	/** 見込み客新規登録の正規表現 */
-	private static final String CREATE_MATCH = "lead.create.*.action";
+	private static final String CREATE_MATCH = "lead.create.*";
 	/** 見込み客検索の正規表現 */
-	private static final String SEARCH_MATCH = "lead.list.*.action";
+	private static final String SEARCH_MATCH = "lead.list.*";
 
 	/**
 	 * ディスパッチ

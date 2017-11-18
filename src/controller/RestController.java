@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,19 +17,19 @@ import exception.SalesManagementSystemException;
 import util.constant.ServletSettings;
 
 /**
- * Servlet implementation class MainDispatcher
+ * Servlet implementation class RestController
  */
-@WebServlet("*.action")
-public class FrontController extends BaseController {
+@WebServlet("*.rest")
+public class RestController extends BaseController {
 	private static final long serialVersionUID = 1L;
 
-	/** 見込み客機能の正規表現 */
-	private static final String LEAD_MATCH = "lead.*.action";
+	/** 見込み客REST APIの正規表現 */
+	private static final String LEAD_MATCH = "lead.*.rest";
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public FrontController() {
+    public RestController() {
         super();
     }
 
@@ -40,23 +41,23 @@ public class FrontController extends BaseController {
 		String uri = request.getRequestURI();
 
 		int lastIndex = uri.lastIndexOf("/");
-		String action = uri.substring(lastIndex + 1);
-		String dispatchUrl = null;
+		uri = uri.substring(lastIndex + 1);
+		String rest = null;
 
-		response.setContentType(ServletSettings.CONTENT_TYPE);
+		response.setContentType(ServletSettings.REST_CONTENT_TYPE);
     	request.setCharacterEncoding(ServletSettings.CHARACTER_ENCODING);
 
     	try {
 
     		// ディスパッチ
-    		dispatch(action, request, response);
-    		dispatchUrl = request.getAttribute(ServletSettings.URL_ATTRIBUTE_NAME).toString();
+    		dispatch(uri, request, response);
+    		rest = request.getAttribute(ServletSettings.REST_ATTRIBUTE_NAME).toString();
 
     	} catch (SalesManagementApplicationException e) {
 
     		// メッセージのセット
     		request.setAttribute(MESSAGES, e.getMessages());
-    		dispatchUrl = request.getAttribute(ServletSettings.URL_ATTRIBUTE_NAME).toString();
+    		rest = request.getAttribute(ServletSettings.REST_ATTRIBUTE_NAME).toString();
 
     	} catch (SalesManagementSystemException e) {
 
@@ -66,7 +67,9 @@ public class FrontController extends BaseController {
 
     	}
 
-		getServletContext().getRequestDispatcher(dispatchUrl).include(request, response);
+    	PrintWriter pw = response.getWriter();
+    	pw.print(rest);
+    	pw.flush();
 
 	}
 
@@ -74,30 +77,28 @@ public class FrontController extends BaseController {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		doGet(request, response);
 	}
 
 	/**
 	 * ディスパッチ
-	 * @param action
+	 * @param url
 	 * @param request
 	 * @param response
-	 * @return
 	 * @throws ServletException
 	 * @throws IOException
 	 * @throws SalesManagementApplicationException
 	 * @throws SalesManagementSystemException
 	 * @throws SalesManagementRuntimeException
 	 */
-	private void dispatch(String action, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException,
+	private void dispatch(String url, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException,
 		SalesManagementApplicationException, SalesManagementSystemException, SalesManagementRuntimeException {
 
-		if (action.matches(LEAD_MATCH)) {
-			// 見込み客
-			LeadController dispatcher = new LeadController();
-			dispatcher.dispatch(action, request, response);
-		}
+	if (url.matches(LEAD_MATCH)) {
+		// 見込み客
+		LeadController dispatcher = new LeadController();
+		dispatcher.dispatch(url, request, response);
 	}
+}
 
 }
