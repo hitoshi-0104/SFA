@@ -33,8 +33,8 @@ public class SearchAction extends ListAction {
 	@Override
 	public String handle() throws ServletException, IOException, SalesManagementApplicationException,
 			SalesManagementSystemException, SalesManagementRuntimeException {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
+
+		return "";
 	}
 
 }
