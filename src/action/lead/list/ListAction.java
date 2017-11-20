@@ -56,7 +56,7 @@ abstract class ListAction extends BaseAction {
      * @param request
      * @return
      */
-    protected void setParamsToLeadBean() {
+    protected void setParamsToListBean() {
 
     	ListBean bean = getListBeanInstance();
 
