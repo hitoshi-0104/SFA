@@ -6,8 +6,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
 import dao.ConnectionProvider;
 import dao.LeadDao;
 import dao.entity.LeadEntity;
@@ -120,10 +118,10 @@ public class RegistService {
 	 * @return true : 成功  false : 失敗
 	 * @throws Exception
 	 */
-	public void insert(HttpServletRequest request, CreateDto dto) throws Exception {
+	public void insert(SessionInfo si, CreateDto dto) throws Exception {
 
 		// エンティティの作成
-		LeadEntity entity = createLeadEntityForInsert(request, dto);
+		LeadEntity entity = createLeadEntityForInsert(si, dto);
 
 		ConnectionProvider cp = ConnectionProvider.getInstance();
 		LeadDao dao = new LeadDao(cp);
@@ -137,7 +135,7 @@ public class RegistService {
 	 * @param dto
 	 * @return
 	 */
-	private LeadEntity createLeadEntityForInsert(HttpServletRequest request, CreateDto dto) {
+	private LeadEntity createLeadEntityForInsert(SessionInfo si, CreateDto dto) {
 
 		LeadEntity entity = new LeadEntity();
 
@@ -181,8 +179,6 @@ public class RegistService {
 		entity.setTown(dto.getTown());
 		// その他
 		entity.setNote(dto.getNote());
-
-		SessionInfo si = (SessionInfo)request.getAttribute(SessionInfo.SESSION_ATTRIBUTE_NAME);
 
 		// 作成者ID
 		entity.setCreaterId(si.getLoginUserId());

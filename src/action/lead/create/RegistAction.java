@@ -16,6 +16,7 @@ import service.lead.dto.CreateDto;
 import util.constant.JspPath;
 import util.converter.StringConverter;
 import util.message.MessageReader;
+import util.session.SessionInfo;
 
 /**
  * 見込み客新規登録画面：登録コントローラ
@@ -123,7 +124,8 @@ public class RegistAction extends CreateAction {
 
     	try {
 	    	// 登録
-	    	service.insert(request, dto);
+    		SessionInfo si = (SessionInfo)request.getAttribute(SessionInfo.SESSION_ATTRIBUTE_NAME);
+	    	service.insert(si, dto);
     	} catch (Exception e) {
     		messageMap.put("E00190002", String.format(MessageReader.read("E801")));
     		throw new SalesManagementSystemException(messageMap);
