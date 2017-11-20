@@ -10,7 +10,6 @@ import org.springframework.mock.web.MockHttpServletRequest;
 
 import dao.ConnectionProvider;
 import dao.LeadDao;
-import service.lead.create.RegistService;
 import service.lead.dto.CreateDto;
 import util.session.SessionInfo;
 
@@ -242,14 +241,12 @@ class RegistServiceTest {
 
 		MockHttpServletRequest request = new MockHttpServletRequest();
 
-		// SessionInfo
-		SessionInfo si = new SessionInfo();
-		si.setLoginUserId(0);
-		request.setAttribute(SessionInfo.SESSION_ATTRIBUTE_NAME, si);
-
 		RegistService rs = new RegistService();
 		try (Connection conn = cp.getConnection()) {
-			rs.insert(request, new CreateDto());
+			// SessionInfo
+			SessionInfo si = new SessionInfo();
+			si.setLoginUserId(0);
+			rs.insert(si, new CreateDto());
 		} catch (Exception e) {
 			fail(e.getMessage());
 			return;
