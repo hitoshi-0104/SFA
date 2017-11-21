@@ -1,4 +1,4 @@
-package service.constant;
+package util.constant;
 
 /**
  * 分類の定数クラス
