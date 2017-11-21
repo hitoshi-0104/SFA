@@ -12,8 +12,8 @@ import dao.DivisionDao;
 import dao.entity.ClassEntity;
 import dao.entity.DivisionEntity;
 import exception.SalesManagementSystemException;
-import service.constant.ClassCode1;
 import service.lead.dto.SelectItemsDto;
+import util.constant.ClassCode1;
 import util.message.MessageReader;
 
 /**

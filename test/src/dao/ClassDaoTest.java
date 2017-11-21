@@ -8,7 +8,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import dao.entity.ClassEntity;
-import service.constant.ClassCode1;
+import util.constant.ClassCode1;
 
 /**
  * ClassDaoクラスのテスト

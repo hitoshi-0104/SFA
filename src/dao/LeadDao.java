@@ -2,9 +2,14 @@ package dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import dao.base.BaseDao;
 import dao.entity.LeadEntity;
+import dao.entity.LeadListEntity;
+import util.constant.ClassCode1;
+import util.validate.StringValidater;
 
 /**
  * 見込み客Dao
@@ -14,6 +19,8 @@ public class LeadDao extends BaseDao {
 
 	/** selectByIdメソッドで使用するSQL */
 	private static final String SELECT_BY_ID_SQL = "SELECT * FROM T_LEAD WHERE LEAD_ID = ?";
+	/** selectForLeadListメソッドで使用するSQL */
+	private static final String SELECT_FOR_LEAD_LIST_SQL = "SELECT T1.LAST_NAME, T1.FIRST_NAME, T1.COMPANY_NAME, T1.SOURCE, T2.CODE2_NAME AS SOURCE_NAME, T1.STATUS, T3.CODE2_NAME AS STATUS_NAME, T1.ESTIMATION, T4.CODE2_NAME AS ESTIMATION_NAME, T1.INDUSTRY, T5.CODE2_NAME AS INDUSTRY_NAME, T1.DIVISION, T6.NAME AS DIVISION_NAME FROM T_LEAD T1 LEFT JOIN M_CLASS T2 ON T1.SOURCE = T2.CODE2 AND T2.CODE1 = ? LEFT JOIN M_CLASS T3 ON T1.STATUS = T3.CODE2 AND T3.CODE1 = ? LEFT JOIN M_CLASS T4 ON T1.ESTIMATION = T4.CODE2 AND T4.CODE1 = ? LEFT JOIN M_CLASS T5 ON T1.INDUSTRY = T5.CODE2 AND T5.CODE1 = ? LEFT JOIN M_DIVISION T6 ON T1.DIVISION = T6.CODE";
 	/** countAllメソッドで使用するSQL */
 	private static final String COUNT_BY_ID_SQL = "SELECT COUNT(*) FROM T_LEAD";
 	/** insertメソッドで使用するSQL */
@@ -99,6 +106,122 @@ public class LeadDao extends BaseDao {
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * 見込み客一覧の検索
+	 * @param entity
+	 * @return
+	 */
+	public List<LeadListEntity> selectForLeadList(LeadEntity entity) throws Exception {
+
+		StringBuilder sb = new StringBuilder();
+
+		// 姓
+		if (!StringValidater.isEmpty(entity.getLastName())) {
+			sb.append(" T1.LAST_NAME = ");
+			sb.append(entity.getLastName());
+			sb.append(" AND ");
+		}
+		// 名
+		if (!StringValidater.isEmpty(entity.getFirstName())) {
+			sb.append(" T1.FIRST_NAME = ");
+			sb.append(entity.getFirstName());
+			sb.append(" AND ");
+		}
+		// 会社名
+		if (!StringValidater.isEmpty(entity.getCompanyName())) {
+			sb.append(" T1.COMPANY_NAME = ");
+			sb.append(entity.getCompanyName());
+			sb.append(" AND ");
+		}
+		// ソース
+		if (!StringValidater.isEmpty(entity.getSourceCode())) {
+			sb.append(" T1.SOURCE = ");
+			sb.append(entity.getSourceCode());
+			sb.append(" AND ");
+		}
+		// 状況
+		if (!StringValidater.isEmpty(entity.getStatusCode())) {
+			sb.append(" T1.STATUS = ");
+			sb.append(entity.getStatusCode());
+			sb.append(" AND ");
+		}
+		// 評価
+		if (!StringValidater.isEmpty(entity.getEstimationCode())) {
+			sb.append(" T1.ESTIMATION = ");
+			sb.append(entity.getEstimationCode());
+			sb.append(" AND ");
+		}
+		// 業種
+		if (!StringValidater.isEmpty(entity.getIndustryCode())) {
+			sb.append(" T1.INDUSTRY = ");
+			sb.append(entity.getIndustryCode());
+			sb.append(" AND ");
+		}
+		// 都道府県
+		if (!StringValidater.isEmpty(entity.getDivisionCode())) {
+			sb.append(" T1.DIVISION = ");
+			sb.append(entity.getDivisionCode());
+			sb.append(" AND ");
+		}
+
+		if (sb.length() != 0) {
+			sb.insert(0, " WHERE ");
+			sb.delete(sb.length() - 6, sb.length() - 1);
+		}
+
+		try (PreparedStatement statement = cp.getPreparedStatement(SELECT_FOR_LEAD_LIST_SQL + sb.toString());) {
+
+			// ソース
+			statement.setString(1, ClassCode1.SOURCE);
+			// 状況
+			statement.setString(2, ClassCode1.LEAD_STATUS);
+			// 評価
+			statement.setString(3, ClassCode1.ESTIMATION);
+			// 業種
+			statement.setString(4, ClassCode1.INDUSTRY);
+
+			// SQL実行
+			ResultSet rs = statement.executeQuery();
+
+			// データ取得
+			List<LeadListEntity> list = new ArrayList<LeadListEntity>();
+			while(rs.next()) {
+
+				LeadListEntity en = new LeadListEntity();
+
+				// 姓
+				en.setLastName((String)rs.getObject("LAST_NAME"));
+				// 名
+				en.setFirstName((String)rs.getObject("FIRST_NAME"));
+				// 会社名
+				en.setCompanyName((String)rs.getObject("COMPANY_NAME"));
+				// ソース
+				en.setSourceCode((String)rs.getObject("SOURCE"));
+				// ソース名称
+				en.setSourceName((String)rs.getObject("SOURCE_NAME"));
+				// 状況
+				en.setStatusCode((String)rs.getObject("STATUS"));
+				// 状況名称
+				en.setStatusName((String)rs.getObject("STATUS_NAME"));
+				// 評価
+				en.setEstimationCode((String)rs.getObject("ESTIMATION"));
+				// 評価名称
+				en.setEstimationName((String)rs.getObject("ESTIMATION_NAME"));
+				// 業種
+				en.setIndustryCode((String)rs.getObject("INDUSTRY"));
+				// 業種名称
+				en.setIndustryName((String)rs.getObject("INDUSTRY_NAME"));
+				// 都道府県
+				en.setDivisionCode((String)rs.getObject("DIVISION"));
+				// 都道府県名称
+				en.setDivisionName((String)rs.getObject("DIVISION_NAME"));
+
+				list.add(en);
+			}
+			return list;
+		}
 	}
 
 	/**
