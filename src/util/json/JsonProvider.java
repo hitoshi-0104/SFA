@@ -15,6 +15,17 @@ public class JsonProvider {
 	 * @return
 	 */
 	public static String provide(Map<String, String> m) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("{");
+		for (Map.Entry<String, String> e : m.entrySet()) {
+			sb.append("\"");
+			sb.append(e.getKey());
+			sb.append("\" : ");
+			sb.append("\"");
+			sb.append(e.getValue());
+			sb.append("\", ");
+		}
+		sb.append("}");
 		return "";
 	}
 
@@ -24,6 +35,13 @@ public class JsonProvider {
 	 * @return
 	 */
 	public static String provide(List<Map<String, String>> list) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("[");
+		for (Map<String, String> m : list) {
+			sb.append(provide(m));
+			sb.append(",");
+		}
+		sb.append("]");
 		return "";
 	}
 
