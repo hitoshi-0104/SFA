@@ -2,14 +2,16 @@ package service.lead.list;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import dao.ConnectionProvider;
 import dao.LeadDao;
 import dao.entity.LeadEntity;
 import dao.entity.LeadListEntity;
-import service.lead.dto.LeadListDto;
 import service.lead.dto.SearchDto;
+import util.json.JsonProvider;
 import util.session.SessionInfo;
 
 /**
@@ -23,7 +25,7 @@ public class SearchService {
 	 * @param si
 	 * @param dto
 	 */
-	public List<LeadListDto> search(SessionInfo si, SearchDto dto) throws Exception {
+	public String search(SessionInfo si, SearchDto dto) throws Exception {
 
 		// エンティティの作成
 		LeadEntity entity = createLeadEntityForSearch(si, dto);
@@ -36,7 +38,7 @@ public class SearchService {
 		}
 
 		// エンティティからDtoに変換
-		List<LeadListDto> ret = createLeadListDtoList(list);
+		String ret = createLeadListEntitiList2Json(list);
 
 		return ret;
 	}
@@ -77,44 +79,43 @@ public class SearchService {
 	 * @param list
 	 * @return
 	 */
-	private List<LeadListDto> createLeadListDtoList(List<LeadListEntity> list) {
+	private String createLeadListEntitiList2Json(List<LeadListEntity> list) {
 
-		List<LeadListDto> ret = new ArrayList<LeadListDto>();
-
+		List<Map<String, String>> ret = new ArrayList<Map<String, String>>();
 		for (LeadListEntity en : list) {
 
-			LeadListDto dto = new LeadListDto();
+			Map<String, String> m = new LinkedHashMap<String, String>();
 
 			// 姓
-			dto.setLastName(en.getLastName());
+			m.put("LastName", en.getLastName());
 			// 名
-			dto.setFirstName(en.getFirstName());
+			m.put("FirstName", en.getFirstName());
 			// 会社名
-			dto.setCompanyName(en.getCompanyName());
+			m.put("CompanyName", en.getCompanyName());
 			// ソース
-			dto.setSourceCode(en.getSourceCode());
+			m.put("SourceCode", en.getSourceCode());
 			// ソース名称
-			dto.setSourceName(en.getSourceName());
+			m.put("SourceName", en.getSourceName());
 			// 状況
-			dto.setStatusCode(en.getStatusCode());
+			m.put("StatusCode", en.getStatusCode());
 			// 状況名称
-			dto.setStatusName(en.getStatusName());
+			m.put("StatusName", en.getStatusName());
 			// 評価
-			dto.setEstimationCode(en.getEstimationCode());
+			m.put("EstimationCode", en.getEstimationCode());
 			// 評価名称
-			dto.setEstimationName(en.getEstimationName());
+			m.put("EstimationName", en.getEstimationName());
 			// 業種
-			dto.setIndustryCode(en.getIndustryCode());
+			m.put("IndustryCode", en.getIndustryCode());
 			// 業種名称
-			dto.setIndustryName(en.getIndustryName());
+			m.put("IndustryName", en.getIndustryName());
 			// 都道府県
-			dto.setDivisionCode(en.getDivisionCode());
+			m.put("DivisionCode", en.getDivisionCode());
 			// 都道府県名称
-			dto.setDivisionName(en.getDivisionName());
+			m.put("DivisionName", en.getDivisionName());
 
-			ret.add(dto);
+			ret.add(m);
 		}
-		return ret;
+		return JsonProvider.provide(ret);
 	}
 
 }

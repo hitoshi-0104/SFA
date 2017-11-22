@@ -2,7 +2,6 @@ package action.lead.list;
 
 import java.io.IOException;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -13,9 +12,9 @@ import action.lead.constant.ReqParam;
 import exception.SalesManagementApplicationException;
 import exception.SalesManagementRuntimeException;
 import exception.SalesManagementSystemException;
-import service.lead.dto.LeadListDto;
 import service.lead.dto.SearchDto;
 import service.lead.list.SearchService;
+import util.constant.ServletSettings;
 import util.message.MessageReader;
 import util.session.SessionInfo;
 
@@ -88,14 +87,13 @@ public class SearchAction extends ListAction {
 		try {
 			// 検索
     		SessionInfo si = (SessionInfo)request.getAttribute(SessionInfo.SESSION_ATTRIBUTE_NAME);
-	    	List<LeadListDto> list = service.search(si, dto);
-
+	    	String json = service.search(si, dto);
+	    	request.setAttribute(ServletSettings.REST_ATTRIBUTE_NAME, json);
 		} catch(Exception e) {
 			Map<String, String> messageMap = new LinkedHashMap<String, String>();
 			messageMap.put("E00490002", String.format(MessageReader.read("E805")));
 			throw new SalesManagementSystemException(messageMap);
 		}
-
 	}
 
 }
