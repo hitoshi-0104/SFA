@@ -26,7 +26,7 @@ public class JsonProvider {
 			sb.append("\", ");
 		}
 		sb.append("}");
-		return "";
+		return sb.toString();
 	}
 
 	/**
@@ -42,7 +42,7 @@ public class JsonProvider {
 			sb.append(",");
 		}
 		sb.append("]");
-		return "";
+		return sb.toString();
 	}
 
 }
