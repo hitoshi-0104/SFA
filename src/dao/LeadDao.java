@@ -119,45 +119,45 @@ public class LeadDao extends BaseDao {
 
 		// 姓
 		if (!StringValidater.isEmpty(entity.getLastName())) {
-			sb.append(" T1.LAST_NAME = ");
+			sb.append(" T1.LAST_NAME LIKE '");
 			sb.append(entity.getLastName());
-			sb.append(" AND ");
+			sb.append("%' AND ");
 		}
 		// 名
 		if (!StringValidater.isEmpty(entity.getFirstName())) {
-			sb.append(" T1.FIRST_NAME = ");
+			sb.append(" T1.FIRST_NAME LIKE '");
 			sb.append(entity.getFirstName());
-			sb.append(" AND ");
+			sb.append("%' AND ");
 		}
 		// 会社名
 		if (!StringValidater.isEmpty(entity.getCompanyName())) {
-			sb.append(" T1.COMPANY_NAME = ");
+			sb.append(" T1.COMPANY_NAME LIKE '");
 			sb.append(entity.getCompanyName());
-			sb.append(" AND ");
+			sb.append("%' AND ");
 		}
 		// ソース
 		if (!StringValidater.isEmpty(entity.getSourceCode())) {
-			sb.append(" T1.SOURCE = ");
+			sb.append(" T1.SOURCE = '");
 			sb.append(entity.getSourceCode());
-			sb.append(" AND ");
+			sb.append("' AND ");
 		}
 		// 状況
 		if (!StringValidater.isEmpty(entity.getStatusCode())) {
-			sb.append(" T1.STATUS = ");
+			sb.append(" T1.STATUS = '");
 			sb.append(entity.getStatusCode());
-			sb.append(" AND ");
+			sb.append("' AND ");
 		}
 		// 評価
 		if (!StringValidater.isEmpty(entity.getEstimationCode())) {
-			sb.append(" T1.ESTIMATION = ");
+			sb.append(" T1.ESTIMATION = '");
 			sb.append(entity.getEstimationCode());
-			sb.append(" AND ");
+			sb.append("' AND ");
 		}
 		// 業種
 		if (!StringValidater.isEmpty(entity.getIndustryCode())) {
-			sb.append(" T1.INDUSTRY = ");
+			sb.append(" T1.INDUSTRY = '");
 			sb.append(entity.getIndustryCode());
-			sb.append(" AND ");
+			sb.append("' AND ");
 		}
 		// 都道府県
 		if (!StringValidater.isEmpty(entity.getDivisionCode())) {
