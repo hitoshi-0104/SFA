@@ -254,4 +254,23 @@ class LeadDaoTest {
 		assertEquals(entity.getUpdateDate(), chk.getUpdateDate());
 	}
 
+	/**
+	 * selectForLeadList(LeadEntity)メソッドのテスト
+	 */
+	@Test
+	void testSelectForLeadListLeadEntity() {
+
+		LeadEntity entity = new LeadEntity();
+		entity.setLastName("０");
+
+		ConnectionProvider cp = ConnectionProvider.getInstance();
+		try (Connection conn = cp.getConnection()) {
+			LeadDao dao = new LeadDao(cp);
+			dao.selectForLeadList(entity);
+		} catch (Exception e) {
+
+		}
+
+	}
+
 }
