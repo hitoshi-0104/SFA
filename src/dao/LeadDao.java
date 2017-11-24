@@ -168,7 +168,7 @@ public class LeadDao extends BaseDao {
 
 		if (sb.length() != 0) {
 			sb.insert(0, " WHERE ");
-			sb.delete(sb.length() - 6, sb.length() - 1);
+			sb.delete(sb.length() - 5, sb.length() - 1);
 		}
 
 		try (PreparedStatement statement = cp.getPreparedStatement(SELECT_FOR_LEAD_LIST_SQL + sb.toString());) {
