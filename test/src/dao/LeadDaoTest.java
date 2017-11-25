@@ -5,10 +5,12 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.sql.Connection;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
 import dao.entity.LeadEntity;
+import dao.entity.LeadListEntity;
 import dao.entity.SequenceEntity;
 
 /**
@@ -260,17 +262,70 @@ class LeadDaoTest {
 	@Test
 	void testSelectForLeadListLeadEntity() {
 
-		LeadEntity entity = new LeadEntity();
-		entity.setLastName("０");
+		LeadEntity searchEntity = new LeadEntity();
+		searchEntity.setLastName("あ");
+		searchEntity.setFirstName("さ");
+		searchEntity.setCompanyName("な");
+		searchEntity.setSourceCode("01");
+		searchEntity.setStatusCode("02");
+		searchEntity.setEstimationCode("03");
+		searchEntity.setIndustryCode("04");
+		searchEntity.setDivisionCode("05");
 
 		ConnectionProvider cp = ConnectionProvider.getInstance();
 		try (Connection conn = cp.getConnection()) {
+
 			LeadDao dao = new LeadDao(cp);
-			dao.selectForLeadList(entity);
+
+			// テスト用データの生成
+			for (int i = 0; i < 5; i++) {
+				LeadEntity insertEntity = new LeadEntity();
+				// 姓
+				insertEntity.setLastName("あいうえおかきくけこ");
+				// 名
+				insertEntity.setFirstName("さしすせそたちつてと");
+				// 会社名
+				insertEntity.setCompanyName("なにぬねのはひふへほ");
+				// ソース
+				insertEntity.setSourceCode("01");
+				// 状況
+				insertEntity.setStatusCode("02");
+				// 評価
+				insertEntity.setEstimationCode("03");
+				// 業種
+				insertEntity.setIndustryCode("04");
+				// 都道府県
+				insertEntity.setDivisionCode("05");
+
+				dao.insert(insertEntity);
+			}
+
+			List<LeadListEntity> ret = dao.selectForLeadList(searchEntity);
+
+			assertEquals(5, ret.size());
+			for (LeadListEntity en : ret) {
+				// 姓
+				assertEquals("あいうえおかきくけこ", en.getLastName());
+				// 名
+				assertEquals("さしすせそたちつてと", en.getFirstName());
+				// 会社名
+				assertEquals("なにぬねのはひふへほ", en.getCompanyName());
+				// ソース
+				assertEquals("01", en.getSourceCode());
+				// 状況
+				assertEquals("02", en.getStatusCode());
+				// 評価
+				assertEquals("03", en.getEstimationCode());
+				// 業種
+				assertEquals("04", en.getIndustryCode());
+				// 都道府県
+				assertEquals("05", en.getDivisionCode());
+			}
+
 		} catch (Exception e) {
-
+			fail(e.getMessage());
+			return;
 		}
-
 	}
 
 }
