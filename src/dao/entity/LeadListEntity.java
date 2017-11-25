@@ -9,7 +9,7 @@ import dao.entity.base.BaseEntity;
 public class LeadListEntity extends BaseEntity {
 
 	/** ID */
-	private String id;
+	private Integer id;
 	/** 姓 */
 	private String lastName;
 	/** 名 */
@@ -40,13 +40,13 @@ public class LeadListEntity extends BaseEntity {
 	/**
 	 * @return id
 	 */
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 	/**
 	 * @param id セットする id
 	 */
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	/**
