@@ -275,6 +275,8 @@ class LeadDaoTest {
 		ConnectionProvider cp = ConnectionProvider.getInstance();
 		try (Connection conn = cp.getConnection()) {
 
+			cp.beginTransaction();
+
 			LeadDao dao = new LeadDao(cp);
 
 			// テスト用データの生成
@@ -321,6 +323,8 @@ class LeadDaoTest {
 				// 都道府県
 				assertEquals("05", en.getDivisionCode());
 			}
+
+			cp.rollback();
 
 		} catch (Exception e) {
 			fail(e.getMessage());
