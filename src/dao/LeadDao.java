@@ -171,6 +171,8 @@ public class LeadDao extends BaseDao {
 			sb.delete(sb.length() - 5, sb.length() - 1);
 		}
 
+		sb.append(" ORDER BY T1.LEAD_ID ");
+
 		try (PreparedStatement statement = cp.getPreparedStatement(SELECT_FOR_LEAD_LIST_SQL + sb.toString());) {
 
 			// ソース
