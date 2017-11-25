@@ -8,6 +8,8 @@ import dao.entity.base.BaseEntity;
  */
 public class LeadListEntity extends BaseEntity {
 
+	/** ID */
+	private String id;
 	/** 姓 */
 	private String lastName;
 	/** 名 */
@@ -35,6 +37,18 @@ public class LeadListEntity extends BaseEntity {
 	/** 都道府県名称 */
 	private String divisionName;
 
+	/**
+	 * @return id
+	 */
+	public String getId() {
+		return id;
+	}
+	/**
+	 * @param id セットする id
+	 */
+	public void setId(String id) {
+		this.id = id;
+	}
 	/**
 	 * @return lastName
 	 */
