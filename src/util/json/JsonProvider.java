@@ -25,6 +25,7 @@ public class JsonProvider {
 			sb.append(e.getValue());
 			sb.append("\", ");
 		}
+		sb.delete(sb.length() - 2, sb.length());
 		sb.append("}");
 		return sb.toString();
 	}
@@ -41,6 +42,7 @@ public class JsonProvider {
 			sb.append(provide(m));
 			sb.append(",");
 		}
+		sb.delete(sb.length() - 1, sb.length());
 		sb.append("]");
 		return sb.toString();
 	}

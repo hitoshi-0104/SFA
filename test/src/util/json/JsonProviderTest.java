@@ -17,7 +17,7 @@ class JsonProviderTest {
 		List<Map<String, String>> list = setDate();
 
 		String json = JsonProvider.provide(list.get(0));
-		assertEquals("{\"a\" : \"あいうえお\", \"b\" : \"かきくけこ\", \"c\" : \"さしすせそ\", }", json);
+		assertEquals("{\"a\" : \"あいうえお\", \"b\" : \"かきくけこ\", \"c\" : \"さしすせそ\"}", json);
 	}
 
 	@Test
@@ -26,7 +26,7 @@ class JsonProviderTest {
 		List<Map<String, String>> list = setDate();
 
 		String json = JsonProvider.provide(list);
-		assertEquals("[{\"a\" : \"あいうえお\", \"b\" : \"かきくけこ\", \"c\" : \"さしすせそ\", },{\"d\" : \"たちつてと\", \"e\" : \"なにぬねの\", \"f\" : \"はひふへほ\", },{\"g\" : \"まみむめも\", },]", json);
+		assertEquals("[{\"a\" : \"あいうえお\", \"b\" : \"かきくけこ\", \"c\" : \"さしすせそ\"},{\"d\" : \"たちつてと\", \"e\" : \"なにぬねの\", \"f\" : \"はひふへほ\"},{\"g\" : \"まみむめも\"}]", json);
 	}
 
 	/**
