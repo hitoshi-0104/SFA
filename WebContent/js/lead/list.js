@@ -30,11 +30,18 @@ $(function() {
 			},
 			// 成功時
 			success : function(result, textStatus, xhr) {
-
+				var data = JSON.stringify(result);
+				window.alert(data);
+//				var count = 0;
+//				$(result).each( function () {
+//					window.alert(result[count].LastName);
+//					count++;
+//				});
+//				window.alert(count);
 			},
 			// エラー
 			error : function(xhr, textStatus, error) {
-
+				window.alert(error);
 			}
 		});
 
