@@ -30,14 +30,43 @@ $(function() {
 			},
 			// 成功時
 			success : function(result, textStatus, xhr) {
-				var data = JSON.stringify(result);
-				window.alert(data);
-//				var count = 0;
-//				$(result).each( function () {
-//					window.alert(result[count].LastName);
-//					count++;
-//				});
-//				window.alert(count);
+
+				// 一覧を非表示
+				$('.leadlist').css('display', 'none');
+
+				// テーブルのクリア
+				$('.leadlistbody').empty();
+
+				var count = 0;
+				$(result).each( function () {
+
+					// テーブルに行を1行追加
+					$('.leadlistbody').append('<tr id="row' + count +'"></tr>');
+
+					// 行にカラムの設定
+					var id = '#row' + count;
+					// 姓
+					$(id).append('<td class="lastnamecolumn">' + result[count].LastName + '</td>');
+					// 名
+					$(id).append('<td class="firstnamecolumn">' + result[count].FirstName + '</td>');
+					// 会社名
+					$(id).append('<td class="companynamecolumn">' + result[count].CompanyName + '</td>');
+					// ソース名称
+					$(id).append('<td class="sourcenamecolumn">' + result[count].SourceName + '</td>');
+					// 状況名称
+					$(id).append('<td class="statusnamecolumn">' + result[count].StatusName + '</td>');
+					// 評価名称
+					$(id).append('<td class="estimationnamecolumn">' + result[count].EstimationName + '</td>');
+					// 業種名称
+					$(id).append('<td class="industrynamecolumn">' + result[count].IndustryName + '</td>');
+					// 都道府県名称
+					$(id).append('<td class="divisionnamecolumn">' + result[count].DivisionName + '</td>');
+
+					count++;
+				});
+
+				// 一覧を表示
+				$('.leadlist').css('display', 'inline');
 			},
 			// エラー
 			error : function(xhr, textStatus, error) {

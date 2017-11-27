@@ -10,6 +10,7 @@
 
 		<link rel="stylesheet" type="text/css" href="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/css/common/bootstrap.min.css"></link>
 		<link rel="stylesheet" type="text/css" href="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/css/common/common.css"></link>
+		<link rel="stylesheet" type="text/css" href="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/css/lead/list.css"></link>
 
 		<script type="text/javascript" src="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/js/common/jquery-3.2.1.min.js"></script>
 		<script type="text/javascript" src="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/js/common/popper.js"></script>
@@ -99,6 +100,25 @@
 					<div class="buttonarea">
 						<button type="button" id="searchbutton" class="btn btn-primary button3">検索</button>
 					</div>
+				</div>
+				<!-- 一覧 -->
+				<div class="onecolumn">
+					<table class="laedlist">
+						<thead class="leadlistheader">
+							<tr>
+								<th>姓</th>
+								<th>名</th>
+								<th>会社名</th>
+								<th>ソース</th>
+								<th>状況</th>
+								<th>評価</th>
+								<th>業種</th>
+								<th>都道府県</th>
+							</tr>
+						</thead>
+						<tbody class="leadlistbody">
+						</tbody>
+					</table>
 				</div>
 			</form>
 		</div>

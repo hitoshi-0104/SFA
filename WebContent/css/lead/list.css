@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+/* 一覧 */
+.leadlist {
+	display: none;
+}
+/* 姓 */
+.lastnamecolumn {
+
+}
+/* 名 */
+.firstnamecolumn {
+
+}
+/* 会社名 */
+.companynamecolumn {
+
+}
+/* ソース名 */
+.sourcenamecolumn {
+
+}
+/* 状況名 */
+.statusnamecolumn {
+
+}
+/* 評価名 */
+.estimationnamecolumn {
+
+}
+/* 業種名 */
+.industrynamecolumn {
+
+}
+/* 都道府県名 */
+.divisionnamecolumn {
+
+}
