@@ -15,6 +15,11 @@ public class JsonProvider {
 	 * @return
 	 */
 	public static String provide(Map<String, String> m) {
+
+		if (m.size() == 0) {
+			return "{}";
+		}
+
 		StringBuilder sb = new StringBuilder();
 		sb.append("{");
 		for (Map.Entry<String, String> e : m.entrySet()) {
@@ -36,6 +41,11 @@ public class JsonProvider {
 	 * @return
 	 */
 	public static String provide(List<Map<String, String>> list) {
+
+		if (list.size() == 0) {
+			return "{}";
+		}
+
 		StringBuilder sb = new StringBuilder();
 		sb.append("[");
 		for (Map<String, String> m : list) {
