@@ -103,7 +103,7 @@
 				</div>
 				<!-- 一覧 -->
 				<div class="onecolumn">
-					<table class="laedlist">
+					<table class="leadlist">
 						<thead class="leadlistheader">
 							<tr>
 								<th>姓</th>

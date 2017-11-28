@@ -37,6 +37,10 @@ $(function() {
 				// テーブルのクリア
 				$('.leadlistbody').empty();
 
+				if (Object.keys(result).length === 0) {
+					return;
+				}
+
 				var count = 0;
 				$(result).each( function () {
 
