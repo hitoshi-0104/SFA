@@ -4,35 +4,31 @@
 .leadlist {
 	display: none;
 }
+/* ID */
+.idcolumn {
+	width: 150px;
+}
 /* 姓 */
 .lastnamecolumn {
-
+	width: 250px
 }
 /* 名 */
 .firstnamecolumn {
-
+	width: 250px
 }
 /* 会社名 */
 .companynamecolumn {
-
-}
-/* ソース名 */
-.sourcenamecolumn {
-
+	width: 350px
 }
 /* 状況名 */
 .statusnamecolumn {
-
+	width: 150px
 }
 /* 評価名 */
 .estimationnamecolumn {
-
-}
-/* 業種名 */
-.industrynamecolumn {
-
+	width: 75px
 }
 /* 都道府県名 */
 .divisionnamecolumn {
-
+	width: 100px
 }

@@ -52,24 +52,8 @@
 						<label class="caption">会社名：</label>
 						<input class="text4" type="text" name="companyname" value="<%=listBean.getCompanyName() == null ? "" : listBean.getCompanyName() %>" />
 					</div>
-					<div class="content-item">
-						<label class="caption">業種：</label>
-						<select class="select3" name="industry">
-							<% for(Map.Entry<String, String> m : listBean.getIndustryMap().entrySet()) { %>
-							<option value="<%=m.getKey() %>" <%=m.getKey().equals(listBean.getIndustryCode()) ? "selected" : "" %>><%=m.getValue() %></option>
-							<% } %>
-						</select>
-					</div>
 				</div>
 				<div class="twocolumns">
-					<div class="content-item">
-						<label class="caption">ソース：</label>
-						<select class="select1" name="source">
-							<% for(Map.Entry<String, String> m : listBean.getSourceMap().entrySet()) { %>
-							<option value="<%=m.getKey() %>" <%=m.getKey().equals(listBean.getSourceCode()) ? "selected" : "" %>><%=m.getValue() %></option>
-							<% } %>
-						</select>
-					</div>
 					<div class="content-item">
 						<label class="caption">状況：</label>
 						<select class="select2" name="status">
@@ -106,13 +90,12 @@
 					<table class="leadlist">
 						<thead class="leadlistheader">
 							<tr>
+								<th>ID</th>
 								<th>姓</th>
 								<th>名</th>
 								<th>会社名</th>
-								<th>ソース</th>
 								<th>状況</th>
 								<th>評価</th>
-								<th>業種</th>
 								<th>都道府県</th>
 							</tr>
 						</thead>

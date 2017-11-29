@@ -41,10 +41,8 @@ abstract class ListAction extends BaseAction {
 
     	// DTOからBEANに設定
     	ListBean bean = getListBeanInstance();
-    	bean.setSourceMap(dto.getSourceMap());
     	bean.setStatusMap(dto.getStatusMap());
     	bean.setEstimationMap(dto.getEstimationMap());
-    	bean.setIndustryMap(dto.getIndustryMap());
     	bean.setDivisionMap(dto.getDivisionMap());
 
     	// BEANのセット

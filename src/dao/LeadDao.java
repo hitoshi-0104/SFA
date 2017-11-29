@@ -201,24 +201,10 @@ public class LeadDao extends BaseDao {
 				en.setFirstName((String)rs.getObject("FIRST_NAME"));
 				// 会社名
 				en.setCompanyName((String)rs.getObject("COMPANY_NAME"));
-				// ソース
-				en.setSourceCode((String)rs.getObject("SOURCE"));
-				// ソース名称
-				en.setSourceName((String)rs.getObject("SOURCE_NAME"));
-				// 状況
-				en.setStatusCode((String)rs.getObject("STATUS"));
 				// 状況名称
 				en.setStatusName((String)rs.getObject("STATUS_NAME"));
-				// 評価
-				en.setEstimationCode((String)rs.getObject("ESTIMATION"));
 				// 評価名称
 				en.setEstimationName((String)rs.getObject("ESTIMATION_NAME"));
-				// 業種
-				en.setIndustryCode((String)rs.getObject("INDUSTRY"));
-				// 業種名称
-				en.setIndustryName((String)rs.getObject("INDUSTRY_NAME"));
-				// 都道府県
-				en.setDivisionCode((String)rs.getObject("DIVISION"));
 				// 都道府県名称
 				en.setDivisionName((String)rs.getObject("DIVISION_NAME"));
 

@@ -73,14 +73,10 @@ public class SearchAction extends ListAction {
 		dto.setFirstName(request.getParameter(ReqParam.List.FIRST_NAME));
 		// 会社名
 		dto.setCompanyName(request.getParameter(ReqParam.List.COMPANY_NAME));
-		// ソース
-		dto.setSourceCode(request.getParameter(ReqParam.List.SOURCE));
 		// 状況
 		dto.setStatusCode(request.getParameter(ReqParam.List.STATUS));
 		// 評価
 		dto.setEstimationCode(request.getParameter(ReqParam.List.ESTIMATION));
-		// 業種
-		dto.setIndustryCode(request.getParameter(ReqParam.List.INDUSTRY));
 		// 都道府県
 		dto.setDivisionCode(request.getParameter(ReqParam.List.DIVISION));
 

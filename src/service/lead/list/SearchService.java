@@ -86,30 +86,18 @@ public class SearchService {
 
 			Map<String, String> m = new LinkedHashMap<String, String>();
 
+			// ID
+			m.put("LeadId", en.getId().toString());
 			// 姓
 			m.put("LastName", en.getLastName());
 			// 名
 			m.put("FirstName", en.getFirstName());
 			// 会社名
 			m.put("CompanyName", en.getCompanyName());
-			// ソース
-			m.put("SourceCode", en.getSourceCode());
-			// ソース名称
-			m.put("SourceName", en.getSourceName());
-			// 状況
-			m.put("StatusCode", en.getStatusCode());
 			// 状況名称
 			m.put("StatusName", en.getStatusName());
-			// 評価
-			m.put("EstimationCode", en.getEstimationCode());
 			// 評価名称
 			m.put("EstimationName", en.getEstimationName());
-			// 業種
-			m.put("IndustryCode", en.getIndustryCode());
-			// 業種名称
-			m.put("IndustryName", en.getIndustryName());
-			// 都道府県
-			m.put("DivisionCode", en.getDivisionCode());
 			// 都道府県名称
 			m.put("DivisionName", en.getDivisionName());
 

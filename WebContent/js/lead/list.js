@@ -49,20 +49,18 @@ $(function() {
 
 					// 行にカラムの設定
 					var id = '#row' + count;
+					// ID
+					$(id).append('<td class="idcolumn"><a href="/SFA/lead.update.show.action?leadid=' + result[count].LeadId + '">' + result[count].LeadId + '</a></td>');
 					// 姓
-					$(id).append('<td class="lastnamecolumn">' + result[count].LastName + '</td>');
+					$(id).append('<td class="lastnamecolumn">' + moldingListItem(result[count].LastName, 12) + '</td>');
 					// 名
-					$(id).append('<td class="firstnamecolumn">' + result[count].FirstName + '</td>');
+					$(id).append('<td class="firstnamecolumn">' + moldingListItem(result[count].FirstName, 12) + '</td>');
 					// 会社名
-					$(id).append('<td class="companynamecolumn">' + result[count].CompanyName + '</td>');
-					// ソース名称
-					$(id).append('<td class="sourcenamecolumn">' + result[count].SourceName + '</td>');
+					$(id).append('<td class="companynamecolumn">' + moldingListItem(result[count].CompanyName, 17) + '</td>');
 					// 状況名称
 					$(id).append('<td class="statusnamecolumn">' + result[count].StatusName + '</td>');
 					// 評価名称
 					$(id).append('<td class="estimationnamecolumn">' + result[count].EstimationName + '</td>');
-					// 業種名称
-					$(id).append('<td class="industrynamecolumn">' + result[count].IndustryName + '</td>');
 					// 都道府県名称
 					$(id).append('<td class="divisionnamecolumn">' + result[count].DivisionName + '</td>');
 
