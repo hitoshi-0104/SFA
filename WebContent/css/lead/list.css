@@ -4,6 +4,15 @@
 .leadlist {
 	display: none;
 }
+.leadlistheader {
+	background-color: #4169e1;
+	color: #FFFFFF;
+}
+.leadlistheader th,
+.leadlistbody td {
+	border: solid 1px #000000;
+	padding-left: 10px;
+}
 /* ID */
 .idcolumn {
 	width: 150px;

@@ -20,6 +20,7 @@ input[type="text"] {
 
 /* コンテンツエリア */
 .contentsarea {
+	margin-bottom: 50px;
 }
 
 /* コンテンツエリアの見出し */
@@ -43,7 +44,7 @@ input[type="text"] {
 
 /* コンテンツエリア：１列表示 */
 .contentsarea .onecolumn {
-	margin-left: 10px;
+	margin-left: 30px;
 	margin-top: 10px;
 	width: 90%;
 }
@@ -51,7 +52,7 @@ input[type="text"] {
 /* コンテンツエリア：２列表示 */
 .contentsarea .twocolumns {
 	float: left;
-	margin-left: 10px;
+	margin-left: 30px;
 	margin-top: 10px;
 	width: 45%;
 }
