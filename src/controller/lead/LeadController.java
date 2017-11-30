@@ -20,6 +20,8 @@ public class LeadController {
 	private static final String CREATE_MATCH = "lead.create.*";
 	/** 見込み客検索の正規表現 */
 	private static final String SEARCH_MATCH = "lead.list.*";
+	/** 見込み客更新の正規表現 */
+	private static final String UPDATE_MATCH = "lead.update.*";
 
 	/**
 	 * ディスパッチ
@@ -44,6 +46,8 @@ public class LeadController {
 			// 見込み客新規登録
 			CreateController dispatcher = new CreateController();
 			dispatcher.dispatch(action, request, response);
+		} else if (action.matches(UPDATE_MATCH)) {
+			// 見込み客更新
 		}
 	}
 }
