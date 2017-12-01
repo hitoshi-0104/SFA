@@ -48,6 +48,8 @@ public class LeadController {
 			dispatcher.dispatch(action, request, response);
 		} else if (action.matches(UPDATE_MATCH)) {
 			// 見込み客更新
+			UpdateController dispatcher = new UpdateController();
+			dispatcher.dispatch(action, request, response);
 		}
 	}
 }

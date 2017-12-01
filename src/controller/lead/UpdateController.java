@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import action.lead.create.ContinuousAction;
 import action.lead.create.RegistAction;
 import action.lead.create.ReturnAction;
-import action.lead.create.ShowAction;
+import action.lead.update.ShowAction;
 import exception.SalesManagementApplicationException;
 import exception.SalesManagementRuntimeException;
 import exception.SalesManagementSystemException;

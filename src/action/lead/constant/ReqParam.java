@@ -59,7 +59,7 @@ public class ReqParam {
 	 */
 	public class Update {
 		/** ID */
-		public static final String ID = "id";
+		public static final String ID = "leadid";
 		/** 姓 */
 		public static final String LAST_NAME = "lastname";
 		/** 名 */

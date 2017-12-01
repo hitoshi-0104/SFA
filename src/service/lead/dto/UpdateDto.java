@@ -3,7 +3,7 @@ package service.lead.dto;
 public class UpdateDto {
 
 	/** ID */
-	private String id;
+	private Integer id;
 	/** 姓 */
 	private String lastName;
 	/** 名 */
@@ -48,13 +48,13 @@ public class UpdateDto {
 	/**
 	 * @return id
 	 */
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 	/**
 	 * @param id セットする id
 	 */
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	/**

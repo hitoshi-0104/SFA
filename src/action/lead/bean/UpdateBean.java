@@ -11,7 +11,7 @@ import action.base.bean.BaseBean;
 public class UpdateBean extends BaseBean {
 
 	/** ID */
-	private String id;
+	private Integer id;
 	/** 姓 */
 	private String lastName;
 	/** 名 */
@@ -67,13 +67,13 @@ public class UpdateBean extends BaseBean {
 	/**
 	 * @return id
 	 */
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 	/**
 	 * @param id セットする id
 	 */
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	/**

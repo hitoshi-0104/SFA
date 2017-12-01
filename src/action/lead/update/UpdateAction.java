@@ -1,5 +1,8 @@
 package action.lead.update;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -12,8 +15,9 @@ import service.lead.dto.SelectItemsDto;
 import service.lead.dto.UpdateDto;
 import service.lead.dto.UpdateSearchDto;
 import service.lead.update.SearchService;
-import util.converter.StringConverter;
+import util.message.MessageReader;
 import util.session.SessionInfo;
+import util.validate.StringValidater;
 
 public abstract class UpdateAction extends BaseAction {
 
@@ -35,11 +39,24 @@ public abstract class UpdateAction extends BaseAction {
 
 		// 更新データの取得
 		UpdateSearchDto usdto = new UpdateSearchDto();
-		usdto.setId(request.getParameter(ReqParam.Update.ID));
+		String id = request.getParameter(ReqParam.Update.ID);
+		if (StringValidater.isEmpty(id)) {
+			Map<String, String> m = new HashMap<String, String>();
+			m.put("E00290001", String.format(MessageReader.read("E804")));
+			throw new SalesManagementSystemException(m);
+		}
+		usdto.setId(Integer.valueOf(id));
 		SessionInfo si = (SessionInfo)request.getAttribute(SessionInfo.SESSION_ATTRIBUTE_NAME);
 
 		SearchService service = new SearchService();
-		UpdateDto udto = service.search(si, usdto);
+		UpdateDto udto = null;
+		try {
+			udto = service.search(si, usdto);
+		} catch (Exception e) {
+			Map<String, String> m = new HashMap<String, String>();
+			m.put("E00290001", String.format(MessageReader.read("E804")));
+			throw new SalesManagementSystemException(m);
+		}
 
     	// セレクトボック用のアイテム取得
     	GetSelectItems gsi = new GetSelectItems();
@@ -102,61 +119,61 @@ public abstract class UpdateAction extends BaseAction {
 
     }
 
-    /**
-     * リクエストパラメータからCreateBeanの作成
-     * @param request
-     * @return
-     */
-    protected void setParamsToLeadBean() {
-
-    	UpdateBean bean = getUpdateBeanInstance();
-
-    	// ID
-    	bean.setId(request.getParameter(ReqParam.Update.ID));
-    	// 姓
-    	bean.setLastName(request.getParameter(ReqParam.Update.LAST_NAME));
-    	// 名
-    	bean.setFirstName(request.getParameter(ReqParam.Update.FIRST_NAME));
-    	// 会社名
-    	bean.setCompanyName(request.getParameter(ReqParam.Update.COMPANY_NAME));
-    	// 役職名
-    	bean.setPosition(request.getParameter(ReqParam.Update.POSITION_NAME));
-    	// ソース
-    	bean.setSourceCode(request.getParameter(ReqParam.Update.SOURCE));
-    	// 状況
-    	bean.setStatusCode(request.getParameter(ReqParam.Update.STATUS));
-    	// 評価
-    	bean.setEstimationCode(request.getParameter(ReqParam.Update.ESTIMATION));
-    	// 電話
-    	bean.setPhone(request.getParameter(ReqParam.Update.PHONE));
-    	// 携帯
-    	bean.setMobilePhone(request.getParameter(ReqParam.Update.MOBILE_PHONE));
-    	// FAX
-    	bean.setFax(request.getParameter(ReqParam.Update.FAX));
-    	// メール
-    	bean.setMailAddress(request.getParameter(ReqParam.Update.MAIL_ADDRESS));
-    	// URL
-    	bean.setUrl(request.getParameter(ReqParam.Update.URL));
-    	// 業種
-    	bean.setIndustryCode(request.getParameter(ReqParam.Update.INDUSTRY));
-    	// 年間売上
-    	bean.setAmount(StringConverter.toLong(request.getParameter(ReqParam.Update.AMOUNT)));
-    	// 従業員数
-    	bean.setEmployees(StringConverter.toInteger(request.getParameter(ReqParam.Update.EMPLOYEE)));
-    	// 郵便番号
-    	bean.setPostalCode(request.getParameter(ReqParam.Update.POSTAL_CODE));
-    	// 都道府県
-    	bean.setDivisionCode(request.getParameter(ReqParam.Update.DIVISION));
-    	// 市区郡
-    	bean.setCity(request.getParameter(ReqParam.Update.CITY));
-    	// 町名・番地・建物名
-    	bean.setTown(request.getParameter(ReqParam.Update.TOWN));
-    	// その他
-    	bean.setNote(request.getParameter(ReqParam.Update.NOTE));
-
-    	request.setAttribute(UPDATE_BEAN, bean);
-
-    }
+//    /**
+//     * リクエストパラメータからCreateBeanの作成
+//     * @param request
+//     * @return
+//     */
+//    protected void setParamsToLeadBean() {
+//
+//    	UpdateBean bean = getUpdateBeanInstance();
+//
+//    	// ID
+//    	bean.setId(request.getParameter(ReqParam.Update.ID));
+//    	// 姓
+//    	bean.setLastName(request.getParameter(ReqParam.Update.LAST_NAME));
+//    	// 名
+//    	bean.setFirstName(request.getParameter(ReqParam.Update.FIRST_NAME));
+//    	// 会社名
+//    	bean.setCompanyName(request.getParameter(ReqParam.Update.COMPANY_NAME));
+//    	// 役職名
+//    	bean.setPosition(request.getParameter(ReqParam.Update.POSITION_NAME));
+//    	// ソース
+//    	bean.setSourceCode(request.getParameter(ReqParam.Update.SOURCE));
+//    	// 状況
+//    	bean.setStatusCode(request.getParameter(ReqParam.Update.STATUS));
+//    	// 評価
+//    	bean.setEstimationCode(request.getParameter(ReqParam.Update.ESTIMATION));
+//    	// 電話
+//    	bean.setPhone(request.getParameter(ReqParam.Update.PHONE));
+//    	// 携帯
+//    	bean.setMobilePhone(request.getParameter(ReqParam.Update.MOBILE_PHONE));
+//    	// FAX
+//    	bean.setFax(request.getParameter(ReqParam.Update.FAX));
+//    	// メール
+//    	bean.setMailAddress(request.getParameter(ReqParam.Update.MAIL_ADDRESS));
+//    	// URL
+//    	bean.setUrl(request.getParameter(ReqParam.Update.URL));
+//    	// 業種
+//    	bean.setIndustryCode(request.getParameter(ReqParam.Update.INDUSTRY));
+//    	// 年間売上
+//    	bean.setAmount(StringConverter.toLong(request.getParameter(ReqParam.Update.AMOUNT)));
+//    	// 従業員数
+//    	bean.setEmployees(StringConverter.toInteger(request.getParameter(ReqParam.Update.EMPLOYEE)));
+//    	// 郵便番号
+//    	bean.setPostalCode(request.getParameter(ReqParam.Update.POSTAL_CODE));
+//    	// 都道府県
+//    	bean.setDivisionCode(request.getParameter(ReqParam.Update.DIVISION));
+//    	// 市区郡
+//    	bean.setCity(request.getParameter(ReqParam.Update.CITY));
+//    	// 町名・番地・建物名
+//    	bean.setTown(request.getParameter(ReqParam.Update.TOWN));
+//    	// その他
+//    	bean.setNote(request.getParameter(ReqParam.Update.NOTE));
+//
+//    	request.setAttribute(UPDATE_BEAN, bean);
+//
+//    }
 
     /**
      * CreateBeanインスタンスの生成
