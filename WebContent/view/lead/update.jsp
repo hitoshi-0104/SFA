@@ -14,7 +14,7 @@
 		<script type="text/javascript" src="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/js/common/jquery-3.2.1.min.js"></script>
 		<script type="text/javascript" src="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/js/common/popper.js"></script>
 		<script type="text/javascript" src="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/js/common/bootstrap.min.js"></script>
-		<script type="text/javascript" src="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/js/lead/create.js"></script>
+		<script type="text/javascript" src="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/js/lead/update.js"></script>
 		<script type="text/javascript" src="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/js/common/common.js"></script>
 	</head>
 	<body>
@@ -162,8 +162,8 @@
 				<!-- ボタン -->
 				<div class="onecolumn">
 					<div class="buttonarea">
-						<button type="button" id="continuousbutton" class="btn btn-info button3">連続登録</button>
-						<button type="button" id="insertbutton" class="btn btn-primary button3">登録</button>
+						<button type="button" id="accountbutton" class="btn btn-info button3">取引の開始</button>
+						<button type="button" id="updatebutton" class="btn btn-primary button3">更新</button>
 						<button type="button" id="returnbutton" class="btn btn-default button3">戻る</button>
 					</div>
 				</div>

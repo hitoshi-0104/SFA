@@ -15,7 +15,7 @@ import util.constant.JspPath;
  * 見込み客更新画面：初期表示コントローラ
  *
  */
-public class ShowAction extends UpdateAction {
+public class ShowAction extends UpdateBaseAction {
 
 	/**
 	 * コンストラクタ
