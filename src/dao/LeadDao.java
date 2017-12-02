@@ -25,6 +25,8 @@ public class LeadDao extends BaseDao {
 	private static final String COUNT_BY_ID_SQL = "SELECT COUNT(*) FROM T_LEAD";
 	/** insertメソッドで使用するSQL */
 	private static final String INSERT_SQL = "INSERT INTO T_LEAD(LAST_NAME, FIRST_NAME, COMPANY_NAME, POSITION, SOURCE, STATUS, ESTIMATION, PHONE, MOBILE_PHONE, FAX, MAIL, URL, INDUSTRY, AMOUNT, EMPLOYEE, POSTAL_CODE, DIVISION, CITY, TOWN, NOTE, CREATE_DATE, CREATER_ID, UPDATE_DATE, UPDATER_ID) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	/** updateメソッドで使用するSQL */
+	private static final String UPDATE_SQL = "UPDATE T_LEAD SET LAST_NAME = ?, FIRST_NAME = ?, COMPANY_NAME = ?, POSITION = ?, SOURCE = ?, STATUS = ?, ESTIMATION = ?, PHONE = ?, MOBILE_PHONE = ?, FAX = ?, MAIL = ?, URL = ?, INDUSTRY = ?, AMOUNT = ?, EMPLOYEE = ?, POSTAL_CODE = ?, DIVISION = ?, CITY = ?, TOWN = ?, NOTE = ?, UPDATE_DATE = ?, UPDATER_ID = ? WHERE LEAD_ID = ?";
 
 	/**
 	 * コンストラクタ
@@ -289,6 +291,73 @@ public class LeadDao extends BaseDao {
 			statement.setObject(23, entity.getUpdateDate());
 			// 更新者
 			statement.setObject(24, entity.getUpdaterId());
+
+			// SQL実行
+			statement.executeUpdate();
+		}
+	}
+
+	/**
+	 * 更新
+	 * @param entity
+	 * @return
+	 * @throws Exception
+	 */
+	public void update(LeadEntity entity) throws Exception {
+
+		try (PreparedStatement statement = cp.getPreparedStatement(UPDATE_SQL);) {
+
+			// 更新項目
+
+			// 姓
+			statement.setObject(1, entity.getLastName());
+			// 名
+			statement.setObject(2, entity.getFirstName());
+			// 会社名
+			statement.setObject(3, entity.getCompanyName());
+			// 役職
+			statement.setObject(4, entity.getPosition());
+			// ソース
+			statement.setObject(5, entity.getSourceCode());
+			// 状態
+			statement.setObject(6, entity.getStatusCode());
+			// 評価
+			statement.setObject(7, entity.getEstimationCode());
+			// 電話
+			statement.setObject(8, entity.getPhone());
+			// 携帯
+			statement.setObject(9, entity.getMobilePhone());
+			// FAX
+			statement.setObject(10, entity.getFax());
+			// メール
+			statement.setObject(11, entity.getMailAddress());
+			// URL
+			statement.setObject(12, entity.getUrl());
+			// 業種
+			statement.setObject(13, entity.getIndustryCode());
+			// 年間売上
+			statement.setObject(14, entity.getAmount());
+			// 従業員数
+			statement.setObject(15, entity.getEmployees());
+			// 郵便番号
+			statement.setObject(16, entity.getPostalCode());
+			// 都道府県
+			statement.setObject(17, entity.getDivisionCode());
+			// 市区郡
+			statement.setObject(18, entity.getCity());
+			// 町名・番地・建物名
+			statement.setObject(19, entity.getTown());
+			// その他
+			statement.setObject(20, entity.getNote());
+			// 更新日
+			statement.setObject(23, entity.getUpdateDate());
+			// 更新者
+			statement.setObject(24, entity.getUpdaterId());
+
+			// 更新条件
+
+			// ID
+			statement.setObject(25, entity.getId());
 
 			// SQL実行
 			statement.executeUpdate();

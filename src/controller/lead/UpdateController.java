@@ -6,9 +6,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import action.lead.create.ContinuousAction;
-import action.lead.create.RegistAction;
-import action.lead.create.ReturnAction;
 import action.lead.update.ShowAction;
 import exception.SalesManagementApplicationException;
 import exception.SalesManagementRuntimeException;
@@ -56,18 +53,18 @@ public class UpdateController {
 				break;
 			// 取引の開始
 			case ACCOUNT_MATCH:
-				ContinuousAction ccon = new ContinuousAction(request, response);
-				dispatchUrl = ccon.handle();
+//				ContinuousAction ccon = new ContinuousAction(request, response);
+//				dispatchUrl = ccon.handle();
 				break;
 			// 更新
 			case UPDATE_MATCH:
-				RegistAction rgitcon = new RegistAction(request, response);
-				dispatchUrl = rgitcon.handle();
+//				RegistAction rgitcon = new RegistAction(request, response);
+//				dispatchUrl = rgitcon.handle();
 				break;
 			// 戻る
 			case RETURN_MATCH:
-				ReturnAction retcon = new ReturnAction(request, response);
-				dispatchUrl = retcon.handle();
+//				ReturnAction retcon = new ReturnAction(request, response);
+//				dispatchUrl = retcon.handle();
 				break;
 			}
 		} finally {
