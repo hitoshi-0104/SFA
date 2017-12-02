@@ -120,12 +120,19 @@ public abstract class UpdateBaseAction extends BaseAction {
 
     }
 
+	/**
+	 * 画面ID取得
+	 */
+	protected String getDisplayId() {
+		return "002";
+	}
+
     /**
      * リクエストパラメータからCreateBeanの作成
      * @param request
      * @return
      */
-    protected void setParamsToLeadBean() {
+    protected void setParamsToUpdateBean() {
 
     	UpdateBean bean = getUpdateBeanInstance();
 

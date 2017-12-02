@@ -49,6 +49,14 @@ abstract class CreateAction extends BaseAction {
 
     }
 
+	/**
+	 * 画面ID取得
+	 */
+	@Override
+	protected String getDisplayId() {
+		return "001";
+	}
+
     /**
      * リクエストパラメータからCreateBeanの作成
      * @param request

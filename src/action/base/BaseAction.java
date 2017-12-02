@@ -39,6 +39,11 @@ public abstract class BaseAction {
     protected abstract void initialize() throws SalesManagementSystemException;
 
     /**
+     * 画面ID取得
+     */
+    protected abstract String getDisplayId();
+
+    /**
      * ハンドラ
      * @param request
      * @param response
