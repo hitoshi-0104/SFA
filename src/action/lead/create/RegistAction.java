@@ -11,8 +11,9 @@ import action.lead.constant.ReqParam;
 import exception.SalesManagementApplicationException;
 import exception.SalesManagementRuntimeException;
 import exception.SalesManagementSystemException;
+import service.lead.common.LeadValidater;
 import service.lead.create.RegistService;
-import service.lead.dto.CreateDto;
+import service.lead.dto.LeadDto;
 import util.constant.JspPath;
 import util.converter.StringConverter;
 import util.message.MessageReader;
@@ -73,7 +74,7 @@ public class RegistAction extends CreateAction {
 		RegistService service = new RegistService();
 
     	// リクエストパラメータの取得
-    	CreateDto dto = new CreateDto();
+    	LeadDto dto = new LeadDto();
 
 		// 姓
 		dto.setLastName(request.getParameter(ReqParam.Create.LAST_NAME));
@@ -117,7 +118,8 @@ public class RegistAction extends CreateAction {
 		dto.setNote(request.getParameter(ReqParam.Create.NOTE));
 
     	// 入力チェック
-    	Map<String, String> messageMap = service.validate(dto);
+		LeadValidater valid = new LeadValidater();
+    	Map<String, String> messageMap = valid.validate(dto, getDisplayId());
     	if (messageMap.size() != 0) {
     		throw new SalesManagementApplicationException(messageMap);
     	}

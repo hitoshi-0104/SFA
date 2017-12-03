@@ -311,15 +311,15 @@ class LeadDaoTest {
 				// 会社名
 				assertEquals("なにぬねのはひふへほ", en.getCompanyName());
 				// ソース
-				assertEquals("01", en.getSourceCode());
+				assertEquals("Web", en.getSourceName());
 				// 状況
-				assertEquals("02", en.getStatusCode());
+				assertEquals("コンタクト", en.getStatusName());
 				// 評価
-				assertEquals("03", en.getEstimationCode());
+				assertEquals("低", en.getEstimationName());
 				// 業種
-				assertEquals("04", en.getIndustryCode());
+				assertEquals("情報通信業", en.getIndustryName());
 				// 都道府県
-				assertEquals("05", en.getDivisionCode());
+				assertEquals("秋田県", en.getDivisionName());
 			}
 
 			cp.rollback();
