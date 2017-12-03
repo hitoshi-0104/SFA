@@ -9,6 +9,7 @@ import dao.base.BaseDao;
 import dao.entity.LeadEntity;
 import dao.entity.LeadListEntity;
 import util.constant.ClassCode1;
+import util.converter.ObjectConverter;
 import util.validate.StringValidater;
 
 /**
@@ -82,7 +83,7 @@ public class LeadDao extends BaseDao {
 				// 業種
 				entity.setIndustryCode((String)rs.getObject("INDUSTRY"));
 				// 年間売上
-				entity.setAmount((Long)rs.getObject("AMOUNT"));
+				entity.setAmount(ObjectConverter.longValue(rs.getObject("AMOUNT")));
 				// 従業員数
 				entity.setEmployees((Integer)rs.getObject("EMPLOYEE"));
 				// 郵便番号
@@ -354,14 +355,14 @@ public class LeadDao extends BaseDao {
 			// その他
 			statement.setObject(20, entity.getNote());
 			// 更新日
-			statement.setObject(23, entity.getUpdateDate());
+			statement.setObject(21, entity.getUpdateDate());
 			// 更新者
-			statement.setObject(24, entity.getUpdaterId());
+			statement.setObject(22, entity.getUpdaterId());
 
 			// 更新条件
 
 			// ID
-			statement.setObject(25, entity.getId());
+			statement.setObject(23, entity.getId());
 
 			// SQL実行
 			statement.executeUpdate();
