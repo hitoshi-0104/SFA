@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.lead.update.ShowAction;
+import action.lead.update.UpdateAction;
 import exception.SalesManagementApplicationException;
 import exception.SalesManagementRuntimeException;
 import exception.SalesManagementSystemException;
@@ -43,7 +44,7 @@ public class UpdateController {
 	void dispatch(String action, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException,
 		SalesManagementApplicationException, SalesManagementSystemException, SalesManagementRuntimeException {
 
-		String dispatchUrl = JspPath.Lead.CREATE;
+		String dispatchUrl = JspPath.Lead.UPDATE;
 		try {
 			switch(action) {
 			// 初期表示
@@ -58,8 +59,8 @@ public class UpdateController {
 				break;
 			// 更新
 			case UPDATE_MATCH:
-//				RegistAction rgitcon = new RegistAction(request, response);
-//				dispatchUrl = rgitcon.handle();
+				UpdateAction ua = new UpdateAction(request, response);
+				dispatchUrl = ua.handle();
 				break;
 			// 戻る
 			case RETURN_MATCH:

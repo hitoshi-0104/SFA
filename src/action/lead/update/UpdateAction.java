@@ -16,6 +16,8 @@ import service.lead.dto.LeadDto;
 import service.lead.update.UpdateService;
 import util.constant.JspPath;
 import util.converter.StringConverter;
+import util.message.MessageReader;
+import util.session.SessionInfo;
 
 /**
  * 見込み客の更新処理のアクションクラス
@@ -38,7 +40,7 @@ public class UpdateAction extends UpdateBaseAction {
 	 * ハンドル
 	 */
 	@Override
-	protected String handle() throws ServletException, IOException, SalesManagementApplicationException,
+	public String handle() throws ServletException, IOException, SalesManagementApplicationException,
 			SalesManagementSystemException, SalesManagementRuntimeException {
 
 		// リクエストパラメータをBeanにセット
@@ -116,7 +118,14 @@ public class UpdateAction extends UpdateBaseAction {
     		throw new SalesManagementApplicationException(messageMap);
     	}
 
-		// 更新
+		try {
+	    	// 更新
+    		SessionInfo si = (SessionInfo)request.getAttribute(SessionInfo.SESSION_ATTRIBUTE_NAME);
+	    	service.update(si, dto);
+    	} catch (Exception e) {
+    		messageMap.put("E" + getDisplayId() + "90002", String.format(MessageReader.read("E801")));
+    		throw new SalesManagementSystemException(messageMap);
+    	}
 
 	}
 

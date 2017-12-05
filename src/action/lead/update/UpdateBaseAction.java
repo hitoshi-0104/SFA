@@ -185,7 +185,7 @@ public abstract class UpdateBaseAction extends BaseAction {
     }
 
     /**
-     * CreateBeanインスタンスの生成
+     * UpdateBeanインスタンスの生成
      * @return
      */
     private UpdateBean getUpdateBeanInstance() {
