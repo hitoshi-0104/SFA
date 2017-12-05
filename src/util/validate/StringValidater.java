@@ -12,7 +12,7 @@ public class StringValidater {
 	 * @return
 	 */
 	public static boolean isEmpty(String str) {
-		if (str == null || str.isEmpty()) {
+		if (str == null || "null".equals(str) || str.isEmpty()) {
 			return true;
 		}
 		return false;
@@ -25,7 +25,7 @@ public class StringValidater {
 	 * @return
 	 */
 	public static boolean isUnderflow(String str, Integer digit) {
-		if (str != null && str.length() < digit) {
+		if (!isEmpty(str) && str.length() < digit) {
 			return true;
 		}
 		return false;
@@ -38,7 +38,7 @@ public class StringValidater {
 	 * @return
 	 */
 	public static boolean isOverflow(String str, Integer digit) {
-		if (str != null && str.length() > digit) {
+		if (!isEmpty(str) && str.length() > digit) {
 			return true;
 		}
 		return false;
@@ -50,7 +50,7 @@ public class StringValidater {
 	 * @return
 	 */
 	public static boolean isNumericOnly(String str) {
-		if (str == null || str.matches("^[0-9]*$")) {
+		if (isEmpty(str) || str.matches("^[0-9]*$")) {
 			return true;
 		}
 		return false;
@@ -62,7 +62,7 @@ public class StringValidater {
 	 * @return
 	 */
 	public static boolean isMailAddressFormat(String str) {
-		if (str == null || str.matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$")) {
+		if (isEmpty(str) || str.matches("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$")) {
 			return true;
 		}
 		return false;
@@ -74,7 +74,7 @@ public class StringValidater {
 	 * @return
 	 */
 	public static boolean isUrlFormat(String str) {
-		if (str == null || str.matches("https?://[\\w/:%#\\$&\\?\\(\\)~\\.=\\+\\-]+")) {
+		if (isEmpty(str) || str.matches("https?://[\\w/:%#\\$&\\?\\(\\)~\\.=\\+\\-]+")) {
 			return true;
 		}
 		return false;
