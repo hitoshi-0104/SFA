@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import util.converter.ObjectConverter;
 import util.message.MessageReader;
 import util.validate.StringValidater;
 
@@ -65,7 +66,7 @@ public class Validater {
 
 		// 数値のみチェック
 		if (validationTypeList.contains(ValidationType.NUMERICONLY)) {
-			if (!StringValidater.isNumericOnly(String.valueOf(val))) {
+			if (!StringValidater.isNumericOnly(ObjectConverter.stringValue(val))) {
 				messageMap.put(errorId + VALID_TYPE_ID_NUMERICONLY,
 						String.format(MessageReader.read("E004"), itemName));
 				return;

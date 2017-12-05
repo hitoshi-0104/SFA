@@ -12,7 +12,7 @@ public class StringValidater {
 	 * @return
 	 */
 	public static boolean isEmpty(String str) {
-		if (str == null || "null".equals(str) || str.isEmpty()) {
+		if (str == null || str.isEmpty()) {
 			return true;
 		}
 		return false;

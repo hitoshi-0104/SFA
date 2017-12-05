@@ -7,6 +7,19 @@ package util.converter;
 public class ObjectConverter {
 
 	/**
+	 * 文字列に変換
+	 * @param obj
+	 * @return
+	 */
+	public static String stringValue(Object obj) {
+		String ret = null;
+		if (obj != null) {
+			ret = String.valueOf(obj);
+		}
+		return ret;
+	}
+
+	/**
 	 * 数値をLong型に変換
 	 * @param obj
 	 * @return
