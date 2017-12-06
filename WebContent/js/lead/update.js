@@ -15,7 +15,7 @@ $(function() {
 
 	// 戻るボタン押下
 	$('#returnbutton').click(function() {
-		submitAction('#leadform', '/SFA/lead.update.return.action');
+		submitAction('#leadform', '/SFA/lead.list.show.action');
 	});
 
 });
