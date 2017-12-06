@@ -62,11 +62,6 @@ public class UpdateController {
 				UpdateAction ua = new UpdateAction(request, response);
 				dispatchUrl = ua.handle();
 				break;
-			// 戻る
-			case RETURN_MATCH:
-//				ReturnAction retcon = new ReturnAction(request, response);
-//				dispatchUrl = retcon.handle();
-				break;
 			}
 		} finally {
 			request.setAttribute(ServletSettings.URL_ATTRIBUTE_NAME, dispatchUrl);
