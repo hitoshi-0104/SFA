@@ -14,6 +14,7 @@ import exception.SalesManagementApplicationException;
 import exception.SalesManagementRuntimeException;
 import exception.SalesManagementSystemException;
 import util.constant.ServletSettings;
+import util.session.SessionInfo;
 
 /**
  * Servlet implementation class MainDispatcher
@@ -38,6 +39,10 @@ public class FrontController extends BaseController {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String uri = request.getRequestURI();
+		Object obj= request.getAttribute(ServletSettings.URL_ATTRIBUTE_NAME);
+		if (obj != null) {
+			uri = obj.toString();
+		}
 
 		int lastIndex = uri.lastIndexOf("/");
 		String action = uri.substring(lastIndex + 1);
@@ -45,6 +50,11 @@ public class FrontController extends BaseController {
 
 		response.setContentType(ServletSettings.CONTENT_TYPE);
     	request.setCharacterEncoding(ServletSettings.CHARACTER_ENCODING);
+
+    	// ログイン画面を作成するまでのダミー値
+    	SessionInfo si = new SessionInfo();
+    	si.setLoginUserId(0);
+    	request.setAttribute(SessionInfo.SESSION_ATTRIBUTE_NAME, si);
 
     	try {
 

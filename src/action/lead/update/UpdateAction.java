@@ -49,7 +49,7 @@ public class UpdateAction extends UpdateBaseAction {
 		// 更新
 		update();
 
-		return JspPath.Lead.LIST;
+		return JspPath.Lead.LIST_ACTION;
 	}
 
 	/**

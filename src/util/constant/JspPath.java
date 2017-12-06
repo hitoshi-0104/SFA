@@ -19,6 +19,8 @@ public class JspPath {
 		public static final String DELETE = "/view/lead/delete.jsp";
 		/** 見込み客一覧 */
 		public static final String LIST = "/view/lead/list.jsp";
+		/** 見込み客一覧アクション */
+		public static final String LIST_ACTION = "/lead.list.show.action";
 	}
 
 }
