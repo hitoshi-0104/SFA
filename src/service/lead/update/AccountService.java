@@ -1,6 +1,8 @@
 package service.lead.update;
 
 import java.sql.Connection;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import dao.AccountDao;
 import dao.ConnectionProvider;
@@ -35,7 +37,7 @@ public class AccountService {
 			cp.beginTransaction();
 
 			// 取引先の作成
-			AccountEntity account = createAccountEntity(dto);
+			AccountEntity account = createAccountEntity(si, dto);
 			AccountDao accountDao = new AccountDao(cp);
 			accountDao.insert(account);
 
@@ -43,7 +45,7 @@ public class AccountService {
 			Integer accountId = accountDao.selectMaxId();
 
 			// 取引先担当者の作成
-			ContactEntity contact = createContactEntity(accountId, dto);
+			ContactEntity contact = createContactEntity(si, accountId, dto);
 			ContactDao contactDao = new ContactDao(cp);
 			contactDao.insert(contact);
 
@@ -63,7 +65,7 @@ public class AccountService {
 	 * @param dto
 	 * @return
 	 */
-	private AccountEntity createAccountEntity(LeadDto dto) {
+	private AccountEntity createAccountEntity(SessionInfo si, LeadDto dto) {
 
 		AccountEntity entity = new AccountEntity();
 
@@ -102,6 +104,15 @@ public class AccountService {
 		// その他
 		entity.setNote(null);
 
+		// 作成者ID
+		entity.setCreaterId(si.getLoginUserId());
+		// 作成日時
+		entity.setCreateDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss.SSS")));
+		// 更新者ID
+		entity.setUpdaterId(si.getLoginUserId());
+		// 更新日時
+		entity.setUpdateDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss.SSS")));
+
 		return entity;
 	}
 
@@ -110,7 +121,7 @@ public class AccountService {
 	 * @param dto
 	 * @return
 	 */
-	private ContactEntity createContactEntity(Integer accountId, LeadDto dto) {
+	private ContactEntity createContactEntity(SessionInfo si, Integer accountId, LeadDto dto) {
 
 		ContactEntity entity = new ContactEntity();
 
@@ -136,6 +147,15 @@ public class AccountService {
 		entity.setBoss(null);
 		// その他
 		entity.setNote(null);
+
+		// 作成者ID
+		entity.setCreaterId(si.getLoginUserId());
+		// 作成日時
+		entity.setCreateDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss.SSS")));
+		// 更新者ID
+		entity.setUpdaterId(si.getLoginUserId());
+		// 更新日時
+		entity.setUpdateDate(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmss.SSS")));
 
 		return entity;
 	}
