@@ -13,9 +13,11 @@ import exception.SalesManagementRuntimeException;
 import exception.SalesManagementSystemException;
 import service.lead.common.LeadValidater;
 import service.lead.dto.LeadDto;
-import service.lead.update.UpdateService;
+import service.lead.update.AccountService;
 import util.constant.JspPath;
 import util.converter.StringConverter;
+import util.message.MessageReader;
+import util.session.SessionInfo;
 
 /**
  * 見込み客更新の取引開始処理のアクションクラス
@@ -107,7 +109,7 @@ public class AccountAction extends UpdateBaseAction {
 		// その他
 		dto.setNote(request.getParameter(ReqParam.Update.NOTE));
 
-		UpdateService service = new UpdateService();
+		AccountService service = new AccountService();
 
 		// 入力チェック
 		LeadValidater valid = new LeadValidater();
@@ -116,14 +118,14 @@ public class AccountAction extends UpdateBaseAction {
     		throw new SalesManagementApplicationException(messageMap);
     	}
 
-//		try {
-//	    	// 更新
-//    		SessionInfo si = (SessionInfo)request.getAttribute(SessionInfo.SESSION_ATTRIBUTE_NAME);
-//	    	service.update(si, dto);
-//    	} catch (Exception e) {
-//    		messageMap.put("E" + getDisplayId() + "90002", String.format(MessageReader.read("E801")));
-//    		throw new SalesManagementSystemException(messageMap);
-//    	}
+		try {
+	    	// 更新
+    		SessionInfo si = (SessionInfo)request.getAttribute(SessionInfo.SESSION_ATTRIBUTE_NAME);
+	    	service.createAccountAndContact(si, dto);
+    	} catch (Exception e) {
+    		messageMap.put("E" + getDisplayId() + "90002", String.format(MessageReader.read("E801")));
+    		throw new SalesManagementSystemException(messageMap);
+    	}
 
 	}
 
