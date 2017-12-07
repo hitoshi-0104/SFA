@@ -20,6 +20,22 @@ public class ObjectConverter {
 	}
 
 	/**
+	 * 数値をInteger型に変換
+	 * @param obj
+	 * @return
+	 */
+	public static Integer intValue(Object obj) {
+
+		if (obj instanceof Short) {
+			return ((Short)obj).intValue();
+		} else if (obj instanceof Integer) {
+			return ((Integer)obj).intValue();
+		}
+
+		return null;
+	}
+
+	/**
 	 * 数値をLong型に変換
 	 * @param obj
 	 * @return
