@@ -119,7 +119,7 @@ public class AccountAction extends UpdateBaseAction {
     	}
 
 		try {
-	    	// 更新
+	    	// 取引先と取引先担当者の作成
     		SessionInfo si = (SessionInfo)request.getAttribute(SessionInfo.SESSION_ATTRIBUTE_NAME);
 	    	service.createAccountAndContact(si, dto);
     	} catch (Exception e) {
