@@ -9,8 +9,6 @@ import dao.ConnectionProvider;
 import dao.ContactDao;
 import dao.entity.AccountEntity;
 import dao.entity.ContactEntity;
-import dao.entity.LeadEntity;
-import service.lead.common.LeadEntityProvider;
 import service.lead.dto.LeadDto;
 import util.session.SessionInfo;
 
@@ -26,9 +24,6 @@ public class AccountService {
 	 * @param dto
 	 */
 	public void createAccountAndContact(SessionInfo si, LeadDto dto) throws Exception {
-
-		LeadEntityProvider provider = new LeadEntityProvider();
-		LeadEntity entity = provider.provideFromLeadDto(si, dto);
 
 		ConnectionProvider cp = ConnectionProvider.getInstance();
 		try (Connection conn = cp.getConnection()) {
