@@ -1,11 +1,11 @@
 package dao;
 
 import java.sql.PreparedStatement;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.sql.ResultSet;
 
 import dao.base.BaseDao;
 import dao.entity.AccountEntity;
+import util.converter.ObjectConverter;
 
 /**
  * 取引先テーブルDAO
@@ -13,6 +13,8 @@ import dao.entity.AccountEntity;
  */
 public class AccountDao extends BaseDao {
 
+	/** selectMaxIdメソッドで使用するSQL */
+	private static final String SELECT_MAX_ID_SQL = "SELECT MAX(ACCOUNT_ID) AS MAX_ID FROM T_ACCOUNT";
 	/** insertメソッドで使用するSQL */
 	private static final String INSERT_SQL = "INSERT INTO ACCOUNT (ACCOUNT_NAME, PARENT, ACCOUNT_NO, DEPARTMENT, TYPE, INDUSTRY, AMOUNT, EVALUATION, PHONE, FAX, URL, STOCK_CODE, POSTAL_CODE, DIVISION, CITY, TOWN, NOTE, CREATE_DATE, CREATER_ID, UPDATE_DATE, UPDATER_ID) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -30,6 +32,13 @@ public class AccountDao extends BaseDao {
 	 * @throws Exception
 	 */
 	public Integer selectMaxId() throws Exception {
+
+		try (PreparedStatement statement = cp.getPreparedStatement(SELECT_MAX_ID_SQL)) {
+			ResultSet rs = statement.executeQuery();
+			if (rs.next()) {
+				return ObjectConverter.intValue(rs.getObject("MAX_ID"));
+			}
+		}
 		return 0;
 	}
 
