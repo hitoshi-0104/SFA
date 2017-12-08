@@ -28,6 +28,8 @@ public class LeadDao extends BaseDao {
 	private static final String INSERT_SQL = "INSERT INTO T_LEAD(LAST_NAME, FIRST_NAME, COMPANY_NAME, POSITION, SOURCE, STATUS, ESTIMATION, PHONE, MOBILE_PHONE, FAX, MAIL, URL, INDUSTRY, AMOUNT, EMPLOYEE, POSTAL_CODE, DIVISION, CITY, TOWN, NOTE, CREATE_DATE, CREATER_ID, UPDATE_DATE, UPDATER_ID) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	/** updateメソッドで使用するSQL */
 	private static final String UPDATE_SQL = "UPDATE T_LEAD SET LAST_NAME = ?, FIRST_NAME = ?, COMPANY_NAME = ?, POSITION = ?, SOURCE = ?, STATUS = ?, ESTIMATION = ?, PHONE = ?, MOBILE_PHONE = ?, FAX = ?, MAIL = ?, URL = ?, INDUSTRY = ?, AMOUNT = ?, EMPLOYEE = ?, POSTAL_CODE = ?, DIVISION = ?, CITY = ?, TOWN = ?, NOTE = ?, UPDATE_DATE = ?, UPDATER_ID = ? WHERE LEAD_ID = ?";
+	/** deleteメソッドで使用するSQL */
+	private static final String DELETE_BY_ID_SQL = "DELETE FROM T_LEAD WHERE LEAD_ID = ?";
 
 	/**
 	 * コンストラクタ
@@ -366,6 +368,24 @@ public class LeadDao extends BaseDao {
 
 			// SQL実行
 			statement.executeUpdate();
+		}
+	}
+
+	/**
+	 * IDを指定して見込み客を削除する
+	 * @param id
+	 * @throws Exception
+	 */
+	public void deleteById(String id) throws Exception {
+
+		try (PreparedStatement statement = cp.getPreparedStatement(DELETE_BY_ID_SQL)) {
+
+			// ID
+			statement.setObject(1, id);
+
+			// SQL実行
+			statement.executeUpdate();
+
 		}
 	}
 }
