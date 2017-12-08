@@ -16,7 +16,7 @@ public class AccountDao extends BaseDao {
 	/** selectMaxIdメソッドで使用するSQL */
 	private static final String SELECT_MAX_ID_SQL = "SELECT MAX(ACCOUNT_ID) AS MAX_ID FROM T_ACCOUNT";
 	/** insertメソッドで使用するSQL */
-	private static final String INSERT_SQL = "INSERT INTO ACCOUNT (ACCOUNT_NAME, PARENT, ACCOUNT_NO, DEPARTMENT, TYPE, INDUSTRY, AMOUNT, EVALUATION, PHONE, FAX, URL, STOCK_CODE, POSTAL_CODE, DIVISION, CITY, TOWN, NOTE, CREATE_DATE, CREATER_ID, UPDATE_DATE, UPDATER_ID) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	private static final String INSERT_SQL = "INSERT INTO T_ACCOUNT (ACCOUNT_NAME, PARENT, ACCOUNT_NO, DEPARTMENT, TYPE, INDUSTRY, AMOUNT, EVALUATION, PHONE, FAX, URL, STOCK_CODE, POSTAL_CODE, DIVISION, CITY, TOWN, NOTE, CREATE_DATE, CREATER_ID, UPDATE_DATE, UPDATER_ID) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 	/**
 	 * コンストラクタ
@@ -85,14 +85,14 @@ public class AccountDao extends BaseDao {
 			statement.setObject(16, entity.getTown());
 			// その他
 			statement.setObject(17, entity.getNote());
-			// 作成者ID
-			statement.setObject(18, entity.getCreaterId());
 			// 作成日時
-			statement.setObject(19, entity.getCreateDate());
-			// 更新者ID
-			statement.setObject(20, entity.getUpdaterId());
+			statement.setObject(18, entity.getCreateDate());
+			// 作成者ID
+			statement.setObject(19, entity.getCreaterId());
 			// 更新日時
-			statement.setObject(21, entity.getUpdateDate());
+			statement.setObject(20, entity.getUpdateDate());
+			// 更新者ID
+			statement.setObject(21, entity.getUpdaterId());
 
 			// SQL実行
 			statement.executeUpdate();
