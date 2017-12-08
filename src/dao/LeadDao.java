@@ -376,7 +376,7 @@ public class LeadDao extends BaseDao {
 	 * @param id
 	 * @throws Exception
 	 */
-	public void deleteById(String id) throws Exception {
+	public void deleteById(Integer id) throws Exception {
 
 		try (PreparedStatement statement = cp.getPreparedStatement(DELETE_BY_ID_SQL)) {
 

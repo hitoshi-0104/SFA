@@ -7,6 +7,7 @@ import java.time.format.DateTimeFormatter;
 import dao.AccountDao;
 import dao.ConnectionProvider;
 import dao.ContactDao;
+import dao.LeadDao;
 import dao.entity.AccountEntity;
 import dao.entity.ContactEntity;
 import service.lead.dto.LeadDto;
@@ -43,6 +44,10 @@ public class AccountService {
 			ContactEntity contact = createContactEntity(si, accountId, dto);
 			ContactDao contactDao = new ContactDao(cp);
 			contactDao.insert(contact);
+
+			// 見込み客の削除
+			LeadDao leadDao = new LeadDao(cp);
+			leadDao.deleteById(dto.getId());
 
 			// コミット
 			cp.commit();
