@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import action.lead.update.AccountAction;
 import action.lead.update.ShowAction;
 import action.lead.update.UpdateAction;
 import exception.SalesManagementApplicationException;
@@ -54,8 +55,8 @@ public class UpdateController {
 				break;
 			// 取引の開始
 			case ACCOUNT_MATCH:
-//				ContinuousAction ccon = new ContinuousAction(request, response);
-//				dispatchUrl = ccon.handle();
+				AccountAction ccon = new AccountAction(request, response);
+				dispatchUrl = ccon.handle();
 				break;
 			// 更新
 			case UPDATE_MATCH:
