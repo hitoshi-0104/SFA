@@ -10,6 +10,7 @@
 
 		<link rel="stylesheet" type="text/css" href="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/css/common/bootstrap.min.css"></link>
 		<link rel="stylesheet" type="text/css" href="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/css/common/common.css"></link>
+		<link rel="stylesheet" type="text/css" href="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/css/lead/update.css"></link>
 
 		<script type="text/javascript" src="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/js/common/jquery-3.2.1.min.js"></script>
 		<script type="text/javascript" src="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/js/common/popper.js"></script>
@@ -163,11 +164,14 @@
 				<!-- ボタン -->
 				<div class="onecolumn">
 					<div class="buttonarea">
-						<button type="button" id="accountbutton" class="btn btn-info button3">取引の開始</button>
+						<button type="button" class="btn btn-info button3" data-toggle="modal" data-target="#accountdialog">取引の開始</button>
 						<button type="button" id="updatebutton" class="btn btn-primary button3">更新</button>
 						<button type="button" id="returnbutton" class="btn btn-default button3">戻る</button>
 					</div>
 				</div>
+
+				<!-- 取引の開始ボタン押下時に表示されるダイアログ -->
+				<jsp:include page="../dialog/accountsearch.jsp" />
 			</form>
 		</div>
 
