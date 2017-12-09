@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+/* ダイアログ：1列表示 */
+.modal-body .onecolumn {
+	margin-top: 10px;
+	width: 95%;
+}
+
+/* ダイアログ：２列表示 */
+.modal-body .twocolumns {
+	float: left;
+	margin-top: 10px;
+	width: 40%;
+}
+
+/* ダイアログ：行定義 */
+.modal-body .modal-item {
+	display: table;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	width: 100%;
+}
+
+/* ダイアログのキャプション */
+.modal-body .caption {
+	font-size: 14px;
+	text-align: right;
+	width: 100px;
+}
+
+/* コンテンツエリアのテキスト */
+.modal-body .text1 {
+	font-size: 14px;
+	width: 100px;
+}
+.modal-body .text2 {
+	font-size: 14px;
+	width: 150px;
+}
+.modal-body .text3 {
+	font-size: 14px;
+	width: 200px;
+}
+.modal-body .text4 {
+	font-size: 14px;
+	width: 300px;
+}
+.modal-body .text5 {
+	font-size: 14px;
+	width: 500px;
+}
