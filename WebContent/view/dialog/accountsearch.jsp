@@ -5,6 +5,7 @@
 
 <link rel="stylesheet" type="text/css" href="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/css/common/common.css"></link>
 <link rel="stylesheet" type="text/css" href="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/css/common/dialogcommon.css"></link>
+<link rel="stylesheet" type="text/css" href="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/css/dialog/accountdialog.css"></link>
 
 <div class="modal" id="accountdialog" tabindex="-1">
 	<div class="modal-dialog modal-lg">
