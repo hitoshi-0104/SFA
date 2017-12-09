@@ -3,7 +3,7 @@
  */
 $(function() {
 
-	// 取引の開始ボタン押下
+	// 開始ボタン押下
 	$('#accountbutton').click(function() {
 		submitAction('#leadform', '/SFA/lead.update.account.action');
 	});
@@ -16,6 +16,16 @@ $(function() {
 	// 戻るボタン押下
 	$('#returnbutton').click(function() {
 		submitAction('#leadform', '/SFA/lead.list.show.action');
+	});
+
+	// 新規取引先の作成ラジオボタン選択
+	$('#newradio').change(function() {
+
+	});
+
+	// 既存取引先の担当者として作成
+	$('#curradio').change(function() {
+
 	});
 
 });
