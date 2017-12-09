@@ -18,6 +18,11 @@ input[type="text"] {
 	padding-left: 5px;
 }
 
+/* ラジオボタン共通 */
+input[type="radio"] + label {
+	padding-left: 8px;
+}
+
 /* コンテンツエリア */
 .contentsarea {
 	margin-bottom: 50px;
