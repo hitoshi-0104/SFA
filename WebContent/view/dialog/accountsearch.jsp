@@ -15,30 +15,14 @@
 			</div>
 			<div class="modal-body">
 				<div class="onecolumn">
-					<ul class="nonepointlist modal-item">
-						<li>
-							<input type="radio" id="newradio" name="account" checked="checked"><label>新規取引先の作成</label></input>
-						</li>
-						<li>
-							<input type="radio" id="curradio" name="account"><label>既存取引先の担当者として作成</label></input>
-						</li>
-					</ul>
-				</div>
-				<div class="twocolumns">
 					<div class="modal-item">
 						<label class="caption">取引先名：</label>
 						<input class="text3" type="text" name="lastname" value="" />
 					</div>
 				</div>
-				<div class="twocolumns">
-					<div class="modal-item">
-						<label class="caption">業種：</label>
-						<input class="text2" type="text" name="lastname" value="" />
-					</div>
-				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" id="accountbutton" class="btn btn-info button2">開始</button>
+				<button type="button" id="accountselectbutton" class="btn btn-info button2">選択</button>
 				<button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
 			</div>
 		</div>

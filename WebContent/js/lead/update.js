@@ -20,12 +20,12 @@ $(function() {
 
 	// 新規取引先の作成ラジオボタン選択
 	$('#newradio').change(function() {
-
+		$('#accountsearchitem').css('display', 'none');
 	});
 
 	// 既存取引先の担当者として作成
 	$('#curradio').change(function() {
-
+		$('#accountsearchitem').css('display', 'inline');
 	});
 
 });

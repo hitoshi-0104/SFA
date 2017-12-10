@@ -164,13 +164,44 @@
 				<!-- ボタン -->
 				<div class="onecolumn">
 					<div class="buttonarea">
-						<button type="button" class="btn btn-info button3" data-toggle="modal" data-target="#accountdialog">取引の開始</button>
+						<button type="button" class="btn btn-info button3" data-toggle="modal" data-target="#selectdialog">取引の開始</button>
 						<button type="button" id="updatebutton" class="btn btn-primary button3">更新</button>
 						<button type="button" id="returnbutton" class="btn btn-default button3">戻る</button>
 					</div>
 				</div>
 
 				<!-- 取引の開始ボタン押下時に表示されるダイアログ -->
+				<div class="modal" id="selectdialog" tabindex="-1">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4>選択</h4>
+							</div>
+							<div class="modal-body">
+								<div class="onecolumn">
+									<ul class="nonepointlist modal-item">
+										<li>
+											<input type="radio" id="newradio" name="account" checked="checked"><label>新規取引先の作成</label></input>
+										</li>
+										<li>
+											<input type="radio" id="curradio" name="account"><label>既存取引先の担当者として作成</label></input>
+										</li>
+									</ul>
+								</div>
+								<div class="onecolumn">
+									<div class="modal-item" id="accountsearchitem">
+										<input type="text" class="text3" readonly="readonly" />
+										<button type="button" id="accountsearchbutton" class="btn btn-primary btn-sm button2" data-toggle="modal" data-target="#accountdialog">取引先検索</button>
+									</div>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" id="accountbutton" class="btn btn-info button2">開始</button>
+								<button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+							</div>
+						</div>
+					</div>
+				</div>
 				<jsp:include page="../dialog/accountsearch.jsp" />
 			</form>
 		</div>

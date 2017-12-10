@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+#accountsearchitem {
+	display: none;
+	margin-left: 45px;
+}
+
+#accountsearchbutton {
+	margin-left: 15px;
+}

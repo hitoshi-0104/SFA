@@ -21,6 +21,13 @@
 	width: 100%;
 }
 
+/* ダイアログ：ボタン表示エリア */
+.contentsarea .buttonarea {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	text-align: right;
+}
+
 /* ダイアログのキャプション */
 .modal-body .caption {
 	font-size: 14px;
