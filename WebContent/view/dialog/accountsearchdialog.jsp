@@ -18,7 +18,22 @@
 					<div class="modal-item">
 						<label class="caption">取引先名：</label>
 						<input class="text3" type="text" name="lastname" value="" />
+						<button type="button" id="accountdialogsearchbutton" class="btn btn-primary btn-sm button1">検索</button>
 					</div>
+				</div>
+				<div class="onecolumn">
+					<table id="accountdialoglist">
+						<thead id="accountdialoglistheader">
+							<tr>
+								<th>ID</th>
+								<th>取引先名</th>
+								<th>業種</th>
+								<th>住所</th>
+							</tr>
+						</thead>
+						<tbody id="accountdialoglistbody">
+						</tbody>
+					</table>
 				</div>
 			</div>
 			<div class="modal-footer">
