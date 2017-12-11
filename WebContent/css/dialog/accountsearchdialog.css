@@ -7,3 +7,19 @@
 #accountdialoglist {
 	display: none;
 }
+
+.accountidcolumn {
+	width: 150px;
+}
+
+.accountnamecolumn {
+	width: 350px
+}
+
+.industrynamecolumn {
+	width: 150px
+}
+
+.addresscolumn {
+	width: 300px;
+}

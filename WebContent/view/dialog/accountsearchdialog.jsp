@@ -5,7 +5,9 @@
 
 <link rel="stylesheet" type="text/css" href="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/css/common/common.css"></link>
 <link rel="stylesheet" type="text/css" href="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/css/common/dialogcommon.css"></link>
-<link rel="stylesheet" type="text/css" href="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/css/dialog/accountdialog.css"></link>
+<link rel="stylesheet" type="text/css" href="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/css/dialog/accountsearchdialog.css"></link>
+
+<script type="text/javascript" src="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/js/dialog/accountsearchdialog.js"></script>
 
 <div class="modal" id="accountdialog" tabindex="-1">
 	<div class="modal-dialog modal-lg">
@@ -17,7 +19,7 @@
 				<div class="onecolumn">
 					<div class="modal-item">
 						<label class="caption">取引先名：</label>
-						<input class="text3" type="text" name="lastname" value="" />
+						<input class="text3" type="text" name="accountname" value="" />
 						<button type="button" id="accountdialogsearchbutton" class="btn btn-primary btn-sm button1">検索</button>
 					</div>
 				</div>
