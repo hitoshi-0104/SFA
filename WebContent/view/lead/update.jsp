@@ -202,7 +202,7 @@
 						</div>
 					</div>
 				</div>
-				<jsp:include page="../dialog/accountsearch.jsp" />
+				<jsp:include page="../dialog/accountsearchdialog.jsp" />
 			</form>
 		</div>
 
