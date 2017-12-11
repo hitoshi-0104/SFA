@@ -8,3 +8,7 @@
 #accountsearchbutton {
 	margin-left: 15px;
 }
+
+.nonepointlist {
+	list-style:none;
+}
