@@ -2,10 +2,14 @@ package dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import dao.base.BaseDao;
+import dao.entity.AccountDialogListEntity;
 import dao.entity.AccountEntity;
 import util.converter.ObjectConverter;
+import util.validate.StringValidater;
 
 /**
  * 取引先テーブルDAO
@@ -13,6 +17,8 @@ import util.converter.ObjectConverter;
  */
 public class AccountDao extends BaseDao {
 
+	/** selectForAccountDialogListメソッドで使用するSQL */
+	private static final String SELECT_FOR_ACCOUNT_DIALOG_LIST = "SELECT T1.ACCOUNT_ID, T1.ACCOUNT_NAME, T2.CODE2_NAME AS INDUSTRY, T3.NAME + T1.CITY + T1.TOWN FROM T_ACCOUNT T1 LEFT JOIN M_CLASS T2 ON T1.INDUSTRY = T2.CODE2 AND T2.CODE1 = ? LEFT JOIN M_DIVISION T3 ON T1.DIVISION = T3.DIVISION_ID";
 	/** selectMaxIdメソッドで使用するSQL */
 	private static final String SELECT_MAX_ID_SQL = "SELECT MAX(ACCOUNT_ID) AS MAX_ID FROM T_ACCOUNT";
 	/** insertメソッドで使用するSQL */
@@ -24,6 +30,43 @@ public class AccountDao extends BaseDao {
 	 */
 	public AccountDao(ConnectionProvider cp) {
 		super(cp);
+	}
+
+	/**
+	 * 取引先検索一覧用の取得処理
+	 * @return
+	 */
+	public List<AccountDialogListEntity> selectForAccountDialogList(AccountEntity entity) throws Exception {
+
+		StringBuilder sb = new StringBuilder();
+		if (StringValidater.isEmpty(entity.getAccountName())) {
+			sb.append(" WHERE T1.ACCOUNT_NAME LIKE ? ");
+		}
+
+		try (PreparedStatement statement = cp.getPreparedStatement(SELECT_FOR_ACCOUNT_DIALOG_LIST + sb.toString())) {
+
+			// 分類：業種
+			statement.setObject(1, "004");
+			// 取引先名
+			statement.setObject(2, entity.getAccountName() + "%");
+
+			ResultSet rs = statement.executeQuery();
+			List<AccountDialogListEntity> list = new ArrayList<AccountDialogListEntity>();
+			while(rs.next()) {
+				AccountDialogListEntity en = new AccountDialogListEntity();
+				// ID
+				en.setId(ObjectConverter.intValue(rs.getObject("ACCOUNT_ID")));
+				// 取引先名
+				en.setAccountName(ObjectConverter.stringValue(rs.getObject("ACCOUNT_NAME")));
+				// 業種
+				en.setIndustry(ObjectConverter.stringValue(rs.getObject("INDUSTRY")));
+				// 住所
+				en.setAddress(ObjectConverter.stringValue(rs.getObject("ADDRESS")));
+
+				list.add(en);
+			}
+			return list;
+		}
 	}
 
 	/**

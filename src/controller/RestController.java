@@ -25,6 +25,8 @@ public class RestController extends BaseController {
 
 	/** 見込み客REST APIの正規表現 */
 	private static final String LEAD_MATCH = "lead.*.rest";
+	/** 取引先REST APIの正規表現 */
+	private static final String ACCOUNT_MATCH = "account.*.rest";
 
     /**
      * @see HttpServlet#HttpServlet()
@@ -98,6 +100,8 @@ public class RestController extends BaseController {
 		// 見込み客
 		LeadController dispatcher = new LeadController();
 		dispatcher.dispatch(url, request, response);
+	} else if (url.matches(ACCOUNT_MATCH)) {
+
 	}
 }
 
