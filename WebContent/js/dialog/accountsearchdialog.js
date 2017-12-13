@@ -7,7 +7,7 @@ $(function () {
 	$('#accountdialogsearchbutton').click(function() {
 
 		$.ajax({
-			url: 'SFA/accountsearch.rest',
+			url: 'SFA/account.dialog.search.rest',
 			type: 'POST',
 			data: {
 				'accountname' : $('input[name=accountname]').val()
@@ -39,12 +39,10 @@ $(function () {
 				var id = '#row' + count;
 				// ID
 				$(id).append('<td class="accountidcolumn">' + result[count].AccountId + '</td>');
-				// 姓
-				$(id).append('<td class="accountnamecolumn">' + result[count].AccountName + '</td>');
-				// 名
-				$(id).append('<td class="industrynamecolumn">' + result[count].Industry + '</td>');
+				// 取引先名
+				$(id).append('<td class="accountnamecolumn">' + moldingListItem(result[count].AccountName, 15) + '</td>');
 				// 会社名
-				$(id).append('<td class="addresscolumn">' + result[count].Address + '</td>');
+				$(id).append('<td class="addresscolumn">' + moldingListItem(result[count].Address, 15) + '</td>');
 
 				count++;
 			});

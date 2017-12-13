@@ -6,7 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import action.lead.list.SearchAction;
+import action.account.list.SearchAction;
 import controller.base.BaseController;
 import exception.SalesManagementApplicationException;
 import exception.SalesManagementRuntimeException;

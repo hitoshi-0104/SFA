@@ -76,8 +76,6 @@ public class SearchService {
 			m.put("AccountId", en.getId().toString());
 			// 取引先名
 			m.put("AccountName", en.getAccountName());
-			// 業種
-			m.put("Industry", en.getIndustry());
 			// 住所
 			m.put("Address", en.getAddress());
 

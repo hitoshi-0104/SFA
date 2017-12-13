@@ -29,7 +29,6 @@
 							<tr>
 								<th>ID</th>
 								<th>取引先名</th>
-								<th>業種</th>
 								<th>住所</th>
 							</tr>
 						</thead>

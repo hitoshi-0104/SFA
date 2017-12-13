@@ -39,7 +39,7 @@ public class SearchAction extends ListAction {
 	 * ハンドル
 	 */
 	@Override
-	protected String handle() throws ServletException, IOException, SalesManagementApplicationException,
+	public String handle() throws ServletException, IOException, SalesManagementApplicationException,
 			SalesManagementSystemException, SalesManagementRuntimeException {
 
 		// 検索処理

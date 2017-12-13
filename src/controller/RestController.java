@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import controller.account.AccountController;
 import controller.base.BaseController;
 import controller.lead.LeadController;
 import exception.SalesManagementApplicationException;
@@ -101,7 +102,9 @@ public class RestController extends BaseController {
 		LeadController dispatcher = new LeadController();
 		dispatcher.dispatch(url, request, response);
 	} else if (url.matches(ACCOUNT_MATCH)) {
-
+		// 取引先
+		AccountController dispatcher = new AccountController();
+		dispatcher.dispatch(url, request, response);
 	}
 }
 
