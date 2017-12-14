@@ -190,7 +190,8 @@
 								</div>
 								<div class="onecolumn">
 									<div class="modal-item" id="accountsearchitem">
-										<input type="text" class="text3" readonly="readonly" />
+										<input type="text" id="acocountname" class="text3" readonly="readonly" />
+										<input type="hidden" id="acocountid" class="text3" />
 										<button type="button" id="accountsearchbutton" class="btn btn-primary btn-sm button2" data-toggle="modal" data-target="#accountdialog">取引先検索</button>
 									</div>
 								</div>

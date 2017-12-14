@@ -38,13 +38,14 @@ $(function () {
 				// 行にカラムの設定
 				var id = '#row' + count;
 				// 選択
-				$(id).append('<td class="accountselectcolumn"><input type="radio" name="accountselect"></td>>');
+				$(id).append('<td id="col' + count + '1" class="accountselectcolumn"><input type="radio" name="accountselect"></td>>');
+				$('#col' + count + '1').on('click', { value: '#col' + count }, onAccountRadioChanged);
 				// ID
-				$(id).append('<td class="accountidcolumn">' + result[count].AccountId + '</td>');
+				$(id).append('<td id="col' + count + '2" class="accountidcolumn">' + result[count].AccountId + '</td>');
 				// 取引先名
-				$(id).append('<td class="accountnamecolumn">' + moldingListItem(result[count].AccountName, 15) + '</td>');
+				$(id).append('<td id="col' + count + '3" class="accountnamecolumn">' + moldingListItem(result[count].AccountName, 15) + '</td>');
 				// 会社名
-				$(id).append('<td class="addresscolumn">' + moldingListItem(result[count].Address, 13) + '</td>');
+				$(id).append('<td id="col' + count + '4" class="addresscolumn">' + moldingListItem(result[count].Address, 13) + '</td>');
 
 				count++;
 			});
@@ -60,4 +61,29 @@ $(function () {
 
 	});
 
+	// 選択ボタン押下時の処理
+	$('#accountselectbutton').click(function() {
+
+		window.alert('retaccountid = ' + $('#retaccountid').val());
+		window.alert('selectedaccountid = ' + $('#selectedaccountid').val());
+		window.alert('retaccountname = ' + $('#retaccountname').val());
+		window.alert('selectedaccountname = ' + $('#selectedaccountname').val());
+
+		// 取引先IDのセット
+		$($('#retaccountid').val()).val($('#selectedaccountid').val());
+		// 取引先名のセット
+		$($('#retaccountname').val()).val($('#selectedaccountname').val());
+
+	});
+
 });
+
+// 一覧のラジオボタン変更時の処理
+function onAccountRadioChanged(e) {
+
+	// 取引先IDのセット
+	$('#selectedaccountid').val($(e.data.value + '2').text());
+	// 取引先名のセット
+	$('#selectedaccountname').val($(e.data.value + '3').text());
+
+}

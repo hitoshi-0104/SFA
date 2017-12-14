@@ -36,10 +36,14 @@
 						<tbody id="accountdialoglistbody">
 						</tbody>
 					</table>
+					<input type="hidden" id="selectedaccountid" value="" />
+					<input type="hidden" id="selectedaccountname" value="" />
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" id="accountselectbutton" class="btn btn-info button2">選択</button>
+				<input type="hidden" id="retaccountid" value="" />
+				<input type="hidden" id="retaccountname" value="" />
+				<button type="button" id="accountselectbutton" class="btn btn-info button2" data-dismiss="modal">選択</button>
 				<button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
 			</div>
 		</div>

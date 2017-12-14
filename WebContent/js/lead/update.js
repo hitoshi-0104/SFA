@@ -28,4 +28,10 @@ $(function() {
 		$('#accountsearchitem').css('display', 'inline');
 	});
 
+	// 取引先の検索ボタン押下処理
+	$('#accountsearchbutton').click(function() {
+		$('#retaccountid').val('#acocountid');
+		$('#retaccountname').val('#acocountname');
+	});
+
 });
