@@ -27,7 +27,7 @@ public class JsonProvider {
 			sb.append(e.getKey());
 			sb.append("\" : ");
 			sb.append("\"");
-			sb.append(e.getValue());
+			sb.append(e.getValue() == null ? "" : e.getValue());
 			sb.append("\", ");
 		}
 		sb.delete(sb.length() - 2, sb.length());
