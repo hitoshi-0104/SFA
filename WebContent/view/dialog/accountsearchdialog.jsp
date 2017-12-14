@@ -27,6 +27,7 @@
 					<table id="accountdialoglist">
 						<thead id="accountdialoglistheader">
 							<tr>
+								<th></th>
 								<th>ID</th>
 								<th>取引先名</th>
 								<th>住所</th>

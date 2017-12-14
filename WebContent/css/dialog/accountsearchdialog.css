@@ -8,14 +8,18 @@
 	display: none;
 }
 
+.accountselectcolumn {
+	width: 50px;
+}
+
 .accountidcolumn {
 	width: 150px;
 }
 
 .accountnamecolumn {
-	width: 300px
+	width: 275px
 }
 
 .addresscolumn {
-	width: 300px;
+	width: 275px;
 }

@@ -37,12 +37,14 @@ $(function () {
 
 				// 行にカラムの設定
 				var id = '#row' + count;
+				// 選択
+				$(id).append('<td class="accountselectcolumn"><input type="radio" name="accountselect"></td>>');
 				// ID
 				$(id).append('<td class="accountidcolumn">' + result[count].AccountId + '</td>');
 				// 取引先名
 				$(id).append('<td class="accountnamecolumn">' + moldingListItem(result[count].AccountName, 15) + '</td>');
 				// 会社名
-				$(id).append('<td class="addresscolumn">' + moldingListItem(result[count].Address, 15) + '</td>');
+				$(id).append('<td class="addresscolumn">' + moldingListItem(result[count].Address, 13) + '</td>');
 
 				count++;
 			});
