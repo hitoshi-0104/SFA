@@ -48,6 +48,10 @@ public class LeadDto {
 	private String town;
 	/** その他 */
 	private String note;
+	/** 新規／既存 */
+	private boolean isNew;
+	/** 紐づけ先の取引先ID */
+	private Integer linkedAccountId;
 
 	/**
 	 * @return id
@@ -300,6 +304,30 @@ public class LeadDto {
 	 */
 	public void setNote(String note) {
 		this.note = note;
+	}
+	/**
+	 * @return isNew
+	 */
+	public boolean isNew() {
+		return isNew;
+	}
+	/**
+	 * @param isNew セットする isNew
+	 */
+	public void setNew(boolean isNew) {
+		this.isNew = isNew;
+	}
+	/**
+	 * @return linkedAccountId
+	 */
+	public Integer getLinkedAccountId() {
+		return linkedAccountId;
+	}
+	/**
+	 * @param linkedAccountId セットする linkedAccountId
+	 */
+	public void setLinkedAccountId(Integer linkedAccountId) {
+		this.linkedAccountId = linkedAccountId;
 	}
 
 }

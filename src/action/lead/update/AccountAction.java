@@ -25,6 +25,9 @@ import util.session.SessionInfo;
  */
 public class AccountAction extends UpdateBaseAction {
 
+	/** 新規／既存 */
+	private static final String IS_NEW = "1";
+
 	/**
 	 * コンストラクタ
 	 * @param request
@@ -108,6 +111,14 @@ public class AccountAction extends UpdateBaseAction {
 		dto.setTown(request.getParameter(ReqParam.Update.TOWN));
 		// その他
 		dto.setNote(request.getParameter(ReqParam.Update.NOTE));
+		// 新規／既存
+		if (IS_NEW.equals(request.getParameter(ReqParam.Update.ACCOUNT))) {
+			dto.setNew(true);
+		} else {
+			dto.setNew(false);
+		}
+		// 紐づけ先の取引先ID
+		dto.setLinkedAccountId(StringConverter.toInteger(request.getParameter(ReqParam.Update.LINKED_ACCOUNT_ID)));
 
 		AccountService service = new AccountService();
 

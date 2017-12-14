@@ -32,13 +32,18 @@ public class AccountService {
 			// トランザクション開始
 			cp.beginTransaction();
 
-			// 取引先の作成
-			AccountEntity account = createAccountEntity(si, dto);
-			AccountDao accountDao = new AccountDao(cp);
-			accountDao.insert(account);
+			Integer accountId = null;
+			if (dto.isNew()) {
+				// 取引先の作成
+				AccountEntity account = createAccountEntity(si, dto);
+				AccountDao accountDao = new AccountDao(cp);
+				accountDao.insert(account);
 
-			// 作成した取引先のIDを取得
-			Integer accountId = accountDao.selectMaxId();
+				// 作成した取引先のIDを取得
+				accountId = accountDao.selectMaxId();
+			} else {
+				accountId = dto.getLinkedAccountId();
+			}
 
 			// 取引先担当者の作成
 			ContactEntity contact = createContactEntity(si, accountId, dto);

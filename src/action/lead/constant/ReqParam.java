@@ -100,6 +100,10 @@ public class ReqParam {
 		public static final String TOWN = "town";
 		/** その他 */
 		public static final String NOTE = "note";
+		/** 新規／既存 */
+		public static final String ACCOUNT = "account";
+		/** 紐づけ先の取引先ID */
+		public static final String LINKED_ACCOUNT_ID = "acocountid";
 	}
 
 	/**

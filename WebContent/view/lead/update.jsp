@@ -181,17 +181,17 @@
 								<div class="onecolumn">
 									<ul class="nonepointlist modal-item">
 										<li>
-											<input type="radio" id="newradio" name="account" checked="checked"><label>新規取引先の作成</label></input>
+											<input type="radio" id="newradio" name="account" value="1" checked="checked"><label>新規取引先の作成</label></input>
 										</li>
 										<li>
-											<input type="radio" id="curradio" name="account"><label>既存取引先の担当者として作成</label></input>
+											<input type="radio" id="curradio" name="account" value="2"><label>既存取引先の担当者として作成</label></input>
 										</li>
 									</ul>
 								</div>
 								<div class="onecolumn">
 									<div class="modal-item" id="accountsearchitem">
-										<input type="text" id="acocountname" class="text3" readonly="readonly" />
-										<input type="hidden" id="acocountid" class="text3" />
+										<input type="text" id="acocountname" name="acocountname" class="text3" readonly="readonly" />
+										<input type="hidden" id="acocountid" name="acocountid" class="text3" />
 										<button type="button" id="accountsearchbutton" class="btn btn-primary btn-sm button2" data-toggle="modal" data-target="#accountdialog">取引先検索</button>
 									</div>
 								</div>
