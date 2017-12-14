@@ -7,9 +7,18 @@
 #accountdialoglist {
 	display: none;
 }
+#accountdialoglistheader {
+	background-color: #4169e1;
+	color: #FFFFFF;
+}
+#accountdialoglistheader th,
+#accountdialoglistbody td {
+	border: solid 1px #000000;
+	padding-left: 10px;
+}
 
 .accountselectcolumn {
-	width: 50px;
+	width: 35px;
 }
 
 .accountidcolumn {
@@ -17,7 +26,7 @@
 }
 
 .accountnamecolumn {
-	width: 275px
+	width: 300px
 }
 
 .addresscolumn {
