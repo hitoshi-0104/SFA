@@ -64,11 +64,6 @@ $(function () {
 	// 選択ボタン押下時の処理
 	$('#accountselectbutton').click(function() {
 
-		window.alert('retaccountid = ' + $('#retaccountid').val());
-		window.alert('selectedaccountid = ' + $('#selectedaccountid').val());
-		window.alert('retaccountname = ' + $('#retaccountname').val());
-		window.alert('selectedaccountname = ' + $('#selectedaccountname').val());
-
 		// 取引先IDのセット
 		$($('#retaccountid').val()).val($('#selectedaccountid').val());
 		// 取引先名のセット
