@@ -28,6 +28,7 @@ $(function() {
 
 			// 一覧を非表示
 			$('.leadlist').css('display', 'none');
+			$('#leadlistpagination').css('display', 'none');
 
 			// テーブルのクリア
 			$('.leadlistbody').empty();
@@ -64,6 +65,7 @@ $(function() {
 
 			// 一覧を表示
 			$('.leadlist').css('display', 'inline');
+			$('#leadlistpagination').css('display', 'inline');
 
 		}).fail(function(xhr, textStatus, error) {
 			window.alert(error);
