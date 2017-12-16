@@ -9,6 +9,7 @@ import dao.base.BaseDao;
 import dao.entity.LeadEntity;
 import dao.entity.LeadListEntity;
 import util.constant.ClassCode1;
+import util.constant.Limit;
 import util.converter.ObjectConverter;
 import util.validate.StringValidater;
 
@@ -118,7 +119,7 @@ public class LeadDao extends BaseDao {
 	 * @param entity
 	 * @return
 	 */
-	public List<LeadListEntity> selectForLeadList(LeadEntity entity) throws Exception {
+	public List<LeadListEntity> selectForLeadList(LeadEntity entity, Integer offset) throws Exception {
 
 		StringBuilder sb = new StringBuilder();
 
@@ -176,7 +177,10 @@ public class LeadDao extends BaseDao {
 			sb.delete(sb.length() - 5, sb.length() - 1);
 		}
 
-		sb.append(" ORDER BY T1.LEAD_ID ");
+		sb.append(" ORDER BY T1.LEAD_ID LIMIT ");
+		sb.append(Limit.LIST_ROW_LIMIT);
+		sb.append(" OFFSET ");
+		sb.append(offset);
 
 		try (PreparedStatement statement = cp.getPreparedStatement(SELECT_FOR_LEAD_LIST_SQL + sb.toString());) {
 

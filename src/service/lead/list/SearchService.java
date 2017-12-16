@@ -10,6 +10,7 @@ import dao.ConnectionProvider;
 import dao.LeadDao;
 import dao.entity.LeadEntity;
 import dao.entity.LeadListEntity;
+import service.base.BaseSearchService;
 import service.lead.dto.SearchDto;
 import util.json.JsonProvider;
 import util.session.SessionInfo;
@@ -18,7 +19,7 @@ import util.session.SessionInfo;
  * 見込み客検索のサービスクラス
  *
  */
-public class SearchService {
+public class SearchService extends BaseSearchService {
 
 	/**
 	 * 検索処理
@@ -34,7 +35,7 @@ public class SearchService {
 		LeadDao dao = new LeadDao(cp);
 		List<LeadListEntity> list = null;
 		try (Connection conn = cp.getConnection()) {
-			list = dao.selectForLeadList(entity);
+			list = dao.selectForLeadList(entity, getOffSet(dto.getPage()));
 		}
 
 		// エンティティからDtoに変換

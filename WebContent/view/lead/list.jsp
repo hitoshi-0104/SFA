@@ -104,13 +104,11 @@
 					</table>
 					<nav id="leadlistpagination">
 						<ul class="pagination">
-							<li class="page-item disabled"><a class="page-link" href="#">前へ</a></li>
-							<li class="page-item active"><a class="page-link" href="#">1</a></li>
-							<li class="page-item"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
-							<li class="page-item"><a class="page-link" href="#">4</a></li>
-							<li class="page-item"><a class="page-link" href="#">5</a></li>
-							<li class="page-item"><a class="page-link" href="#">次へ</a></li>
+							<li class="page-item disabled"><button class="page-link" href="#">前へ</button></li>
+							<li class="page-item active"><button class="page-link" href="#">1</button></li>
+							<li class="page-item"><button class="page-link" href="#">2</button></li>
+							<li class="page-item"><button class="page-link" href="#">3</button></li>
+							<li class="page-item"><button class="page-link" href="#">次へ</button></li>
 						</ul>
 					</nav>
 				</div>

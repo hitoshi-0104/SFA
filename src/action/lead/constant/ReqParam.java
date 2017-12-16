@@ -127,6 +127,8 @@ public class ReqParam {
 		public static final String INDUSTRY = "industry";
 		/** 都道府県 */
 		public static final String DIVISION = "division";
+		/** ページ */
+		public static final String PAGE = "page";
 	}
 
 }

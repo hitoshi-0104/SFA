@@ -15,6 +15,7 @@ import exception.SalesManagementSystemException;
 import service.lead.dto.SearchDto;
 import service.lead.list.SearchService;
 import util.constant.ServletSettings;
+import util.converter.StringConverter;
 import util.message.MessageReader;
 import util.session.SessionInfo;
 
@@ -79,6 +80,9 @@ public class SearchAction extends ListAction {
 		dto.setEstimationCode(request.getParameter(ReqParam.List.ESTIMATION));
 		// 都道府県
 		dto.setDivisionCode(request.getParameter(ReqParam.List.DIVISION));
+		// ページ
+		dto.setPage(StringConverter.toInteger(request.getParameter(ReqParam.List.PAGE)));
+		dto.setPage(1);
 
 		try {
 			// 検索

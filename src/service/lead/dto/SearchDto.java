@@ -18,6 +18,8 @@ public class SearchDto {
 	private String industryCode;
 	/** 都道府県 */
 	private String divisionCode;
+	/** ページ */
+	private Integer page;
 
 	/**
 	 * @return lastName
@@ -114,6 +116,18 @@ public class SearchDto {
 	 */
 	public void setDivisionCode(String divisionCode) {
 		this.divisionCode = divisionCode;
+	}
+	/**
+	 * @return page
+	 */
+	public Integer getPage() {
+		return page;
+	}
+	/**
+	 * @param page セットする page
+	 */
+	public void setPage(Integer page) {
+		this.page = page;
 	}
 
 }
