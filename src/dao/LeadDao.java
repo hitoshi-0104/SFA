@@ -115,83 +115,40 @@ public class LeadDao extends BaseDao {
 	}
 
 	/**
+	 * 見込み客一覧の件数取得
+	 * @param entity
+	 * @return
+	 * @throws Exception
+	 */
+	public Integer countForLeadList(LeadEntity entity) throws Exception {
+
+		try (PreparedStatement statement = cp.getPreparedStatement(SELECT_FOR_LEAD_LIST_SQL + createWhereForLeadList(entity, null, false));) {
+
+			setStatementsForLeadList(statement);
+
+			// SQL実行
+			ResultSet rs = statement.executeQuery();
+
+			// データ取得
+			Integer ret = null;
+			if (rs.next()) {
+				ret = ObjectConverter.intValue(rs.getObject(1));
+			}
+			return ret;
+		}
+
+	}
+
+	/**
 	 * 見込み客一覧の検索
 	 * @param entity
 	 * @return
 	 */
 	public List<LeadListEntity> selectForLeadList(LeadEntity entity, Integer offset) throws Exception {
 
-		StringBuilder sb = new StringBuilder();
+		try (PreparedStatement statement = cp.getPreparedStatement(SELECT_FOR_LEAD_LIST_SQL + createWhereForLeadList(entity, offset, true));) {
 
-		// 姓
-		if (!StringValidater.isEmpty(entity.getLastName())) {
-			sb.append(" T1.LAST_NAME LIKE '");
-			sb.append(entity.getLastName());
-			sb.append("%' AND ");
-		}
-		// 名
-		if (!StringValidater.isEmpty(entity.getFirstName())) {
-			sb.append(" T1.FIRST_NAME LIKE '");
-			sb.append(entity.getFirstName());
-			sb.append("%' AND ");
-		}
-		// 会社名
-		if (!StringValidater.isEmpty(entity.getCompanyName())) {
-			sb.append(" T1.COMPANY_NAME LIKE '");
-			sb.append(entity.getCompanyName());
-			sb.append("%' AND ");
-		}
-		// ソース
-		if (!StringValidater.isEmpty(entity.getSourceCode())) {
-			sb.append(" T1.SOURCE = '");
-			sb.append(entity.getSourceCode());
-			sb.append("' AND ");
-		}
-		// 状況
-		if (!StringValidater.isEmpty(entity.getStatusCode())) {
-			sb.append(" T1.STATUS = '");
-			sb.append(entity.getStatusCode());
-			sb.append("' AND ");
-		}
-		// 評価
-		if (!StringValidater.isEmpty(entity.getEstimationCode())) {
-			sb.append(" T1.ESTIMATION = '");
-			sb.append(entity.getEstimationCode());
-			sb.append("' AND ");
-		}
-		// 業種
-		if (!StringValidater.isEmpty(entity.getIndustryCode())) {
-			sb.append(" T1.INDUSTRY = '");
-			sb.append(entity.getIndustryCode());
-			sb.append("' AND ");
-		}
-		// 都道府県
-		if (!StringValidater.isEmpty(entity.getDivisionCode())) {
-			sb.append(" T1.DIVISION = '");
-			sb.append(entity.getDivisionCode());
-			sb.append("' AND ");
-		}
-
-		if (sb.length() != 0) {
-			sb.insert(0, " WHERE ");
-			sb.delete(sb.length() - 5, sb.length() - 1);
-		}
-
-		sb.append(" ORDER BY T1.LEAD_ID LIMIT ");
-		sb.append(Limit.LIST_ROW_LIMIT);
-		sb.append(" OFFSET ");
-		sb.append(offset);
-
-		try (PreparedStatement statement = cp.getPreparedStatement(SELECT_FOR_LEAD_LIST_SQL + sb.toString());) {
-
-			// ソース
-			statement.setString(1, ClassCode1.SOURCE);
-			// 状況
-			statement.setString(2, ClassCode1.LEAD_STATUS);
-			// 評価
-			statement.setString(3, ClassCode1.ESTIMATION);
-			// 業種
-			statement.setString(4, ClassCode1.INDUSTRY);
+			setStatementsForLeadList(statement);
 
 			// SQL実行
 			ResultSet rs = statement.executeQuery();
@@ -392,4 +349,99 @@ public class LeadDao extends BaseDao {
 
 		}
 	}
+
+	/**
+	 * 見込み客一覧用のWhere句作成処理
+	 * @param entity
+	 * @param offset
+	 * @param isSelect
+	 * @return
+	 */
+	private String createWhereForLeadList(LeadEntity entity, Integer offset, boolean isSelect) {
+
+		StringBuilder sb = new StringBuilder();
+
+		// 姓
+		if (!StringValidater.isEmpty(entity.getLastName())) {
+			sb.append(" T1.LAST_NAME LIKE '");
+			sb.append(entity.getLastName());
+			sb.append("%' AND ");
+		}
+		// 名
+		if (!StringValidater.isEmpty(entity.getFirstName())) {
+			sb.append(" T1.FIRST_NAME LIKE '");
+			sb.append(entity.getFirstName());
+			sb.append("%' AND ");
+		}
+		// 会社名
+		if (!StringValidater.isEmpty(entity.getCompanyName())) {
+			sb.append(" T1.COMPANY_NAME LIKE '");
+			sb.append(entity.getCompanyName());
+			sb.append("%' AND ");
+		}
+		// ソース
+		if (!StringValidater.isEmpty(entity.getSourceCode())) {
+			sb.append(" T1.SOURCE = '");
+			sb.append(entity.getSourceCode());
+			sb.append("' AND ");
+		}
+		// 状況
+		if (!StringValidater.isEmpty(entity.getStatusCode())) {
+			sb.append(" T1.STATUS = '");
+			sb.append(entity.getStatusCode());
+			sb.append("' AND ");
+		}
+		// 評価
+		if (!StringValidater.isEmpty(entity.getEstimationCode())) {
+			sb.append(" T1.ESTIMATION = '");
+			sb.append(entity.getEstimationCode());
+			sb.append("' AND ");
+		}
+		// 業種
+		if (!StringValidater.isEmpty(entity.getIndustryCode())) {
+			sb.append(" T1.INDUSTRY = '");
+			sb.append(entity.getIndustryCode());
+			sb.append("' AND ");
+		}
+		// 都道府県
+		if (!StringValidater.isEmpty(entity.getDivisionCode())) {
+			sb.append(" T1.DIVISION = '");
+			sb.append(entity.getDivisionCode());
+			sb.append("' AND ");
+		}
+
+		if (sb.length() != 0) {
+			sb.insert(0, " WHERE ");
+			sb.delete(sb.length() - 5, sb.length() - 1);
+		}
+
+		sb.append(" ORDER BY T1.LEAD_ID ");
+		if(isSelect) {
+			sb.append(" LIMIT ");
+			sb.append(Limit.LIST_ROW_LIMIT);
+			sb.append(" OFFSET ");
+			sb.append(offset);
+		}
+
+		return sb.toString();
+	}
+
+	/**
+	 * 見込み客一覧用のステートメントセット処理
+	 * @param statement
+	 * @throws Exception
+	 */
+	private void setStatementsForLeadList(PreparedStatement statement) throws Exception {
+
+		// ソース
+		statement.setString(1, ClassCode1.SOURCE);
+		// 状況
+		statement.setString(2, ClassCode1.LEAD_STATUS);
+		// 評価
+		statement.setString(3, ClassCode1.ESTIMATION);
+		// 業種
+		statement.setString(4, ClassCode1.INDUSTRY);
+
+	}
+
 }
