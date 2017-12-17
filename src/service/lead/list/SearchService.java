@@ -33,13 +33,15 @@ public class SearchService extends BaseSearchService {
 
 		ConnectionProvider cp = ConnectionProvider.getInstance();
 		LeadDao dao = new LeadDao(cp);
+		Integer cnt = null;
 		List<LeadListEntity> list = null;
 		try (Connection conn = cp.getConnection()) {
+			cnt = dao.countForLeadList(entity);
 			list = dao.selectForLeadList(entity, getOffSet(dto.getPage()));
 		}
 
 		// エンティティからDtoに変換
-		String ret = createLeadListEntitiList2Json(list);
+		String ret = createLeadListEntitiList2Json(cnt, list);
 
 		return ret;
 	}
@@ -80,12 +82,17 @@ public class SearchService extends BaseSearchService {
 	 * @param list
 	 * @return
 	 */
-	private String createLeadListEntitiList2Json(List<LeadListEntity> list) {
+	private String createLeadListEntitiList2Json(Integer cnt, List<LeadListEntity> list) {
 
-		List<Map<String, String>> ret = new ArrayList<Map<String, String>>();
+		List<Map<String, Object>> ret = new ArrayList<Map<String, Object>>();
+
+		Map<String, Object> retMap = new LinkedHashMap<String, Object>();
+		retMap.put("cnt", cnt.toString());
+
+		List<Map<String, Object>> data = new ArrayList<Map<String, Object>>();
 		for (LeadListEntity en : list) {
 
-			Map<String, String> m = new LinkedHashMap<String, String>();
+			Map<String, Object> m = new LinkedHashMap<String, Object>();
 
 			// ID
 			m.put("LeadId", en.getId().toString());
@@ -102,8 +109,10 @@ public class SearchService extends BaseSearchService {
 			// 都道府県名称
 			m.put("DivisionName", en.getDivisionName());
 
-			ret.add(m);
+			data.add(m);
 		}
+		retMap.put("data", data);
+		ret.add(retMap);
 		return JsonProvider.provide(ret);
 	}
 
