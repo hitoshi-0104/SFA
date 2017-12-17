@@ -14,7 +14,8 @@ public class JsonProvider {
 	 * @param m
 	 * @return
 	 */
-	public static String provide(Map<String, String> m) {
+	@SuppressWarnings("unchecked")
+	public static String provide(Map<String, Object> m) {
 
 		if (m.size() == 0) {
 			return "{}";
@@ -22,13 +23,18 @@ public class JsonProvider {
 
 		StringBuilder sb = new StringBuilder();
 		sb.append("{");
-		for (Map.Entry<String, String> e : m.entrySet()) {
+		for (Map.Entry<String, Object> e : m.entrySet()) {
 			sb.append("\"");
 			sb.append(e.getKey());
 			sb.append("\" : ");
-			sb.append("\"");
-			sb.append(e.getValue() == null ? "" : e.getValue());
-			sb.append("\", ");
+			if (e.getValue() instanceof List) {
+				sb.append(provide((List<Map<String, Object>>)e.getValue()));
+			} else {
+				sb.append("\"");
+				sb.append(e.getValue() == null ? "" : e.getValue());
+				sb.append("\"");
+			}
+			sb.append(", ");
 		}
 		sb.delete(sb.length() - 2, sb.length());
 		sb.append("}");
@@ -40,7 +46,7 @@ public class JsonProvider {
 	 * @param list
 	 * @return
 	 */
-	public static String provide(List<Map<String, String>> list) {
+	public static String provide(List<Map<String, Object>> list) {
 
 		if (list.size() == 0) {
 			return "{}";
@@ -48,7 +54,7 @@ public class JsonProvider {
 
 		StringBuilder sb = new StringBuilder();
 		sb.append("[");
-		for (Map<String, String> m : list) {
+		for (Map<String, Object> m : list) {
 			sb.append(provide(m));
 			sb.append(",");
 		}
