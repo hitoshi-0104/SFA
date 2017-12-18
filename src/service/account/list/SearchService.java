@@ -67,10 +67,10 @@ public class SearchService {
 	 */
 	private String createAccountDialogListEntityList2Json(List<AccountDialogListEntity> list) {
 
-		List<Map<String, String>> ret = new ArrayList<Map<String, String>>();
+		List<Map<String, Object>> ret = new ArrayList<Map<String, Object>>();
 		for (AccountDialogListEntity en : list) {
 
-			Map<String, String> m = new LinkedHashMap<String, String>();
+			Map<String, Object> m = new LinkedHashMap<String, Object>();
 
 			// ID
 			m.put("AccountId", en.getId().toString());
