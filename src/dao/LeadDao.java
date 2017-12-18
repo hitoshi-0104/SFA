@@ -23,6 +23,8 @@ public class LeadDao extends BaseDao {
 	private static final String SELECT_BY_ID_SQL = "SELECT * FROM T_LEAD WHERE LEAD_ID = ?";
 	/** selectForLeadListメソッドで使用するSQL */
 	private static final String SELECT_FOR_LEAD_LIST_SQL = "SELECT T1.LEAD_ID, T1.LAST_NAME, T1.FIRST_NAME, T1.COMPANY_NAME, T1.SOURCE, T2.CODE2_NAME AS SOURCE_NAME, T1.STATUS, T3.CODE2_NAME AS STATUS_NAME, T1.ESTIMATION, T4.CODE2_NAME AS ESTIMATION_NAME, T1.INDUSTRY, T5.CODE2_NAME AS INDUSTRY_NAME, T1.DIVISION, T6.NAME AS DIVISION_NAME FROM T_LEAD T1 LEFT JOIN M_CLASS T2 ON T1.SOURCE = T2.CODE2 AND T2.CODE1 = ? LEFT JOIN M_CLASS T3 ON T1.STATUS = T3.CODE2 AND T3.CODE1 = ? LEFT JOIN M_CLASS T4 ON T1.ESTIMATION = T4.CODE2 AND T4.CODE1 = ? LEFT JOIN M_CLASS T5 ON T1.INDUSTRY = T5.CODE2 AND T5.CODE1 = ? LEFT JOIN M_DIVISION T6 ON T1.DIVISION = T6.CODE";
+	/** countForLeadListメソッドで使用するSQL */
+	private static final String COUNT_FOR_LEAD_LIST_SQL = "SELECT COUNT(*) FROM T_LEAD T1 LEFT JOIN M_CLASS T2 ON T1.SOURCE = T2.CODE2 AND T2.CODE1 = ? LEFT JOIN M_CLASS T3 ON T1.STATUS = T3.CODE2 AND T3.CODE1 = ? LEFT JOIN M_CLASS T4 ON T1.ESTIMATION = T4.CODE2 AND T4.CODE1 = ? LEFT JOIN M_CLASS T5 ON T1.INDUSTRY = T5.CODE2 AND T5.CODE1 = ? LEFT JOIN M_DIVISION T6 ON T1.DIVISION = T6.CODE";
 	/** countAllメソッドで使用するSQL */
 	private static final String COUNT_BY_ID_SQL = "SELECT COUNT(*) FROM T_LEAD";
 	/** insertメソッドで使用するSQL */
@@ -122,7 +124,7 @@ public class LeadDao extends BaseDao {
 	 */
 	public Integer countForLeadList(LeadEntity entity) throws Exception {
 
-		try (PreparedStatement statement = cp.getPreparedStatement(SELECT_FOR_LEAD_LIST_SQL + createWhereForLeadList(entity, null, false));) {
+		try (PreparedStatement statement = cp.getPreparedStatement(COUNT_FOR_LEAD_LIST_SQL + createWhereForLeadList(entity, null, false));) {
 
 			setStatementsForLeadList(statement);
 

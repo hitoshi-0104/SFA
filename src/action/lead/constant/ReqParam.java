@@ -128,7 +128,7 @@ public class ReqParam {
 		/** 都道府県 */
 		public static final String DIVISION = "division";
 		/** ページ */
-		public static final String PAGE = "page";
+		public static final String CUR_PAGE = "curpage";
 	}
 
 }

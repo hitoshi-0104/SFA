@@ -81,8 +81,7 @@ public class SearchAction extends ListAction {
 		// 都道府県
 		dto.setDivisionCode(request.getParameter(ReqParam.List.DIVISION));
 		// ページ
-		dto.setPage(StringConverter.toInteger(request.getParameter(ReqParam.List.PAGE)));
-		dto.setPage(1);
+		dto.setPage(StringConverter.toInteger(request.getParameter(ReqParam.List.CUR_PAGE)));
 
 		try {
 			// 検索

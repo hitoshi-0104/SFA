@@ -12,6 +12,7 @@ import dao.entity.LeadEntity;
 import dao.entity.LeadListEntity;
 import service.base.BaseSearchService;
 import service.lead.dto.SearchDto;
+import util.constant.Limit;
 import util.json.JsonProvider;
 import util.session.SessionInfo;
 
@@ -87,7 +88,8 @@ public class SearchService extends BaseSearchService {
 		List<Map<String, Object>> ret = new ArrayList<Map<String, Object>>();
 
 		Map<String, Object> retMap = new LinkedHashMap<String, Object>();
-		retMap.put("cnt", cnt.toString());
+		retMap.put("cnt", cnt);
+		retMap.put("maxrow", Limit.LIST_ROW_LIMIT);
 
 		List<Map<String, Object>> data = new ArrayList<Map<String, Object>>();
 		for (LeadListEntity en : list) {
