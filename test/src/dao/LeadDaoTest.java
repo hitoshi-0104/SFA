@@ -300,7 +300,7 @@ class LeadDaoTest {
 				dao.insert(insertEntity);
 			}
 
-			List<LeadListEntity> ret = dao.selectForLeadList(searchEntity);
+			List<LeadListEntity> ret = dao.selectForLeadList(searchEntity, 1);
 
 			assertEquals(5, ret.size());
 			for (LeadListEntity en : ret) {
