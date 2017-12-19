@@ -45,8 +45,9 @@ function search(curPage) {
 		$('.leadlist').css('display', 'none');
 		$('#leadlistpagination').css('display', 'none');
 
-		// テーブルのクリア
+		// クリア
 		$('.leadlistbody').empty();
+		$('#leadlistpagination').empty();
 
 		if (result == null || Object.keys(result).length === 0 || result[0].cnt === '0') {
 			return;
@@ -58,15 +59,12 @@ function search(curPage) {
 		// ページネーションの設定
 		if (lastPage > 1) {
 			$('#leadlistpagination').append('<ul id="pageul" class="pagination"></ul>');
-			$('#pageul').append('<li class="page-item disabled"><button id="previousbutton" class="page-link">前へ</button></li>');
-			$('#previousbutton').on('click', { value: 1 }, chgPage);
+			$('#pageul').append('<li class="page-item ' + (curPage == 1 ? 'disabled' : '') +  '"><button type="button" id="previousbutton" class="page-link" onclick="search(1)">前へ</button></li>');
 			for (var i = 0; i < lastPage; i++) {
 				var buttonId = 'page' + (i + 1);
-				$('#pageul').append('<li class="page-item ' + (i == 0 ? 'active' : '') + '"><button id="' + buttonId + '" class="page-link">' + (i + 1) +'</button></li>');
-				$('#' + buttonId).on('click', { value: i + 1 }, chgPage);
+				$('#pageul').append('<li class="page-item ' + (i == (curPage - 1) ? 'active' : '') + '"><button type="button" id="' + buttonId + '" class="page-link" onclick="search(' + (i + 1) + ')">' + (i + 1) +'</button></li>');
 			}
-			$('#pageul').append('<li class="page-item"><button id="nextbutton" class="page-link">次へ</button></li>');
-			$('#nextbutton').on('click', { value: lastPage }, chgPage);
+			$('#pageul').append('<li class="page-item ' + (curPage == lastPage ? 'disabled' : '') + '"><button type="button" id="nextbutton" class="page-link" onclick="search(' + (curPage + 1) + ')">次へ</button></li>');
 		}
 
 		var count = 0;
