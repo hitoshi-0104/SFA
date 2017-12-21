@@ -63,6 +63,9 @@ function search(curPage) {
 			$('#pageul').append('<li class="page-item ' + (curPage == 1 ? 'disabled' : '') +  '"><button type="button" id="previousbutton" class="page-link" onclick="search('+ previousPage +')">前へ</button></li>');
 			var startIndex = curPage - 5 <= 0 ? 0 : curPage - 5;
 			var endIndex = lastPage < startIndex + 10 ? lastPage : startIndex + 10;
+			if (startIndex - endIndex < 10) {
+				startIndex = endIndex - 10;
+			}
 			for (var i = startIndex; i < endIndex; i++) {
 				var buttonId = 'page' + (i + 1);
 				$('#pageul').append('<li class="page-item ' + (i == (curPage - 1) ? 'active' : '') + '"><button type="button" id="' + buttonId + '" class="page-link" onclick="search(' + (i + 1) + ')">' + (i + 1) +'</button></li>');
