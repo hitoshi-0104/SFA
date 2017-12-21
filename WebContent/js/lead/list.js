@@ -59,7 +59,8 @@ function search(curPage) {
 		// ページネーションの設定
 		if (lastPage > 1) {
 			$('#leadlistpagination').append('<ul id="pageul" class="pagination"></ul>');
-			$('#pageul').append('<li class="page-item ' + (curPage == 1 ? 'disabled' : '') +  '"><button type="button" id="previousbutton" class="page-link" onclick="search(1)">前へ</button></li>');
+			var previousPage = curPage - 1 > 0 ? curPage - 1 : 1;
+			$('#pageul').append('<li class="page-item ' + (curPage == 1 ? 'disabled' : '') +  '"><button type="button" id="previousbutton" class="page-link" onclick="search('+ previousPage +')">前へ</button></li>');
 			var startIndex = curPage - 5 <= 0 ? 0 : curPage - 5;
 			var endIndex = lastPage < startIndex + 10 ? lastPage : startIndex + 10;
 			for (var i = startIndex; i < endIndex; i++) {
