@@ -12,11 +12,6 @@ $(function() {
 
 });
 
-// ページ変更処理
-function chgPage(e) {
-	search(e.data.value);
-}
-
 // 一覧検索処理
 function search(curPage) {
 
