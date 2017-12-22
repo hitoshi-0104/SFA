@@ -15,6 +15,7 @@ import exception.SalesManagementSystemException;
 import service.account.dto.SearchDto;
 import service.account.list.SearchService;
 import util.constant.ServletSettings;
+import util.converter.StringConverter;
 import util.message.MessageReader;
 import util.session.SessionInfo;
 
@@ -66,6 +67,8 @@ public class SearchAction extends ListAction {
 
 		// 取引先名
 		dto.setAccountName(request.getParameter(ReqParam.List.ACCOUNT_NAME));
+		// ページ
+		dto.setPage(StringConverter.toInteger(request.getParameter(ReqParam.List.PAGE)));
 
 		try {
 			// 検索

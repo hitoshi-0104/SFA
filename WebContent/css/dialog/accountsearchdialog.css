@@ -17,6 +17,10 @@
 	padding-left: 10px;
 }
 
+.pagination {
+	margin-top: 15px;
+}
+
 .accountselectcolumn {
 	width: 35px;
 }

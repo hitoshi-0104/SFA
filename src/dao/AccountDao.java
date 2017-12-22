@@ -8,7 +8,9 @@ import java.util.List;
 import dao.base.BaseDao;
 import dao.entity.AccountDialogListEntity;
 import dao.entity.AccountEntity;
+import util.constant.Limit;
 import util.converter.ObjectConverter;
+import util.validate.StringValidater;
 
 /**
  * 取引先テーブルDAO
@@ -16,8 +18,10 @@ import util.converter.ObjectConverter;
  */
 public class AccountDao extends BaseDao {
 
+	/** countForAccountDialogListメソッドで使用するSQL */
+	private static final String COUNT_FOR_ACCOUNT_DIALOG_LIST = "SELECT COUNT(*) FROM T_ACCOUNT T1 LEFT JOIN M_DIVISION T2 ON T1.DIVISION = T2.DIVISION_ID";
 	/** selectForAccountDialogListメソッドで使用するSQL */
-	private static final String SELECT_FOR_ACCOUNT_DIALOG_LIST = "SELECT T1.ACCOUNT_ID, T1.ACCOUNT_NAME, T2.NAME || T1.CITY || T1.TOWN AS ADDRESS FROM T_ACCOUNT T1 LEFT JOIN M_DIVISION T2 ON T1.DIVISION = T2.DIVISION_ID WHERE T1.ACCOUNT_NAME LIKE ?";
+	private static final String SELECT_FOR_ACCOUNT_DIALOG_LIST = "SELECT T1.ACCOUNT_ID, T1.ACCOUNT_NAME, T2.NAME || T1.CITY || T1.TOWN AS ADDRESS FROM T_ACCOUNT T1 LEFT JOIN M_DIVISION T2 ON T1.DIVISION = T2.DIVISION_ID";
 	/** selectMaxIdメソッドで使用するSQL */
 	private static final String SELECT_MAX_ID_SQL = "SELECT MAX(ACCOUNT_ID) AS MAX_ID FROM T_ACCOUNT";
 	/** insertメソッドで使用するSQL */
@@ -32,15 +36,31 @@ public class AccountDao extends BaseDao {
 	}
 
 	/**
+	 * 取引先検索一覧の件数取得
+	 * @param entity
+	 * @return
+	 * @throws Exception
+	 */
+	public Integer countForAccountDialogList(AccountEntity entity) throws Exception {
+
+		try (PreparedStatement statement = cp.getPreparedStatement(COUNT_FOR_ACCOUNT_DIALOG_LIST + createWhereForAccountList(entity, null, false))) {
+
+			ResultSet rs = statement.executeQuery();
+			Integer ret = null;
+			if (rs.next()) {
+				ret = ObjectConverter.intValue(rs.getObject(1));
+			}
+			return ret;
+		}
+	}
+
+	/**
 	 * 取引先検索一覧用の取得処理
 	 * @return
 	 */
-	public List<AccountDialogListEntity> selectForAccountDialogList(AccountEntity entity) throws Exception {
+	public List<AccountDialogListEntity> selectForAccountDialogList(AccountEntity entity, Integer offset) throws Exception {
 
-		try (PreparedStatement statement = cp.getPreparedStatement(SELECT_FOR_ACCOUNT_DIALOG_LIST)) {
-
-			// 取引先名
-			statement.setObject(1, entity.getAccountName() + "%");
+		try (PreparedStatement statement = cp.getPreparedStatement(SELECT_FOR_ACCOUNT_DIALOG_LIST + createWhereForAccountList(entity, offset, true))) {
 
 			ResultSet rs = statement.executeQuery();
 			List<AccountDialogListEntity> list = new ArrayList<AccountDialogListEntity>();
@@ -131,6 +151,40 @@ public class AccountDao extends BaseDao {
 			statement.executeUpdate();
 		}
 
+	}
+
+	/**
+	 * 見込み客一覧用のWhere句作成処理
+	 * @param entity
+	 * @param offset
+	 * @param isSelect
+	 * @return
+	 */
+	private String createWhereForAccountList(AccountEntity entity, Integer offset, boolean isSelect) {
+
+		StringBuilder sb = new StringBuilder();
+
+		// 取引先名
+		if (!StringValidater.isEmpty(entity.getAccountName())) {
+			sb.append(" T1.ACCOUNT_NAME LIKE '");
+			sb.append(entity.getAccountName());
+			sb.append("%' AND ");
+		}
+
+		if (sb.length() != 0) {
+			sb.insert(0, " WHERE ");
+			sb.delete(sb.length() - 5, sb.length() - 1);
+		}
+
+		sb.append(" ORDER BY T1.ACCOUNT_ID ");
+		if(isSelect) {
+			sb.append(" LIMIT ");
+			sb.append(Limit.LIST_ROW_LIMIT);
+			sb.append(" OFFSET ");
+			sb.append(offset);
+		}
+
+		return sb.toString();
 	}
 
 }

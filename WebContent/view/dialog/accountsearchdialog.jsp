@@ -36,6 +36,8 @@
 						<tbody id="accountdialoglistbody">
 						</tbody>
 					</table>
+					<nav id="accountdialoglistpagination">
+					</nav>
 					<input type="hidden" id="selectedaccountid" value="" />
 					<input type="hidden" id="selectedaccountname" value="" />
 				</div>

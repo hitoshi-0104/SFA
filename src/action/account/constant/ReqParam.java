@@ -13,6 +13,8 @@ public class ReqParam {
 	public class List {
 		/** 取引先名 */
 		public static final String ACCOUNT_NAME = "accountname";
+		/** ページ */
+		public static final String PAGE = "page";
 	}
 
 }
