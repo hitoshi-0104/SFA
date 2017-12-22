@@ -36,7 +36,7 @@ function search(curPage) {
 		}
 	}).done(function(result, textStatus, xhr) {
 
-		// 一覧を非表示
+		// 非表示
 		$('.leadlist').css('display', 'none');
 		$('#leadlistpagination').css('display', 'none');
 
@@ -49,7 +49,7 @@ function search(curPage) {
 		}
 
 		var cnt = Number(result[0].cnt);
-		var lastPage = Math.floor(cnt / Number(result[0].maxrow)) + 1;
+		var lastPage = cnt % Number(result[0].maxrow) == 0 ? Math.floor(cnt / Number(result[0].maxrow)) : Math.floor(cnt / Number(result[0].maxrow)) + 1;
 
 		// ページネーションの設定
 		if (lastPage > 1) {
@@ -58,8 +58,9 @@ function search(curPage) {
 			$('#pageul').append('<li class="page-item ' + (curPage == 1 ? 'disabled' : '') +  '"><button type="button" id="previousbutton" class="page-link" onclick="search('+ previousPage +')">前へ</button></li>');
 			var startIndex = curPage - 5 <= 0 ? 0 : curPage - 5;
 			var endIndex = lastPage < startIndex + 10 ? lastPage : startIndex + 10;
-			if (startIndex - endIndex < 10) {
-				startIndex = endIndex - 10;
+			startIndex = endIndex - 10;
+			if (startIndex < 0) {
+				startIndex = 0;
 			}
 			for (var i = startIndex; i < endIndex; i++) {
 				var buttonId = 'page' + (i + 1);
