@@ -166,6 +166,7 @@
 					<div class="buttonarea">
 						<button type="button" class="btn btn-info button3" data-toggle="modal" data-target="#selectdialog">取引の開始</button>
 						<button type="button" id="updatebutton" class="btn btn-primary button3">更新</button>
+						<button type="button" id="deletebutton" class="btn btn-danger button3">削除</button>
 						<button type="button" id="returnbutton" class="btn btn-default button3">戻る</button>
 					</div>
 				</div>

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.lead.update.AccountAction;
+import action.lead.update.DeleteAction;
 import action.lead.update.ShowAction;
 import action.lead.update.UpdateAction;
 import exception.SalesManagementApplicationException;
@@ -25,10 +26,10 @@ public class UpdateController {
 	private static final String SHOW_MATCH = "lead.update.show.action";
 	/** 取引の開始 */
 	private static final String ACCOUNT_MATCH = "lead.update.account.action";
-	/** 登録 */
+	/** 更新 */
 	private static final String UPDATE_MATCH = "lead.update.update.action";
-	/** 戻る */
-	private static final String RETURN_MATCH = "lead.update.return.action";
+	/** 削除 */
+	private static final String DELETE_MATCH = "lead.update.delete.action";
 
 	/**
 	 * ディスパッチ
@@ -62,6 +63,11 @@ public class UpdateController {
 			case UPDATE_MATCH:
 				UpdateAction ua = new UpdateAction(request, response);
 				dispatchUrl = ua.handle();
+				break;
+			// 削除
+			case DELETE_MATCH:
+				DeleteAction da = new DeleteAction(request, response);
+				dispatchUrl = da.handle();
 				break;
 			}
 		} finally {

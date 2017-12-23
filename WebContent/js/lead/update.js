@@ -13,6 +13,11 @@ $(function() {
 		submitAction('#leadform', '/SFA/lead.update.update.action');
 	});
 
+	// 削除ボタン押下
+	$('#deletebutton').click(function() {
+		submitAction('#leadform', '/SFA/lead.update.delete.action');
+	});
+
 	// 戻るボタン押下
 	$('#returnbutton').click(function() {
 		submitAction('#leadform', '/SFA/lead.list.show.action');
