@@ -38,6 +38,8 @@ public class CreateBean extends BaseBean {
 	private String stockCode;
 	/** 郵便番号 */
 	private String postalCode;
+	/** 従業員数 */
+	private Integer employee;
 	/** 都道府県 */
 	private String division;
 	/** 市区郡 */
@@ -47,8 +49,10 @@ public class CreateBean extends BaseBean {
 	/** その他 */
 	private String note;
 
+	/** 種別リスト */
+	private Map<String, String> typeMap;
 	/** 評価リスト */
-	private Map<String, String> estimationMap;
+	private Map<String, String> evaluationMap;
 	/** 業種リスト */
 	private Map<String, String> industryMap;
 	/** 都道府県リスト */
@@ -223,6 +227,18 @@ public class CreateBean extends BaseBean {
 		this.postalCode = postalCode;
 	}
 	/**
+	 * @return employee
+	 */
+	public Integer getEmployee() {
+		return employee;
+	}
+	/**
+	 * @param employee セットする employee
+	 */
+	public void setEmployee(Integer employee) {
+		this.employee = employee;
+	}
+	/**
 	 * @return division
 	 */
 	public String getDivision() {
@@ -271,16 +287,28 @@ public class CreateBean extends BaseBean {
 		this.note = note;
 	}
 	/**
+	 * @return typeMap
+	 */
+	public Map<String, String> getTypeMap() {
+		return typeMap;
+	}
+	/**
+	 * @param typeMap セットする typeMap
+	 */
+	public void setTypeMap(Map<String, String> typeMap) {
+		this.typeMap = typeMap;
+	}
+	/**
 	 * @return estimationMap
 	 */
-	public Map<String, String> getEstimationMap() {
-		return estimationMap;
+	public Map<String, String> getEvaluationMap() {
+		return evaluationMap;
 	}
 	/**
 	 * @param estimationMap セットする estimationMap
 	 */
-	public void setEstimationMap(Map<String, String> estimationMap) {
-		this.estimationMap = estimationMap;
+	public void setEvaluationMap(Map<String, String> evaluationMap) {
+		this.evaluationMap = evaluationMap;
 	}
 	/**
 	 * @return industryMap
