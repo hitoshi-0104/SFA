@@ -7,14 +7,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.account.list.SearchAction;
-import controller.base.BaseController;
 import exception.SalesManagementApplicationException;
 import exception.SalesManagementRuntimeException;
 import exception.SalesManagementSystemException;
 import util.constant.JspPath;
 import util.constant.ServletSettings;
 
-public class ListController extends BaseController {
+public class ListController {
 
 	/** 検索ダイアログ */
 	private static final String DIALOG_SEARCH_MATCH = "account.dialog.search.rest";
