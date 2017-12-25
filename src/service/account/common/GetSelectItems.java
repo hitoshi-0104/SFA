@@ -1,4 +1,4 @@
-package service.account.create;
+package service.account.common;
 
 import java.sql.Connection;
 import java.util.HashMap;
