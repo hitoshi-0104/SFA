@@ -20,8 +20,6 @@ public class CreateBean extends BaseBean {
 	private String accountNo;
 	/** 取引先部門 */
 	private String department;
-	/** 種別 */
-	private String type;
 	/** 業種 */
 	private String industry;
 	/** 年間売上 */
@@ -49,8 +47,6 @@ public class CreateBean extends BaseBean {
 	/** その他 */
 	private String note;
 
-	/** 種別リスト */
-	private Map<String, String> typeMap;
 	/** 評価リスト */
 	private Map<String, String> evaluationMap;
 	/** 業種リスト */
@@ -117,18 +113,6 @@ public class CreateBean extends BaseBean {
 	 */
 	public void setDepartment(String department) {
 		this.department = department;
-	}
-	/**
-	 * @return type
-	 */
-	public String getType() {
-		return type;
-	}
-	/**
-	 * @param type セットする type
-	 */
-	public void setType(String type) {
-		this.type = type;
 	}
 	/**
 	 * @return industry
@@ -285,18 +269,6 @@ public class CreateBean extends BaseBean {
 	 */
 	public void setNote(String note) {
 		this.note = note;
-	}
-	/**
-	 * @return typeMap
-	 */
-	public Map<String, String> getTypeMap() {
-		return typeMap;
-	}
-	/**
-	 * @param typeMap セットする typeMap
-	 */
-	public void setTypeMap(Map<String, String> typeMap) {
-		this.typeMap = typeMap;
 	}
 	/**
 	 * @return estimationMap
