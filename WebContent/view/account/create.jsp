@@ -33,7 +33,7 @@
 
 		<!-- コンテンツエリア -->
 		<div class="contentsarea">
-			<form id="leadform" method="POST">
+			<form id="accountform" method="POST">
 				<!-- 見込み客情報のコンテンツ -->
 				<div class="subtitle">
 					<label class="subtitlelabel">取引先情報</label>
