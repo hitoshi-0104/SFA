@@ -13,7 +13,7 @@ import exception.SalesManagementRuntimeException;
 import exception.SalesManagementSystemException;
 import service.account.common.AccountValidater;
 import service.account.create.RegistService;
-import service.account.dto.CreateDto;
+import service.account.dto.AccountDto;
 import util.constant.JspPath;
 import util.converter.StringConverter;
 import util.message.MessageReader;
@@ -68,7 +68,7 @@ public class RegistAction extends CreateAction {
 		RegistService service = new RegistService();
 
     	// リクエストパラメータの取得
-    	CreateDto dto = new CreateDto();
+    	AccountDto dto = new AccountDto();
 
     	// 取引先名
     	dto.setAccountName(request.getParameter(ReqParam.Create.ACCOUNT_NAME));

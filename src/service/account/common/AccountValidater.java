@@ -3,7 +3,7 @@ package service.account.common;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import service.account.dto.CreateDto;
+import service.account.dto.AccountDto;
 
 /**
  * 取引先のバリデータクラス
@@ -16,7 +16,7 @@ public class AccountValidater {
 	 * @param dto
 	 * @return
 	 */
-	public Map<String, String> validate(CreateDto dto, String displayId) {
+	public Map<String, String> validate(AccountDto dto, String displayId) {
 
 		Map<String, String> messageMap = new LinkedHashMap<String, String>();
 		String id = "E" + displayId;

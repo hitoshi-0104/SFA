@@ -6,10 +6,10 @@ import java.util.Map;
  * 取引先新規作成のDTO
  *
  */
-public class CreateDto {
+public class AccountDto {
 
 	/** ID */
-	private String id;
+	private Integer id;
 	/** 取引先名 */
 	private String accountName;
 	/** 親取引先 */
@@ -55,13 +55,13 @@ public class CreateDto {
 	/**
 	 * @return id
 	 */
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 	/**
 	 * @param id セットする id
 	 */
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	/**

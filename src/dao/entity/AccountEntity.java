@@ -22,6 +22,8 @@ public class AccountEntity extends SingleTableBaseEntity {
 	private String industry;
 	/** 年間売上 */
 	private Long amount;
+	/** 従業員数 */
+	private Integer employee;
 	/** 評価 */
 	private String evaluation;
 	/** 電話 */
@@ -126,6 +128,18 @@ public class AccountEntity extends SingleTableBaseEntity {
 	 */
 	public void setAmount(Long amount) {
 		this.amount = amount;
+	}
+	/**
+	 * @return employee
+	 */
+	public Integer getEmployee() {
+		return employee;
+	}
+	/**
+	 * @param employee セットする employee
+	 */
+	public void setEmployee(Integer employee) {
+		this.employee = employee;
 	}
 	/**
 	 * @return evaluation
