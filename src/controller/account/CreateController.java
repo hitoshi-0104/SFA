@@ -61,11 +61,6 @@ public class CreateController {
 //				RegistAction rgitcon = new RegistAction(request, response);
 //				dispatchUrl = rgitcon.handle();
 				break;
-			// 戻る
-			case RETURN_MATCH:
-//				ReturnAction retcon = new ReturnAction(request, response);
-//				dispatchUrl = retcon.handle();
-				break;
 			}
 		} finally {
 			request.setAttribute(ServletSettings.URL_ATTRIBUTE_NAME, dispatchUrl);

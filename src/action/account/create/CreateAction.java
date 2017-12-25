@@ -4,10 +4,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.account.bean.CreateBean;
+import action.account.constant.ReqParam;
 import action.base.BaseAction;
 import exception.SalesManagementSystemException;
-import service.lead.common.GetSelectItems;
+import service.account.common.GetSelectItems;
 import service.lead.dto.SelectItemsDto;
+import util.converter.StringConverter;
 
 /**
  * 取引先新規登録のアクションクラス
@@ -57,6 +59,52 @@ abstract class CreateAction extends BaseAction {
 	public String getDisplayId() {
 		return "011";
 	}
+
+	/**
+     * リクエストパラメータからCreateBeanの作成
+     * @param request
+     * @return
+     */
+    protected void setParamsToCreateBean() {
+
+    	CreateBean bean = getCreateBeanInstance();
+
+    	// 取引先名
+    	bean.setAccountName(request.getParameter(ReqParam.Create.ACCOUNT_NAME));
+    	// 親取引先
+    	bean.setParent(StringConverter.toInteger(request.getParameter(ReqParam.Create.PARENT)));
+    	// 取引先番号
+    	bean.setAccountNo(request.getParameter(ReqParam.Create.ACCOUNT_NO));
+    	// 取引先部門
+    	bean.setDepartment(request.getParameter(ReqParam.Create.DEPARTMENT));
+    	// 業種
+    	bean.setIndustry(request.getParameter(ReqParam.Create.INDUSTRY));
+    	// 評価
+    	bean.setEvaluation(request.getParameter(ReqParam.Create.EVALUATION));
+    	// 電話
+    	bean.setPhone(request.getParameter(ReqParam.Create.PHONE));
+    	// FAX
+    	bean.setFax(request.getParameter(ReqParam.Create.FAX));
+    	// URL
+    	bean.setUrl(request.getParameter(ReqParam.Create.URL));
+    	// 年間売上
+    	bean.setAmount(StringConverter.toLong(request.getParameter(ReqParam.Create.AMOUNT)));
+    	// 従業員数
+    	bean.setEmployee(StringConverter.toInteger(request.getParameter(ReqParam.Create.EMPLOYEE)));
+    	// 郵便番号
+    	bean.setPostalCode(request.getParameter(ReqParam.Create.POSTAL_CODE));
+    	// 都道府県
+    	bean.setDivision(request.getParameter(ReqParam.Create.DIVISION));
+    	// 市区郡
+    	bean.setCity(request.getParameter(ReqParam.Create.CITY));
+    	// 町名・番地・建物名
+    	bean.setTown(request.getParameter(ReqParam.Create.TOWN));
+    	// その他
+    	bean.setNote(request.getParameter(ReqParam.Create.NOTE));
+
+    	request.setAttribute(CREATE_BEAN, bean);
+
+    }
 
 	/**
      * CreateBeanインスタンスの生成
