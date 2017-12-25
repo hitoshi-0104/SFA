@@ -59,10 +59,10 @@
 						<input class="text3" type="text" name="department" value="<%=createBean.getDepartment() == null ? "" : createBean.getDepartment() %>" />
 					</div>
 					<div class="content-item">
-						<label class="caption">種別：</label>
-						<select class="select1" name="source">
-							<% for(Map.Entry<String, String> m : createBean.getTypeMap().entrySet()) { %>
-							<option value="<%=m.getKey() %>" <%=m.getKey().equals(createBean.getType()) ? "selected" : "" %>><%=m.getValue() %></option>
+						<label class="caption">業種：</label>
+						<select class="select3" name="industry">
+							<% for(Map.Entry<String, String> m : createBean.getIndustryMap().entrySet()) { %>
+							<option value="<%=m.getKey() %>" <%=m.getKey().equals(createBean.getIndustry()) ? "selected" : "" %>><%=m.getValue() %></option>
 							<% } %>
 						</select>
 					</div>
@@ -90,15 +90,7 @@
 					</div>
 					<div class="content-item">
 						<label class="caption">証券コード：</label>
-						<input class="text4" type="text" name="stockcode" value="<%=createBean.getStockCode() == null ? "" : createBean.getStockCode() %>" />
-					</div>
-					<div class="content-item">
-						<label class="caption">業種：</label>
-						<select class="select3" name="industry">
-							<% for(Map.Entry<String, String> m : createBean.getIndustryMap().entrySet()) { %>
-							<option value="<%=m.getKey() %>" <%=m.getKey().equals(createBean.getIndustry()) ? "selected" : "" %>><%=m.getValue() %></option>
-							<% } %>
-						</select>
+						<input class="text1" type="text" name="stockcode" value="<%=createBean.getStockCode() == null ? "" : createBean.getStockCode() %>" />
 					</div>
 					<div class="content-item">
 						<label class="caption">年間売上：</label>

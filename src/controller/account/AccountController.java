@@ -16,6 +16,8 @@ import exception.SalesManagementSystemException;
  */
 public class AccountController {
 
+	/** 取引先新規登録の初期表示 */
+	private static final String CREATE_MATCH = "account.create.*";
 	/** 取引先ダイアログ検索の正規表現 */
 	private static final String DIALOG_SEARCH_MATCH = "account.dialog.search.*";
 
@@ -34,7 +36,11 @@ public class AccountController {
 	public void dispatch(String action, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException,
 		SalesManagementApplicationException, SalesManagementSystemException, SalesManagementRuntimeException {
 
-		if (action.matches(DIALOG_SEARCH_MATCH)) {
+		if (action.matches(CREATE_MATCH)) {
+			// 取引先新規登録
+			CreateController dispathcer = new CreateController();
+			dispathcer.dispatch(action, request, response);
+		} else if (action.matches(DIALOG_SEARCH_MATCH)) {
 			// 取引先検索
 			ListController dispatcher = new ListController();
 			dispatcher.dispatch(action, request, response);
