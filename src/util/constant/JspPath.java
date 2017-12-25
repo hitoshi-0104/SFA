@@ -23,4 +23,19 @@ public class JspPath {
 		public static final String LIST_ACTION = "/lead.list.show.action";
 	}
 
+	/**
+	 * 取引先
+	 *
+	 */
+	public class Account {
+		/** 取引先新規登録 */
+		public static final String CREATE = "/view/account/create.jsp";
+		/** 取引先更新 */
+		public static final String UPDATE = "/view/account/update.jsp";
+		/** 取引先削除 */
+		public static final String DELETE = "/view/account/delete.jsp";
+		/** 取引先一覧 */
+		public static final String LIST = "/view/account/list.jsp";
+	}
+
 }
