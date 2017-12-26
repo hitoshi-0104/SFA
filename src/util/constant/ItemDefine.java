@@ -43,6 +43,14 @@ public class ItemDefine {
 		public static final String TOWN = "町名・番地・建物";
 		/** その他 */
 		public static final String NOTE = "その他";
+		/** 取引先名 */
+		public static final String ACCOUNT_NAME = "取引先名";
+		/** 取引先番号 */
+		public static final String ACCOUNT_NO = "取引先番号";
+		/** 取引先部門 */
+		public static final String DEPARTMENT = "取引先部門";
+		/** 証券コード */
+		public static final String STOCK_CODE = "証券コード";
 	}
 
 	/**
@@ -80,6 +88,14 @@ public class ItemDefine {
 		public static final int TOWN = 500;
 		/** その他 */
 		public static final int NOTE = 1000;
+		/** 取引先名 */
+		public static final int ACCOUNT_NAME = 50;
+		/** 取引先番号 */
+		public static final int ACCOUNT_NO = 50;
+		/** 取引先部門 */
+		public static final int DEPARTMENT = 50;
+		/** 証券コード */
+		public static final int STOCK_CODE = 4;
 	}
 
 }
