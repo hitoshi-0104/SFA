@@ -40,7 +40,7 @@ public class RegistAction extends CreateAction {
 	 * ハンドル
 	 */
 	@Override
-	protected String handle() throws ServletException, IOException, SalesManagementApplicationException,
+	public String handle() throws ServletException, IOException, SalesManagementApplicationException,
 			SalesManagementSystemException, SalesManagementRuntimeException {
 
 		// リクエストパラメータからCreateBeanの作成
