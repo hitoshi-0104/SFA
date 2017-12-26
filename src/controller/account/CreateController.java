@@ -6,6 +6,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import action.account.create.ContinuousAction;
+import action.account.create.RegistAction;
 import action.account.create.ShowAction;
 import exception.SalesManagementApplicationException;
 import exception.SalesManagementRuntimeException;
@@ -53,13 +55,13 @@ public class CreateController {
 				break;
 			// 連続登録
 			case CONTINUOUS_MATCH:
-//				ContinuousAction ccon = new ContinuousAction(request, response);
-//				dispatchUrl = ccon.handle();
+				ContinuousAction ccon = new ContinuousAction(request, response);
+				dispatchUrl = ccon.handle();
 				break;
 			// 登録
 			case REGIST_MATCH:
-//				RegistAction rgitcon = new RegistAction(request, response);
-//				dispatchUrl = rgitcon.handle();
+				RegistAction rgitcon = new RegistAction(request, response);
+				dispatchUrl = rgitcon.handle();
 				break;
 			}
 		} finally {
