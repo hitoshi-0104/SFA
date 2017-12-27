@@ -45,7 +45,7 @@
 					</div>
 					<div class="content-item">
 						<label class="caption">取引先名：</label>
-						<input class="text2" type="text" name="accountname" value="<%=createBean.getAccountName() == null ? "" : createBean.getAccountName() %>" />
+						<input class="text4" type="text" name="accountname" value="<%=createBean.getAccountName() == null ? "" : createBean.getAccountName() %>" />
 					</div>
 					<div class="content-item">
 						<label class="caption">親取引先：</label>
@@ -56,7 +56,7 @@
 					</div>
 					<div class="content-item">
 						<label class="caption">取引先番号：</label>
-						<input class="text4" type="text" name="accountno" value="<%=createBean.getAccountNo() == null ? "" : createBean.getAccountNo() %>" />
+						<input class="text3" type="text" name="accountno" value="<%=createBean.getAccountNo() == null ? "" : createBean.getAccountNo() %>" />
 					</div>
 					<div class="content-item">
 						<label class="caption">取引先部門：</label>
