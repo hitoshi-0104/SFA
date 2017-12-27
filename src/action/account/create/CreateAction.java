@@ -71,8 +71,10 @@ abstract class CreateAction extends BaseAction {
 
     	// 取引先名
     	bean.setAccountName(request.getParameter(ReqParam.Create.ACCOUNT_NAME));
+    	// 親取引先ID
+    	bean.setParentId(StringConverter.toInteger(request.getParameter(ReqParam.Create.PARENT_ID)));
     	// 親取引先
-    	bean.setParent(StringConverter.toInteger(request.getParameter(ReqParam.Create.PARENT)));
+    	bean.setParent(request.getParameter(ReqParam.Create.PARENT));
     	// 取引先番号
     	bean.setAccountNo(request.getParameter(ReqParam.Create.ACCOUNT_NO));
     	// 取引先部門

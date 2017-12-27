@@ -13,6 +13,8 @@ public class ReqParam {
 	public class Create {
 		/** 取引先 */
 		public static final String ACCOUNT_NAME = "accountname";
+		/** 親取引先ID */
+		public static final String PARENT_ID = "parentid";
 		/** 親取引先 */
 		public static final String PARENT = "parent";
 		/** 取引先番号 */

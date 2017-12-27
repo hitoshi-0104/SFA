@@ -18,4 +18,16 @@ $(function() {
 		submitAction('#accountform', '/SFA/account.create.return.action');
 	});
 
+	// 親取引先の検索ボタン押下処理
+	$('#parentsearchbutton').click(function() {
+		$('#retaccountid').val('#parentid');
+		$('#retaccountname').val('#parent');
+	});
+
+	// 親取引先のクリアボタン押下処理
+	$('#parentclearbutton').click(function() {
+		$('#parentid').val('');
+		$('#parent').val('');
+	});
+
 });

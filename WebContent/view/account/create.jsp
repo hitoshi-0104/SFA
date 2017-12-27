@@ -10,6 +10,7 @@
 
 		<link rel="stylesheet" type="text/css" href="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/css/common/bootstrap.min.css"></link>
 		<link rel="stylesheet" type="text/css" href="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/css/common/common.css"></link>
+		<link rel="stylesheet" type="text/css" href="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/css/account/create.css"></link>
 
 		<script type="text/javascript" src="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/js/common/jquery-3.2.1.min.js"></script>
 		<script type="text/javascript" src="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/js/common/popper.js"></script>
@@ -48,7 +49,10 @@
 					</div>
 					<div class="content-item">
 						<label class="caption">親取引先：</label>
-						<input class="text2" type="text" name="parent" value="<%=createBean.getParent() == null ? "" : createBean.getParent() %>" />
+						<input class="text2" type="text" id="parent" name="parent" value="<%=createBean.getParent() == null ? "" : createBean.getParent() %>" readonly="readonly" />
+						<input class="text2" type="hidden" id="parentid" name="parentid" value="<%=createBean.getParentId() == null ? "" : createBean.getParentId() %>" />
+						<button type="button" id="parentsearchbutton" class="btn btn-primary btn-sm button1" data-toggle="modal" data-target="#accountdialog">検索</button>
+						<button type="button" id="parentclearbutton" class="btn btn-default btn-sm button2">クリア</button>
 					</div>
 					<div class="content-item">
 						<label class="caption">取引先番号：</label>
@@ -145,6 +149,7 @@
 						<button type="button" id="returnbutton" class="btn btn-default button3">戻る</button>
 					</div>
 				</div>
+				<jsp:include page="../dialog/accountsearchdialog.jsp" />
 			</form>
 		</div>
 

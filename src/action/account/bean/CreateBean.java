@@ -14,8 +14,10 @@ public class CreateBean extends BaseBean {
 	private String id;
 	/** 取引先名 */
 	private String accountName;
+	/** 親取引先ID */
+	private Integer parentId;
 	/** 親取引先 */
-	private Integer parent;
+	private String parent;
 	/** 取引先番号 */
 	private String accountNo;
 	/** 取引先部門 */
@@ -79,15 +81,27 @@ public class CreateBean extends BaseBean {
 		this.accountName = accountName;
 	}
 	/**
+	 * @return parentId
+	 */
+	public Integer getParentId() {
+		return parentId;
+	}
+	/**
+	 * @param parentId セットする parentId
+	 */
+	public void setParentId(Integer parentId) {
+		this.parentId = parentId;
+	}
+	/**
 	 * @return parent
 	 */
-	public Integer getParent() {
+	public String getParent() {
 		return parent;
 	}
 	/**
 	 * @param parent セットする parent
 	 */
-	public void setParent(Integer parent) {
+	public void setParent(String parent) {
 		this.parent = parent;
 	}
 	/**

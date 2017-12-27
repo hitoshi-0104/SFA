@@ -73,7 +73,7 @@ public class RegistAction extends CreateAction {
     	// 取引先名
     	dto.setAccountName(request.getParameter(ReqParam.Create.ACCOUNT_NAME));
     	// 親取引先
-    	dto.setParent(StringConverter.toInteger(request.getParameter(ReqParam.Create.PARENT)));
+    	dto.setParent(StringConverter.toInteger(request.getParameter(ReqParam.Create.PARENT_ID)));
     	// 取引先番号
     	dto.setAccountNo(request.getParameter(ReqParam.Create.ACCOUNT_NO));
     	// 取引先部門
