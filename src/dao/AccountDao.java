@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dao.base.BaseDao;
-import dao.entity.AccountDialogListEntity;
 import dao.entity.AccountEntity;
+import dao.entity.AccountListEntity;
 import util.constant.Limit;
 import util.converter.ObjectConverter;
 import util.validate.StringValidater;
@@ -21,7 +21,7 @@ public class AccountDao extends BaseDao {
 	/** countForAccountDialogListメソッドで使用するSQL */
 	private static final String COUNT_FOR_ACCOUNT_DIALOG_LIST = "SELECT COUNT(*) FROM T_ACCOUNT T1 LEFT JOIN M_DIVISION T2 ON T1.DIVISION = T2.DIVISION_ID";
 	/** selectForAccountDialogListメソッドで使用するSQL */
-	private static final String SELECT_FOR_ACCOUNT_DIALOG_LIST = "SELECT T1.ACCOUNT_ID, T1.ACCOUNT_NAME, T2.NAME || T1.CITY || T1.TOWN AS ADDRESS FROM T_ACCOUNT T1 LEFT JOIN M_DIVISION T2 ON T1.DIVISION = T2.DIVISION_ID";
+	private static final String SELECT_FOR_ACCOUNT_DIALOG_LIST = "SELECT T1.ACCOUNT_ID, T1.ACCOUNT_NAME, T1.PHONE, T2.NAME || T1.CITY || T1.TOWN AS ADDRESS FROM T_ACCOUNT T1 LEFT JOIN M_DIVISION T2 ON T1.DIVISION = T2.DIVISION_ID";
 	/** selectMaxIdメソッドで使用するSQL */
 	private static final String SELECT_MAX_ID_SQL = "SELECT MAX(ACCOUNT_ID) AS MAX_ID FROM T_ACCOUNT";
 	/** insertメソッドで使用するSQL */
@@ -41,7 +41,7 @@ public class AccountDao extends BaseDao {
 	 * @return
 	 * @throws Exception
 	 */
-	public Integer countForAccountDialogList(AccountEntity entity) throws Exception {
+	public Integer countForAccountList(AccountEntity entity) throws Exception {
 
 		try (PreparedStatement statement = cp.getPreparedStatement(COUNT_FOR_ACCOUNT_DIALOG_LIST + createWhereForAccountList(entity, null, false))) {
 
@@ -58,18 +58,20 @@ public class AccountDao extends BaseDao {
 	 * 取引先検索一覧用の取得処理
 	 * @return
 	 */
-	public List<AccountDialogListEntity> selectForAccountDialogList(AccountEntity entity, Integer offset) throws Exception {
+	public List<AccountListEntity> selectForAccountList(AccountEntity entity, Integer offset) throws Exception {
 
 		try (PreparedStatement statement = cp.getPreparedStatement(SELECT_FOR_ACCOUNT_DIALOG_LIST + createWhereForAccountList(entity, offset, true))) {
 
 			ResultSet rs = statement.executeQuery();
-			List<AccountDialogListEntity> list = new ArrayList<AccountDialogListEntity>();
+			List<AccountListEntity> list = new ArrayList<AccountListEntity>();
 			while(rs.next()) {
-				AccountDialogListEntity en = new AccountDialogListEntity();
+				AccountListEntity en = new AccountListEntity();
 				// ID
 				en.setId(ObjectConverter.intValue(rs.getObject("ACCOUNT_ID")));
 				// 取引先名
 				en.setAccountName(ObjectConverter.stringValue(rs.getObject("ACCOUNT_NAME")));
+				// 電話
+				en.setPhone(ObjectConverter.stringValue(rs.getObject("PHONE")));
 				// 住所
 				en.setAddress(ObjectConverter.stringValue(rs.getObject("ADDRESS")));
 

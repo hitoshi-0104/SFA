@@ -8,8 +8,8 @@ import java.util.Map;
 
 import dao.AccountDao;
 import dao.ConnectionProvider;
-import dao.entity.AccountDialogListEntity;
 import dao.entity.AccountEntity;
+import dao.entity.AccountListEntity;
 import service.account.dto.SearchDto;
 import service.base.BaseSearchService;
 import util.constant.Limit;
@@ -35,10 +35,10 @@ public class SearchService extends BaseSearchService {
 		ConnectionProvider cp = ConnectionProvider.getInstance();
 		AccountDao dao = new AccountDao(cp);
 		Integer cnt = null;
-		List<AccountDialogListEntity> list = null;
+		List<AccountListEntity> list = null;
 		try (Connection conn = cp.getConnection()) {
-			cnt = dao.countForAccountDialogList(entity);
-			list = dao.selectForAccountDialogList(entity, getOffSet(dto.getPage()));
+			cnt = dao.countForAccountList(entity);
+			list = dao.selectForAccountList(entity, getOffSet(dto.getPage()));
 		}
 
 		// エンティティからDtoに変換
@@ -69,7 +69,7 @@ public class SearchService extends BaseSearchService {
 	 * @param list
 	 * @return
 	 */
-	private String createAccountDialogListEntityList2Json(Integer cnt, List<AccountDialogListEntity> list) {
+	private String createAccountDialogListEntityList2Json(Integer cnt, List<AccountListEntity> list) {
 
 		List<Map<String, Object>> ret = new ArrayList<Map<String, Object>>();
 
@@ -78,7 +78,7 @@ public class SearchService extends BaseSearchService {
 		retMap.put("maxrow", Limit.LIST_ROW_LIMIT);
 
 		List<Map<String, Object>> data = new ArrayList<Map<String, Object>>();
-		for (AccountDialogListEntity en : list) {
+		for (AccountListEntity en : list) {
 
 			Map<String, Object> m = new LinkedHashMap<String, Object>();
 
@@ -86,6 +86,8 @@ public class SearchService extends BaseSearchService {
 			m.put("AccountId", en.getId().toString());
 			// 取引先名
 			m.put("AccountName", en.getAccountName());
+			// 電話
+			m.put("Phone", en.getPhone());
 			// 住所
 			m.put("Address", en.getAddress());
 

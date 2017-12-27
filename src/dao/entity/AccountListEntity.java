@@ -6,14 +6,14 @@ import dao.entity.base.BaseEntity;
  * 取引先ダイアログ一覧用のエンティティクラス
  *
  */
-public class AccountDialogListEntity extends BaseEntity {
+public class AccountListEntity extends BaseEntity {
 
 	/** ID */
 	private Integer id;
 	/** 取引先名 */
 	private String accountName;
-	/** 業種名 */
-	private String industry;
+	/** 電話 */
+	private String phone;
 	/** 住所 */
 	private String address;
 
@@ -42,16 +42,16 @@ public class AccountDialogListEntity extends BaseEntity {
 		this.accountName = accountName;
 	}
 	/**
-	 * @return industry
+	 * @return phone
 	 */
-	public String getIndustry() {
-		return industry;
+	public String getPhone() {
+		return phone;
 	}
 	/**
-	 * @param industry セットする industry
+	 * @param phone セットする phone
 	 */
-	public void setIndustry(String industry) {
-		this.industry = industry;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 	/**
 	 * @return address

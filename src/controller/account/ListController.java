@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.account.list.SearchAction;
+import action.account.list.ShowAction;
 import exception.SalesManagementApplicationException;
 import exception.SalesManagementRuntimeException;
 import exception.SalesManagementSystemException;
@@ -15,6 +16,10 @@ import util.constant.ServletSettings;
 
 public class ListController {
 
+	/** 初期表示 */
+	private static final String SHOW_MATCH = "account.list.show.action";
+	/** 一覧検索 */
+	private static final String LIST_MATCH = "account.list.search.rest";
 	/** 検索ダイアログ */
 	private static final String DIALOG_SEARCH_MATCH = "account.dialog.search.rest";
 
@@ -35,6 +40,13 @@ public class ListController {
 		String dispatchUrl = JspPath.Lead.LIST;
 		try {
 			switch(action) {
+			// 初期表示
+			case SHOW_MATCH:
+				ShowAction sa = new ShowAction(request, response);
+				dispatchUrl = sa.handle();
+				break;
+			// 検索
+			case LIST_MATCH:
 			// 検索ダイアログ
 			case DIALOG_SEARCH_MATCH:
 				SearchAction secon = new SearchAction(request, response);

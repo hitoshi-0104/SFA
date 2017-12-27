@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+/* 一覧 */
+#accountlist {
+	display: none;
+}
+#accountlistheader {
+	background-color: #4169e1;
+	color: #FFFFFF;
+}
+#accountlistheader th,
+#accountlistbody td {
+	border: solid 1px #000000;
+	padding-left: 10px;
+}
+/* ページネーション */
+#accountlistpagination {
+	display: none;
+}
+.pagination {
+	margin-top: 15px;
+}
+/* ID */
+.idcolumn {
+	width: 150px;
+}
+/* 取引先名 */
+.accountnamecolumn {
+	width: 450px
+}
+/* 電話 */
+.phonecolumn {
+	width: 180px
+}
+/* 住所 */
+.addresscolumn {
+	width: 700px
+}
