@@ -83,6 +83,7 @@
 				<div class="onecolumn">
 					<div class="buttonarea">
 						<button type="button" id="searchbutton" class="btn btn-primary button3">検索</button>
+						<button type="button" id="returnbutton" class="btn btn-default button3">戻る</button>
 					</div>
 				</div>
 				<!-- 一覧 -->
