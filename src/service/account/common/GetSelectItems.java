@@ -8,9 +8,9 @@ import dao.ClassDao;
 import dao.ConnectionProvider;
 import dao.DivisionDao;
 import exception.SalesManagementSystemException;
+import service.account.dto.SelectItemsDto;
 import service.common.GetClassItems;
 import service.common.GetDivision;
-import service.lead.dto.SelectItemsDto;
 import util.constant.ClassCode1;
 import util.message.MessageReader;
 
@@ -33,9 +33,6 @@ public class GetSelectItems {
 
 		try (Connection conn = cp.getConnection()) {
 			ClassDao dao = new ClassDao(cp);
-
-			// 状況の取得
-			dto.setStatusMap(GetClassItems.get(ClassCode1.LEAD_STATUS, dao));
 
 			// 評価の取得
 			dto.setEstimationMap(GetClassItems.get(ClassCode1.ESTIMATION, dao));

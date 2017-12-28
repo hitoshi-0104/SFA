@@ -8,7 +8,7 @@ import action.account.constant.ReqParam;
 import action.base.BaseAction;
 import exception.SalesManagementSystemException;
 import service.account.common.GetSelectItems;
-import service.lead.dto.SelectItemsDto;
+import service.account.dto.SelectItemsDto;
 import util.converter.StringConverter;
 
 /**
