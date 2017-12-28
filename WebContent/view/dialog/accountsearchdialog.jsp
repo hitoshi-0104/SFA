@@ -19,7 +19,7 @@
 				<div class="onecolumn">
 					<div class="modal-item">
 						<label class="caption">取引先名：</label>
-						<input class="text3" type="text" name="accountname" value="" />
+						<input class="text3" type="text" name="accountdialogaccountname" value="" />
 						<button type="button" id="accountdialogsearchbutton" class="btn btn-primary btn-sm button1">検索</button>
 					</div>
 				</div>
