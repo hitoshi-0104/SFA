@@ -36,6 +36,8 @@ public class JspPath {
 		public static final String DELETE = "/view/account/delete.jsp";
 		/** 取引先一覧 */
 		public static final String LIST = "/view/account/list.jsp";
+		/** 見込み客一覧アクション */
+		public static final String LIST_ACTION = "/account.list.show.action";
 	}
 
 }

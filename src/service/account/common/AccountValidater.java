@@ -55,7 +55,7 @@ public class AccountValidater {
 				new ValidationType[] { ValidationType.MAXLENGTH, ValidationType.NUMERICONLY },
 				messageMap);
 		// URL：最大桁数チェック・URLフォーマットチェック
-		Validater.validate(dto.getFax(), id + "007", ItemDefine.Name.URL,
+		Validater.validate(dto.getUrl(), id + "007", ItemDefine.Name.URL,
 				null, ItemDefine.Digit.URL,
 				new ValidationType[] { ValidationType.MAXLENGTH, ValidationType.URL_FORMAT },
 				messageMap);
@@ -70,7 +70,7 @@ public class AccountValidater {
 				new ValidationType[] { ValidationType.MAXLENGTH, ValidationType.NUMERICONLY },
 				messageMap);
 		// 郵便番号：最大桁数・数値のみチェック
-		Validater.validate(dto.getStockCode(), id + "010", ItemDefine.Name.POSTAL_CODE,
+		Validater.validate(dto.getPostalCode(), id + "010", ItemDefine.Name.POSTAL_CODE,
 				null, ItemDefine.Digit.POSTAL_CODE,
 				new ValidationType[] { ValidationType.MAXLENGTH, ValidationType.NUMERICONLY },
 				messageMap);

@@ -47,6 +47,8 @@ public class AccountEntityProvider {
     	entity.setAmount(dto.getAmount());
     	// 従業員数
     	entity.setEmployee(dto.getEmployee());
+    	// 証券コード
+    	entity.setStockCode(dto.getStockCode());
     	// 郵便番号
     	entity.setPostalCode(dto.getPostalCode());
     	// 都道府県

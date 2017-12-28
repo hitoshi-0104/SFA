@@ -10,13 +10,13 @@
 
 		<link rel="stylesheet" type="text/css" href="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/css/common/bootstrap.min.css"></link>
 		<link rel="stylesheet" type="text/css" href="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/css/common/common.css"></link>
-		<link rel="stylesheet" type="text/css" href="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/css/account/create.css"></link>
+		<link rel="stylesheet" type="text/css" href="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/css/account/update.css"></link>
 
 		<script type="text/javascript" src="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/js/common/jquery-3.2.1.min.js"></script>
 		<script type="text/javascript" src="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/js/common/popper.js"></script>
 		<script type="text/javascript" src="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/js/common/bootstrap.min.js"></script>
 		<script type="text/javascript" src="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/js/common/common.js"></script>
-		<script type="text/javascript" src="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/js/account/create.js"></script>
+		<script type="text/javascript" src="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/js/account/update.js"></script>
 	</head>
 	<body>
 
@@ -26,7 +26,7 @@
 		<!-- パンくずエリア -->
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="#">メニュー</a></li>
-			<li class="breadcrumb-item active">取引先新規登録</li>
+			<li class="breadcrumb-item active">取引先更新</li>
 		</ol>
 
 		<!-- メッセージエリア -->
@@ -74,7 +74,7 @@
 					</div>
 					<div class="content-item">
 						<label class="caption">評価：</label>
-						<select class="select1" name="estimation">
+						<select class="select1" name="evaluation">
 							<% for(Map.Entry<String, String> m : updateBean.getEstimationMap().entrySet()) { %>
 							<option value="<%=m.getKey() %>" <%=m.getKey().equals(updateBean.getEvaluation()) ? "selected" : "" %>><%=m.getValue() %></option>
 							<% } %>

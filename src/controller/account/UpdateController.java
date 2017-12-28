@@ -6,9 +6,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import action.account.update.DeleteAction;
 import action.account.update.ShowAction;
-import action.lead.update.DeleteAction;
-import action.lead.update.UpdateAction;
+import action.account.update.UpdateAction;
 import exception.SalesManagementApplicationException;
 import exception.SalesManagementRuntimeException;
 import exception.SalesManagementSystemException;

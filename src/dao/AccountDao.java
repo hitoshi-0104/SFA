@@ -25,9 +25,13 @@ public class AccountDao extends BaseDao {
 	/** selectMaxIdメソッドで使用するSQL */
 	private static final String SELECT_MAX_ID_SQL = "SELECT MAX(ACCOUNT_ID) AS MAX_ID FROM T_ACCOUNT";
 	/** selectByIdメソッドで使用するSQL */
-	private static final String SELECT_BY_ID = "SELECT T1.ACCOUNT_ID, T1.ACCOUNT_NAME, T2.ACCOUNT_ID AS PARENT_ID, T2.ACCOUNT_NAME AS PARENT, T1.ACCOUNT_NO, T1.DEPARTMENT, T1.INDUSTRY, T1.AMOUNT, T1.EVALUATION, T1.PHONE, T1.FAX, T1.URL, T1.EMPLOYEE, T1.STOCK_CODE, T1.POSTAL_CODE, T1.DIVISION, T1.CITY, T1.TOWN, T1.NOTE, T1.CREATE_DATE, T1.CREATER_ID, T1.UPDATE_DATE, T1.UPDATER_ID, T1.DELETE_FLAG FROM T_ACCOUNT T1 LEFT JOIN T_ACCOUNT T2 ON T1.PARENT = T2.ACCOUNT_ID WHERE T1.ACCOUNT_ID = ?";
+	private static final String SELECT_BY_ID_SQL = "SELECT T1.ACCOUNT_ID, T1.ACCOUNT_NAME, T2.ACCOUNT_ID AS PARENT_ID, T2.ACCOUNT_NAME AS PARENT, T1.ACCOUNT_NO, T1.DEPARTMENT, T1.INDUSTRY, T1.AMOUNT, T1.EVALUATION, T1.PHONE, T1.FAX, T1.URL, T1.EMPLOYEE, T1.STOCK_CODE, T1.POSTAL_CODE, T1.DIVISION, T1.CITY, T1.TOWN, T1.NOTE, T1.CREATE_DATE, T1.CREATER_ID, T1.UPDATE_DATE, T1.UPDATER_ID, T1.DELETE_FLAG FROM T_ACCOUNT T1 LEFT JOIN T_ACCOUNT T2 ON T1.PARENT = T2.ACCOUNT_ID WHERE T1.ACCOUNT_ID = ?";
 	/** insertメソッドで使用するSQL */
 	private static final String INSERT_SQL = "INSERT INTO T_ACCOUNT (ACCOUNT_NAME, PARENT, ACCOUNT_NO, DEPARTMENT, TYPE, INDUSTRY, AMOUNT, EVALUATION, PHONE, FAX, URL, STOCK_CODE, POSTAL_CODE, DIVISION, CITY, TOWN, NOTE, CREATE_DATE, CREATER_ID, UPDATE_DATE, UPDATER_ID) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	/** updateメソッドで使用するSQL */
+	private static final String UPDATE_SQL = "UPDATE T_ACCOUNT SET ACCOUNT_NAME = ?, PARENT = ?, ACCOUNT_NO = ?, DEPARTMENT = ?, INDUSTRY = ?, AMOUNT = ?, EVALUATION = ?, PHONE = ?, FAX = ?, URL = ?, STOCK_CODE = ?, POSTAL_CODE = ?, DIVISION = ?, CITY = ?, TOWN = ?, NOTE = ?, UPDATE_DATE = ?, UPDATER_ID = ? WHERE ACCOUNT_ID = ?";
+	/** deleteByIdメソッドで使用するSQL */
+	private static final String DELETE_BY_ID_SQL = "DELETE FROM T_ACCOUNT WHERE ACCOUNT_ID = ?";
 
 	/**
 	 * コンストラクタ
@@ -106,7 +110,7 @@ public class AccountDao extends BaseDao {
 	 */
 	public AccountEntity selectById(Integer id) throws Exception {
 
-		try (PreparedStatement statement = cp.getPreparedStatement(SELECT_BY_ID)) {
+		try (PreparedStatement statement = cp.getPreparedStatement(SELECT_BY_ID_SQL)) {
 
 			statement.setObject(1, id);
 
@@ -221,6 +225,81 @@ public class AccountDao extends BaseDao {
 			statement.setObject(20, entity.getUpdateDate());
 			// 更新者ID
 			statement.setObject(21, entity.getUpdaterId());
+
+			// SQL実行
+			statement.executeUpdate();
+		}
+
+	}
+
+	/**
+	 * 更新
+	 * @param entity
+	 * @throws Exception
+	 */
+	public void update(AccountEntity entity) throws Exception {
+
+		try (PreparedStatement statement = cp.getPreparedStatement(UPDATE_SQL)) {
+
+			// 取引先名
+			statement.setObject(1, entity.getAccountName());
+			// 親取引先
+			statement.setObject(2, entity.getParentId());
+			// 取引先番号
+			statement.setObject(3, entity.getAccountNo());
+			// 取引部門
+			statement.setObject(4, entity.getDepartment());
+			// 業種
+			statement.setObject(5, entity.getIndustry());
+			// 年間売上
+			statement.setObject(6, entity.getAmount());
+			// 評価
+			statement.setObject(7, entity.getEvaluation());
+			// 電話
+			statement.setObject(8, entity.getPhone());
+			// FAX
+			statement.setObject(9, entity.getFax());
+			// URL
+			statement.setObject(10, entity.getUrl());
+			// 証券コード
+			statement.setObject(11, entity.getStockCode());
+			// 郵便番号
+			statement.setObject(12, entity.getPostalCode());
+			// 都道府県
+			statement.setObject(13, entity.getDivision());
+			// 市区郡
+			statement.setObject(14, entity.getCity());
+			// 町名・番地・建物
+			statement.setObject(15, entity.getTown());
+			// その他
+			statement.setObject(16, entity.getNote());
+			// 更新日時
+			statement.setObject(17, entity.getUpdateDate());
+			// 更新者ID
+			statement.setObject(18, entity.getUpdaterId());
+
+			// 条件句
+
+			// 取引先ID
+			statement.setObject(19, entity.getId());
+
+			// SQL実行
+			statement.executeUpdate();
+		}
+
+	}
+
+	/**
+	 * IDを指定して取引先を削除
+	 * @param entity
+	 * @throws Exception
+	 */
+	public void deleteById(Integer id) throws Exception {
+
+		try (PreparedStatement statement = cp.getPreparedStatement(DELETE_BY_ID_SQL)) {
+
+			// 取引先ID
+			statement.setObject(1, id);
 
 			// SQL実行
 			statement.executeUpdate();
