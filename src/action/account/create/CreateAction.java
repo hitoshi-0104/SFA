@@ -93,6 +93,8 @@ abstract class CreateAction extends BaseAction {
     	bean.setAmount(StringConverter.toLong(request.getParameter(ReqParam.Create.AMOUNT)));
     	// 従業員数
     	bean.setEmployee(StringConverter.toInteger(request.getParameter(ReqParam.Create.EMPLOYEE)));
+    	// 証券コード
+    	bean.setStockCode(request.getParameter(ReqParam.Create.STOCK_CODE));
     	// 郵便番号
     	bean.setPostalCode(request.getParameter(ReqParam.Create.POSTAL_CODE));
     	// 都道府県

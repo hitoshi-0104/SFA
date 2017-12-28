@@ -1,31 +1,27 @@
-package dao.entity;
-
-import dao.entity.base.SingleTableBaseEntity;
+package service.account.dto;
 
 /**
- * 取引先テーブルエンティティ
+ * 取引先更新のDTOクラス
  *
  */
-public class AccountEntity extends SingleTableBaseEntity {
+public class UpdateDto {
 
+	/** 取引先ID */
+	private Integer id;
 	/** 取引先名 */
 	private String accountName;
-	/** 親取引先 */
+	/** 親取引先ID */
 	private Integer parentId;
 	/** 親取引先 */
 	private String parent;
 	/** 取引先番号 */
 	private String accountNo;
-	/** 取引部門 */
+	/** 取引先部門 */
 	private String department;
-	/** 種別 */
-	private String type;
 	/** 業種 */
 	private String industry;
 	/** 年間売上 */
 	private Long amount;
-	/** 従業員数 */
-	private Integer employee;
 	/** 評価 */
 	private String evaluation;
 	/** 電話 */
@@ -34,6 +30,8 @@ public class AccountEntity extends SingleTableBaseEntity {
 	private String fax;
 	/** URL */
 	private String url;
+	/** 従業員数 */
+	private Integer employee;
 	/** 証券コード */
 	private String stockCode;
 	/** 郵便番号 */
@@ -42,11 +40,23 @@ public class AccountEntity extends SingleTableBaseEntity {
 	private String division;
 	/** 市区郡 */
 	private String city;
-	/** 町名・番地・建物 */
+	/** 町名・番地・建物名 */
 	private String town;
 	/** その他 */
 	private String note;
 
+	/**
+	 * @return id
+	 */
+	public Integer getId() {
+		return id;
+	}
+	/**
+	 * @param id セットする id
+	 */
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	/**
 	 * @return accountName
 	 */
@@ -108,18 +118,6 @@ public class AccountEntity extends SingleTableBaseEntity {
 		this.department = department;
 	}
 	/**
-	 * @return type
-	 */
-	public String getType() {
-		return type;
-	}
-	/**
-	 * @param type セットする type
-	 */
-	public void setType(String type) {
-		this.type = type;
-	}
-	/**
 	 * @return industry
 	 */
 	public String getIndustry() {
@@ -142,18 +140,6 @@ public class AccountEntity extends SingleTableBaseEntity {
 	 */
 	public void setAmount(Long amount) {
 		this.amount = amount;
-	}
-	/**
-	 * @return employee
-	 */
-	public Integer getEmployee() {
-		return employee;
-	}
-	/**
-	 * @param employee セットする employee
-	 */
-	public void setEmployee(Integer employee) {
-		this.employee = employee;
 	}
 	/**
 	 * @return evaluation
@@ -202,6 +188,18 @@ public class AccountEntity extends SingleTableBaseEntity {
 	 */
 	public void setUrl(String url) {
 		this.url = url;
+	}
+	/**
+	 * @return employee
+	 */
+	public Integer getEmployee() {
+		return employee;
+	}
+	/**
+	 * @param employee セットする employee
+	 */
+	public void setEmployee(Integer employee) {
+		this.employee = employee;
 	}
 	/**
 	 * @return stockCode

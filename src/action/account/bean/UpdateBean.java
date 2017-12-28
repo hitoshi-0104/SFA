@@ -1,31 +1,27 @@
-package dao.entity;
+package action.account.bean;
 
-import dao.entity.base.SingleTableBaseEntity;
+import java.util.Map;
 
-/**
- * 取引先テーブルエンティティ
- *
- */
-public class AccountEntity extends SingleTableBaseEntity {
+import action.base.bean.BaseBean;
 
+public class UpdateBean extends BaseBean {
+
+	/** 取引先ID */
+	private Integer id;
 	/** 取引先名 */
 	private String accountName;
-	/** 親取引先 */
+	/** 親取引先ID */
 	private Integer parentId;
 	/** 親取引先 */
 	private String parent;
 	/** 取引先番号 */
 	private String accountNo;
-	/** 取引部門 */
+	/** 取引先部門 */
 	private String department;
-	/** 種別 */
-	private String type;
 	/** 業種 */
 	private String industry;
 	/** 年間売上 */
 	private Long amount;
-	/** 従業員数 */
-	private Integer employee;
 	/** 評価 */
 	private String evaluation;
 	/** 電話 */
@@ -34,6 +30,8 @@ public class AccountEntity extends SingleTableBaseEntity {
 	private String fax;
 	/** URL */
 	private String url;
+	/** 従業員数 */
+	private Integer employee;
 	/** 証券コード */
 	private String stockCode;
 	/** 郵便番号 */
@@ -42,11 +40,30 @@ public class AccountEntity extends SingleTableBaseEntity {
 	private String division;
 	/** 市区郡 */
 	private String city;
-	/** 町名・番地・建物 */
+	/** 町名・番地・建物名 */
 	private String town;
 	/** その他 */
 	private String note;
 
+	/** 評価リスト */
+	private Map<String, String> estimationMap;
+	/** 業種リスト */
+	private Map<String, String> industryMap;
+	/** 都道府県リスト */
+	private Map<String, String> divisionMap;
+
+	/**
+	 * @return id
+	 */
+	public Integer getId() {
+		return id;
+	}
+	/**
+	 * @param id セットする id
+	 */
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	/**
 	 * @return accountName
 	 */
@@ -108,18 +125,6 @@ public class AccountEntity extends SingleTableBaseEntity {
 		this.department = department;
 	}
 	/**
-	 * @return type
-	 */
-	public String getType() {
-		return type;
-	}
-	/**
-	 * @param type セットする type
-	 */
-	public void setType(String type) {
-		this.type = type;
-	}
-	/**
 	 * @return industry
 	 */
 	public String getIndustry() {
@@ -142,18 +147,6 @@ public class AccountEntity extends SingleTableBaseEntity {
 	 */
 	public void setAmount(Long amount) {
 		this.amount = amount;
-	}
-	/**
-	 * @return employee
-	 */
-	public Integer getEmployee() {
-		return employee;
-	}
-	/**
-	 * @param employee セットする employee
-	 */
-	public void setEmployee(Integer employee) {
-		this.employee = employee;
 	}
 	/**
 	 * @return evaluation
@@ -202,6 +195,18 @@ public class AccountEntity extends SingleTableBaseEntity {
 	 */
 	public void setUrl(String url) {
 		this.url = url;
+	}
+	/**
+	 * @return employee
+	 */
+	public Integer getEmployee() {
+		return employee;
+	}
+	/**
+	 * @param employee セットする employee
+	 */
+	public void setEmployee(Integer employee) {
+		this.employee = employee;
 	}
 	/**
 	 * @return stockCode
@@ -274,6 +279,42 @@ public class AccountEntity extends SingleTableBaseEntity {
 	 */
 	public void setNote(String note) {
 		this.note = note;
+	}
+	/**
+	 * @return estimationMap
+	 */
+	public Map<String, String> getEstimationMap() {
+		return estimationMap;
+	}
+	/**
+	 * @param estimationMap セットする estimationMap
+	 */
+	public void setEstimationMap(Map<String, String> estimationMap) {
+		this.estimationMap = estimationMap;
+	}
+	/**
+	 * @return industryMap
+	 */
+	public Map<String, String> getIndustryMap() {
+		return industryMap;
+	}
+	/**
+	 * @param industryMap セットする industryMap
+	 */
+	public void setIndustryMap(Map<String, String> industryMap) {
+		this.industryMap = industryMap;
+	}
+	/**
+	 * @return divisionMap
+	 */
+	public Map<String, String> getDivisionMap() {
+		return divisionMap;
+	}
+	/**
+	 * @param divisionMap セットする divisionMap
+	 */
+	public void setDivisionMap(Map<String, String> divisionMap) {
+		this.divisionMap = divisionMap;
 	}
 
 }

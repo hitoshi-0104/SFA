@@ -18,6 +18,8 @@ public class AccountController {
 
 	/** 取引先新規登録の正規表現 */
 	private static final String CREATE_MATCH = "account.create.*";
+	/** 取引先更新の正規表現 */
+	private static final String UPDATE_MATCH = "account.update.*";
 	/** 取引先検索の正規表現 */
 	private static final String LIST_MATCH = "account.list.*";
 	/** 取引先ダイアログ検索の正規表現 */
@@ -41,6 +43,10 @@ public class AccountController {
 		if (action.matches(CREATE_MATCH)) {
 			// 取引先新規登録
 			CreateController dispathcer = new CreateController();
+			dispathcer.dispatch(action, request, response);
+		} else if (action.matches(UPDATE_MATCH)) {
+			// 取引先更新
+			UpdateController dispathcer = new UpdateController();
 			dispathcer.dispatch(action, request, response);
 		} else if (action.matches(LIST_MATCH) || action.matches(DIALOG_SEARCH_MATCH)) {
 			// 取引先検索

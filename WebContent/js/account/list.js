@@ -72,7 +72,7 @@ function search(curPage) {
 			// 行にカラムの設定
 			var id = '#row' + count;
 			// ID
-			$(id).append('<td class="idcolumn"><a href="/SFA/account.update.show.action?leadid=' + data[count].AccountId + '">' + data[count].AccountId + '</a></td>');
+			$(id).append('<td class="idcolumn"><a href="/SFA/account.update.show.action?accountid=' + data[count].AccountId + '">' + data[count].AccountId + '</a></td>');
 			// 取引先名
 			$(id).append('<td class="accountnamecolumn">' + moldingListItem(data[count].AccountName, 20) + '</td>');
 			// 電話
