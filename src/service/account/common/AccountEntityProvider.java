@@ -28,7 +28,7 @@ public class AccountEntityProvider {
 		// 取引先名
     	entity.setAccountName(dto.getAccountName());
     	// 親取引先
-    	entity.setParent(dto.getParent());
+    	entity.setParentId(dto.getParent());
     	// 取引先番号
     	entity.setAccountNo(dto.getAccountNo());
     	// 取引先部門

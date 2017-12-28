@@ -182,7 +182,7 @@ public class AccountDao extends BaseDao {
 			// 取引先名
 			statement.setObject(1, entity.getAccountName());
 			// 親取引先
-			statement.setObject(2, entity.getParent());
+			statement.setObject(2, entity.getParentId());
 			// 取引先番号
 			statement.setObject(3, entity.getAccountNo());
 			// 取引部門
