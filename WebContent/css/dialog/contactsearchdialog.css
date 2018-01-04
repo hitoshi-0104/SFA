@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+#contactdgaccountsearchbutton,
+#contactdgaccountclearbutton {
+	margin-left: 20px;
+}
+
+#contactdglist {
+	display: none;
+}
+#contactdglistheader {
+	background-color: #4169e1;
+	color: #FFFFFF;
+}
+#contactdglistheader th,
+#contactdglistbody td {
+	border: solid 1px #000000;
+	padding-left: 10px;
+}
+
+.pagination {
+	margin-top: 15px;
+}
+
+.accountselectcolumn {
+	width: 35px;
+}
+
+.accountidcolumn {
+	width: 150px;
+}
+
+.accountnamecolumn {
+	width: 300px
+}
+
+.addresscolumn {
+	width: 275px;
+}
