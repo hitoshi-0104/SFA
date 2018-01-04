@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import controller.account.AccountController;
 import controller.base.BaseController;
+import controller.contact.ContactController;
 import controller.lead.LeadController;
 import exception.SalesManagementApplicationException;
 import exception.SalesManagementRuntimeException;
@@ -28,6 +29,8 @@ public class RestController extends BaseController {
 	private static final String LEAD_MATCH = "lead.*.rest";
 	/** 取引先REST APIの正規表現 */
 	private static final String ACCOUNT_MATCH = "account.*.rest";
+	/** 取引先担当者REST APIの正規表現 */
+	private static final String CONTACT_MATCH = "contact.*.rest";
 
     /**
      * @see HttpServlet#HttpServlet()
@@ -104,6 +107,10 @@ public class RestController extends BaseController {
 	} else if (url.matches(ACCOUNT_MATCH)) {
 		// 取引先
 		AccountController dispatcher = new AccountController();
+		dispatcher.dispatch(url, request, response);
+	} else if (url.matches(CONTACT_MATCH)) {
+		// 取引先担当者
+		ContactController dispatcher = new ContactController();
 		dispatcher.dispatch(url, request, response);
 	}
 }

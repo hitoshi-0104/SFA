@@ -6,8 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import action.account.list.SearchAction;
-import action.account.list.ShowAction;
+import action.contact.list.SearchAction;
 import exception.SalesManagementApplicationException;
 import exception.SalesManagementRuntimeException;
 import exception.SalesManagementSystemException;
@@ -42,8 +41,8 @@ public class ListController {
 			switch(action) {
 			// 初期表示
 			case SHOW_MATCH:
-				ShowAction sa = new ShowAction(request, response);
-				dispatchUrl = sa.handle();
+//				ShowAction sa = new ShowAction(request, response);
+//				dispatchUrl = sa.handle();
 				break;
 			// 検索
 			case LIST_MATCH:

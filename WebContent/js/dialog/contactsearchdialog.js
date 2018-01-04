@@ -18,7 +18,7 @@ $(function () {
 	// 検索ボタン押下時の処理
 	$('#contactdgsearchbutton').click(function() {
 
-		search(1);
+		contactSearch(1);
 
 	});
 
@@ -35,7 +35,7 @@ $(function () {
 });
 
 //一覧検索処理
-function search(curPage) {
+function contactSearch(curPage) {
 
 	$.ajax({
 		url: 'SFA/contact.dialog.search.rest',
@@ -71,7 +71,7 @@ function search(curPage) {
 		if (lastPage > 1) {
 			$('#contactdialoglistpagination').append('<ul id="pageul" class="pagination"></ul>');
 			var previousPage = curPage - 1 > 0 ? curPage - 1 : 1;
-			$('#pageul').append('<li class="page-item ' + (curPage == 1 ? 'disabled' : '') +  '"><button type="button" id="previousbutton" class="page-link" onclick="search('+ previousPage +')">前へ</button></li>');
+			$('#pageul').append('<li class="page-item ' + (curPage == 1 ? 'disabled' : '') +  '"><button type="button" id="previousbutton" class="page-link" onclick="contactSearch('+ previousPage +')">前へ</button></li>');
 			var startIndex = curPage - 5 <= 0 ? 0 : curPage - 5;
 			var endIndex = lastPage < startIndex + 10 ? lastPage : startIndex + 10;
 			startIndex = endIndex - 10;
@@ -80,9 +80,9 @@ function search(curPage) {
 			}
 			for (var i = startIndex; i < endIndex; i++) {
 				var buttonId = 'page' + (i + 1);
-				$('#pageul').append('<li class="page-item ' + (i == (curPage - 1) ? 'active' : '') + '"><button type="button" id="' + buttonId + '" class="page-link" onclick="search(' + (i + 1) + ')">' + (i + 1) +'</button></li>');
+				$('#pageul').append('<li class="page-item ' + (i == (curPage - 1) ? 'active' : '') + '"><button type="button" id="' + buttonId + '" class="page-link" onclick="contactSearch(' + (i + 1) + ')">' + (i + 1) +'</button></li>');
 			}
-			$('#pageul').append('<li class="page-item ' + (curPage == lastPage ? 'disabled' : '') + '"><button type="button" id="nextbutton" class="page-link" onclick="search(' + (curPage + 1) + ')">次へ</button></li>');
+			$('#pageul').append('<li class="page-item ' + (curPage == lastPage ? 'disabled' : '') + '"><button type="button" id="nextbutton" class="page-link" onclick="contactSearch(' + (curPage + 1) + ')">次へ</button></li>');
 		}
 
 		var count = 0;
@@ -90,21 +90,19 @@ function search(curPage) {
 		$(data).each( function () {
 
 			// テーブルに行を1行追加
-			$('#contactdialoglistbody').append('<tr id="row' + count +'"></tr>');
+			$('#contactdglistbody').append('<tr id="row' + count +'"></tr>');
 
 			// 行にカラムの設定
 			var id = '#row' + count;
 			// 選択
 			$(id).append('<td id="col' + count + '1" class="contactselectcolumn"><input type="radio" name="contactselect"></td>>');
-			$('#col' + count + '1').on('click', { value: '#col' + count }, onAccountRadioChanged);
+			$('#col' + count + '1').on('click', { value: '#col' + count }, onContactRadioChanged);
 			// ID
-			$(id).append('<td id="col' + count + '2" class="contactidcolumn">' + data[count].AccountId + '</td>');
+			$(id).append('<td id="col' + count + '2" class="contactidcolumn">' + data[count].ContactId + '</td>');
 			// 取引先担当者名
-			$(id).append('<td id="col' + count + '3" class="contactnamecolumn">' + moldingListItem(data[count].AccountName, 15) + '</td>');
+			$(id).append('<td id="col' + count + '3" class="contactnamecolumn">' + moldingListItem(data[count].ContactName, 15) + '</td>');
 			// 取引先
-			$(id).append('<td id="col' + count + '4" class="accountcolumn">' + moldingListItem(data[count].Address, 13) + '</td>');
-			// メール
-			$(id).append('<td id="col' + count + '5" class="mailcolumn">' + moldingListItem(data[count].Address, 13) + '</td>');
+			$(id).append('<td id="col' + count + '4" class="accountcolumn">' + moldingListItem(data[count].AccountName, 13) + '</td>');
 
 			count++;
 		});
@@ -122,11 +120,11 @@ function search(curPage) {
 }
 
 // 一覧のラジオボタン変更時の処理
-function onAccountRadioChanged(e) {
+function onContactRadioChanged(e) {
 
 	// 取引先IDのセット
-	$('#selectedaccountid').val($(e.data.value + '2').text());
+	$('#selectedcontactid').val($(e.data.value + '2').text());
 	// 取引先名のセット
-	$('#selectedaccountname').val($(e.data.value + '3').text());
+	$('#selectedcontactname').val($(e.data.value + '3').text());
 
 }

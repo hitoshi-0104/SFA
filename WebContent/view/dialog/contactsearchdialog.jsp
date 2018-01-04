@@ -18,8 +18,12 @@
 			<div class="modal-body">
 				<div class="onecolumn">
 					<div class="modal-item">
-						<label class="caption">取引先担当者名：</label>
-						<input class="text3" type="text" name="contactdgcontactname" value="" />
+						<label class="caption">姓：</label>
+						<input class="text3" type="text" name="contactdglastname" value="" />
+					</div>
+					<div class="modal-item">
+						<label class="caption">名：</label>
+						<input class="text3" type="text" name="contactdglastname" value="" />
 					</div>
 					<div class="modal-item">
 						<label class="caption">取引先：</label>
@@ -30,6 +34,11 @@
 					</div>
 				</div>
 				<div class="onecolumn">
+					<div class="buttonarea">
+						<button type="button" id="contactdgsearchbutton" class="btn btn-primary button3">検索</button>
+					</div>
+				</div>
+				<div class="onecolumn">
 					<table id="contactdglist">
 						<thead id="contactdglistheader">
 							<tr>
@@ -37,7 +46,6 @@
 								<th>ID</th>
 								<th>取引先担当者名</th>
 								<th>取引先</th>
-								<th>メール</th>
 							</tr>
 						</thead>
 						<tbody id="contactdglistbody">

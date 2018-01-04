@@ -37,4 +37,19 @@ public class ReqParam {
 		public static final String NOTE = "note";
 	}
 
+	/**
+	 * 一覧
+	 *
+	 */
+	public class List {
+		/** 姓 */
+		public static final String LAST_NAME = "contactdglastname";
+		/** 名 */
+		public static final String FIRST_NAME = "contactdgfirstname";
+		/** 取引先 */
+		public static final String ACCOUNT_ID = "contactdgaccountid";
+		/** ページ */
+		public static final String PAGE = "page";
+	}
+
 }

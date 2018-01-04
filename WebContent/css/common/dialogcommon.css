@@ -22,7 +22,7 @@
 }
 
 /* ダイアログ：ボタン表示エリア */
-.contentsarea .buttonarea {
+.modal-body .buttonarea {
 	margin-top: 10px;
 	margin-bottom: 10px;
 	text-align: right;
@@ -32,7 +32,7 @@
 .modal-body .caption {
 	font-size: 14px;
 	text-align: right;
-	width: 100px;
+	width: 120px;
 }
 
 /* コンテンツエリアのテキスト */

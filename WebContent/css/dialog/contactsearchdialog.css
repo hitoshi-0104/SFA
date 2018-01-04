@@ -22,18 +22,18 @@
 	margin-top: 15px;
 }
 
-.accountselectcolumn {
+.contactselectcolumn {
 	width: 35px;
 }
 
-.accountidcolumn {
+.contactidcolumn {
 	width: 150px;
 }
 
-.accountnamecolumn {
+.contactnamecolumn {
 	width: 300px
 }
 
-.addresscolumn {
+.accountcolumn {
 	width: 275px;
 }
