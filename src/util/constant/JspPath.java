@@ -40,4 +40,21 @@ public class JspPath {
 		public static final String LIST_ACTION = "/account.list.show.action";
 	}
 
+	/**
+	 * 取引先担当者
+	 *
+	 */
+	public class Contact {
+		/** 取引先担当者新規登録 */
+		public static final String CREATE = "/view/contact/create.jsp";
+		/** 取引先担当者更新 */
+		public static final String UPDATE = "/view/contact/update.jsp";
+		/** 取引先担当者削除 */
+		public static final String DELETE = "/view/contact/delete.jsp";
+		/** 取引先担当者一覧 */
+		public static final String LIST = "/view/contact/list.jsp";
+		/** 取引先担当者一覧アクション */
+		public static final String LIST_ACTION = "/contact.list.show.action";
+	}
+
 }

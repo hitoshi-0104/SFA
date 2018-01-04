@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import controller.account.AccountController;
 import controller.base.BaseController;
+import controller.contact.ContactController;
 import controller.lead.LeadController;
 import exception.SalesManagementApplicationException;
 import exception.SalesManagementRuntimeException;
@@ -28,6 +29,8 @@ public class FrontController extends BaseController {
 	private static final String LEAD_MATCH = "lead.*.action";
 	/** 取引先機能の正規表現 */
 	private static final String ACCOUNT_MATCH = "account.*.action";
+	/** 取引先担当者機能の正規表現 */
+	private static final String CONTACT_MATCH = "contact.*.action";
 
     /**
      * @see HttpServlet#HttpServlet()
@@ -113,6 +116,10 @@ public class FrontController extends BaseController {
 		} else if (action.matches(ACCOUNT_MATCH)) {
 			// 取引先
 			AccountController dispatcher = new AccountController();
+			dispatcher.dispatch(action, request, response);
+		} else if (action.matches(CONTACT_MATCH)) {
+			// 取引先担当者
+			ContactController dispatcher = new ContactController();
 			dispatcher.dispatch(action, request, response);
 		}
 	}
