@@ -34,7 +34,7 @@
 
 		<!-- コンテンツエリア -->
 		<div class="contentsarea">
-			<form id="accountform" method="POST">
+			<form id="contactform" method="POST">
 				<!-- 見込み客情報のコンテンツ -->
 				<div class="subtitle">
 					<label class="subtitlelabel">取引先担当者情報</label>
@@ -53,8 +53,8 @@
 					</div>
 					<div class="content-item">
 						<label class="caption">取引先：</label>
-						<input class="text2" type="text" id="accountname" name="parent" value="<%=createBean.getAccountName() == null ? "" : createBean.getAccountName() %>" readonly="readonly" />
-						<input class="text2" type="hidden" id="accountid" name="parentid" value="<%=createBean.getAccountId() == null ? "" : createBean.getAccountId() %>" />
+						<input class="text2" type="text" id="accountname" name="accountname" value="<%=createBean.getAccountName() == null ? "" : createBean.getAccountName() %>" readonly="readonly" />
+						<input class="text2" type="hidden" id="accountid" name="accountid" value="<%=createBean.getAccountId() == null ? "" : createBean.getAccountId() %>" />
 						<button type="button" id="accountsearchbutton" class="btn btn-primary btn-sm button1" data-toggle="modal" data-target="#accountdialog">検索</button>
 						<button type="button" id="accountclearbutton" class="btn btn-default btn-sm button2">クリア</button>
 					</div>
@@ -110,8 +110,8 @@
 						<button type="button" id="returnbutton" class="btn btn-default button3">戻る</button>
 					</div>
 				</div>
-				<jsp:include page="../dialog/accountsearchdialog.jsp" />
 				<jsp:include page="../dialog/contactsearchdialog.jsp" />
+				<jsp:include page="../dialog/accountsearchdialog.jsp" />
 			</form>
 		</div>
 
