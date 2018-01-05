@@ -13,9 +13,9 @@ public class ContactDto {
 	/** 名 */
 	private String firstName;
 	/** 取引先 */
-	private String accountId;
+	private Integer accountId;
 	/** 部署 */
-	private String division;
+	private String department;
 	/** 役職 */
 	private String position;
 	/** 電話 */
@@ -27,7 +27,7 @@ public class ContactDto {
 	/** メール */
 	private String mail;
 	/** 上司 */
-	private String bossId;
+	private Integer boss;
 	/** その他 */
 	private String note;
 
@@ -70,26 +70,26 @@ public class ContactDto {
 	/**
 	 * @return accountId
 	 */
-	public String getAccountId() {
+	public Integer getAccountId() {
 		return accountId;
 	}
 	/**
 	 * @param accountId セットする accountId
 	 */
-	public void setAccountId(String accountId) {
+	public void setAccountId(Integer accountId) {
 		this.accountId = accountId;
 	}
 	/**
 	 * @return division
 	 */
-	public String getDivision() {
-		return division;
+	public String getDepartment() {
+		return department;
 	}
 	/**
 	 * @param division セットする division
 	 */
-	public void setDivision(String division) {
-		this.division = division;
+	public void setDepartment(String department) {
+		this.department = department;
 	}
 	/**
 	 * @return position
@@ -152,16 +152,16 @@ public class ContactDto {
 		this.mail = mail;
 	}
 	/**
-	 * @return bossId
+	 * @return boss
 	 */
-	public String getBossId() {
-		return bossId;
+	public Integer getBoss() {
+		return boss;
 	}
 	/**
-	 * @param bossId セットする bossId
+	 * @param boss セットする boss
 	 */
-	public void setBossId(String bossId) {
-		this.bossId = bossId;
+	public void setBoss(Integer boss) {
+		this.boss = boss;
 	}
 	/**
 	 * @return note
