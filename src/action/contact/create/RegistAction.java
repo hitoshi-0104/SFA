@@ -7,13 +7,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import action.account.constant.ReqParam;
+import action.contact.constant.ReqParam;
 import exception.SalesManagementApplicationException;
 import exception.SalesManagementRuntimeException;
 import exception.SalesManagementSystemException;
-import service.account.common.AccountValidater;
-import service.account.create.RegistService;
-import service.account.dto.AccountDto;
+import service.contact.common.ContactValidater;
+import service.contact.create.RegistService;
+import service.contact.dto.ContactDto;
 import util.constant.JspPath;
 import util.converter.StringConverter;
 import util.message.MessageReader;
@@ -68,43 +68,35 @@ public class RegistAction extends CreateAction {
 		RegistService service = new RegistService();
 
     	// リクエストパラメータの取得
-    	AccountDto dto = new AccountDto();
+    	ContactDto dto = new ContactDto();
 
-    	// 取引先名
-    	dto.setAccountName(request.getParameter(ReqParam.Create.ACCOUNT_NAME));
-    	// 親取引先
-    	dto.setParent(StringConverter.toInteger(request.getParameter(ReqParam.Create.PARENT_ID)));
-    	// 取引先番号
-    	dto.setAccountNo(request.getParameter(ReqParam.Create.ACCOUNT_NO));
-    	// 取引先部門
-    	dto.setDepartment(request.getParameter(ReqParam.Create.DEPARTMENT));
-    	// 業種
-    	dto.setIndustry(request.getParameter(ReqParam.Create.INDUSTRY));
-    	// 評価
-    	dto.setEvaluation(request.getParameter(ReqParam.Create.EVALUATION));
-    	// 電話
-    	dto.setPhone(request.getParameter(ReqParam.Create.PHONE));
-    	// FAX
-    	dto.setFax(request.getParameter(ReqParam.Create.FAX));
-    	// URL
-    	dto.setUrl(request.getParameter(ReqParam.Create.URL));
-    	// 年間売上
-    	dto.setAmount(StringConverter.toLong(request.getParameter(ReqParam.Create.AMOUNT)));
-    	// 従業員数
-    	dto.setEmployee(StringConverter.toInteger(request.getParameter(ReqParam.Create.EMPLOYEE)));
-    	// 郵便番号
-    	dto.setPostalCode(request.getParameter(ReqParam.Create.POSTAL_CODE));
-    	// 都道府県
-    	dto.setDivision(request.getParameter(ReqParam.Create.DIVISION));
-    	// 市区郡
-    	dto.setCity(request.getParameter(ReqParam.Create.CITY));
-    	// 町名・番地・建物名
-    	dto.setTown(request.getParameter(ReqParam.Create.TOWN));
-    	// その他
-    	dto.setNote(request.getParameter(ReqParam.Create.NOTE));
+    	// 取引先担当者ID
+		dto.setId(StringConverter.toInteger(request.getParameter(ReqParam.Create.ID)));
+		// 姓
+		dto.setLastName(request.getParameter(ReqParam.Create.LAST_NAME));
+		// 名
+		dto.setFirstName(request.getParameter(ReqParam.Create.FIRST_NAME));
+		// 取引先
+		dto.setAccountId(StringConverter.toInteger(request.getParameter(ReqParam.Create.ACCOUNT_ID)));
+		// 部署
+		dto.setDepartment(request.getParameter(ReqParam.Create.DEPARTMENT));
+		// 役職
+		dto.setPosition(request.getParameter(ReqParam.Create.POSITION));
+		// 電話
+		dto.setPhone(request.getParameter(ReqParam.Create.PHONE));
+		// 携帯
+		dto.setMobilePhone(request.getParameter(ReqParam.Create.MOBILE_PHONE));
+		// FAX
+		dto.setFax(request.getParameter(ReqParam.Create.FAX));
+		// メール
+		dto.setMail(request.getParameter(ReqParam.Create.MAIL));
+		// 上司
+		dto.setBoss(StringConverter.toInteger(request.getParameter(ReqParam.Create.BOSS)));
+		// その他
+		dto.setNote(request.getParameter(ReqParam.Create.NOTE));
 
     	// 入力チェック
-		AccountValidater valid = new AccountValidater();
+		ContactValidater valid = new ContactValidater();
     	Map<String, String> messageMap = valid.validate(dto, getDisplayId());
     	if (messageMap.size() != 0) {
     		throw new SalesManagementApplicationException(messageMap);
