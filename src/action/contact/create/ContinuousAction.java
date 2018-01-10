@@ -12,7 +12,7 @@ import exception.SalesManagementSystemException;
 import util.constant.JspPath;
 
 /**
- * 取引先の連続登録アクションクラス
+ * 取引先担当者の連続登録アクションクラス
  *
  */
 public class ContinuousAction extends RegistAction {
@@ -45,7 +45,7 @@ public class ContinuousAction extends RegistAction {
 
 		super.handle();
 
-		return JspPath.Account.CREATE;
+		return JspPath.Contact.CREATE;
 	}
 
 }
