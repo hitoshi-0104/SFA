@@ -92,6 +92,8 @@ public class SearchService extends BaseSearchService {
 			m.put("ContactName", en.getContactName());
 			// 取引先名
 			m.put("AccountName", en.getAccountName());
+			// 携帯
+			m.put("MobilePhone", en.getMobilePhone());
 			// メール
 			m.put("Mail", en.getMail());
 
