@@ -1,5 +1,13 @@
 @charset "UTF-8";
 
+/* 取引先検索ボタン */
+#accountsearchbutton {
+	margin-left: 20px;
+}
+/* 取引先クリアボタン */
+#accountclearbutton {
+	margin-left: 20px;
+}
 /* 一覧 */
 #contactlist {
 	display: none;
