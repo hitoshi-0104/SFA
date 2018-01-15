@@ -14,6 +14,8 @@ public class ContactListEntity extends BaseEntity {
 	private String contactName;
 	/** 取引先 */
 	private String accountName;
+	/** 携帯 */
+	private String mobilePhone;
 	/** メール */
 	private String mail;
 
@@ -52,6 +54,18 @@ public class ContactListEntity extends BaseEntity {
 	 */
 	public void setAccountName(String accountName) {
 		this.accountName = accountName;
+	}
+	/**
+	 * @return mobilePhone
+	 */
+	public String getMobilePhone() {
+		return mobilePhone;
+	}
+	/**
+	 * @param mobilePhone セットする mobilePhone
+	 */
+	public void setMobilePhone(String mobilePhone) {
+		this.mobilePhone = mobilePhone;
 	}
 	/**
 	 * @return mail
