@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
-<jsp:useBean id="listBean" scope="request" class="action.account.bean.ListBean" />
+<jsp:useBean id="listBean" scope="request" class="action.contact.bean.ListBean" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -10,13 +10,13 @@
 
 		<link rel="stylesheet" type="text/css" href="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/css/common/bootstrap.min.css"></link>
 		<link rel="stylesheet" type="text/css" href="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/css/common/common.css"></link>
-		<link rel="stylesheet" type="text/css" href="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/css/account/list.css"></link>
+		<link rel="stylesheet" type="text/css" href="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/css/contact/list.css"></link>
 
 		<script type="text/javascript" src="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/js/common/jquery-3.2.1.min.js"></script>
 		<script type="text/javascript" src="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/js/common/popper.js"></script>
 		<script type="text/javascript" src="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/js/common/bootstrap.min.js"></script>
 		<script type="text/javascript" src="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/js/common/common.js"></script>
-		<script type="text/javascript" src="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/js/account/list.js"></script>
+		<script type="text/javascript" src="<%=request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + request.getContextPath() %>/js/contact/list.js"></script>
 	</head>
 	<body>
 
@@ -26,7 +26,7 @@
 		<!-- パンくずエリア -->
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="#">メニュー</a></li>
-			<li class="breadcrumb-item active">取引先一覧</li>
+			<li class="breadcrumb-item active">取引先担当者一覧</li>
 		</ol>
 
 		<!-- メッセージエリア -->
@@ -41,8 +41,19 @@
 				</div>
 				<div class="onecolumn">
 					<div class="content-item">
-						<label class="caption">取引先名：</label>
-						<input class="text4" type="text" name="companyname" value="<%=listBean.getAccountName() == null ? "" : listBean.getAccountName() %>" />
+						<label class="caption">姓：</label>
+						<input class="text3" type="text" name="lastname" value="<%=listBean.getLastName() == null ? "" : listBean.getLastName() %>" />
+					</div>
+					<div class="content-item">
+						<label class="caption">名：</label>
+						<input class="text3" type="text" name="lastname" value="<%=listBean.getFirstName() == null ? "" : listBean.getFirstName() %>" />
+					</div>
+					<div class="content-item">
+						<label class="caption">取引先：</label>
+						<input class="text2" type="text" id="account" name="account" value="<%=listBean.getAccountName() == null ? "" : listBean.getAccountName() %>" readonly="readonly" />
+						<input class="text2" type="hidden" id="accountid" name="accountid" value="<%=listBean.getAccountId() == null ? "" : listBean.getAccountId() %>" />
+						<button type="button" id="accountsearchbutton" class="btn btn-primary btn-sm button1" data-toggle="modal" data-target="#accountdialog">検索</button>
+						<button type="button" id="accountclearbutton" class="btn btn-default btn-sm button2">クリア</button>
 					</div>
 				</div>
 				<!-- ボタン -->
@@ -54,22 +65,24 @@
 				</div>
 				<!-- 一覧 -->
 				<div class="onecolumn">
-					<table id="accountlist">
-						<thead id="accountlistheader">
+					<table id="contactlist">
+						<thead id="contactlistheader">
 							<tr>
 								<th>ID</th>
-								<th>取引先名</th>
-								<th>電話</th>
-								<th>住所</th>
+								<th>取引先担当者名</th>
+								<th>取引先</th>
+								<th>携帯</th>
+								<th>メール</th>
 							</tr>
 						</thead>
-						<tbody id="accountlistbody">
+						<tbody id="contactlistbody">
 						</tbody>
 					</table>
-					<nav id="accountlistpagination">
+					<nav id="contactlistpagination">
 					</nav>
 				</div>
 			</form>
+			<jsp:include page="../dialog/accountsearchdialog.jsp" />
 		</div>
 
 		<!-- フッタエリア -->
