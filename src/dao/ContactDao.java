@@ -21,9 +21,9 @@ public class ContactDao extends BaseDao {
 	/** insertメソッドで使用するSQL */
 	private static final String INSERT_SQL = "INSERT INTO T_CONTACT(LAST_NAME, FIRST_NAME, ACCOUNT_ID, DEPARTMENT, POSITION, PHONE, MOBILE_PHONE, FAX, MAIL, BOSS, NOTE, CREATE_DATE, CREATER_ID, UPDATE_DATE, UPDATER_ID) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	/** selectForContactSearchDialogで使用するSQL */
-	private static final String SELECT_FOR_CONTACT_SEARCH_DIALOG = "SELECT T1.CONTACT_ID, T1.LAST_NAME || ' ' || T1.FIRST_NAME AS CONTACT_NAME, T2.ACCOUNT_NAME, T1.MAIL FROM T_CONTACT T1 LEFT JOIN T_ACCOUNT T2 ON T1.ACCOUNT_ID = T2.ACCOUNT_ID ";
+	private static final String SELECT_FOR_CONTACT_SEARCH_LIST_DIALOG = "SELECT T1.CONTACT_ID, T1.LAST_NAME || ' ' || T1.FIRST_NAME AS CONTACT_NAME, T2.ACCOUNT_NAME, T1.MOBILE_PHONE, T1.MAIL FROM T_CONTACT T1 LEFT JOIN T_ACCOUNT T2 ON T1.ACCOUNT_ID = T2.ACCOUNT_ID ";
 	/** countForContactSearchDialogで使用するSQL */
-	private static final String COUNT_FOR_CONTACT_SEARCH_DIALOG = "SELECT COUNT(*) FROM T_CONTACT T1 LEFT JOIN T_ACCOUNT T2 ON T1.ACCOUNT_ID = T2.ACCOUNT_ID ";
+	private static final String COUNT_FOR_CONTACT_SEARCH_LIST_DIALOG = "SELECT COUNT(*) FROM T_CONTACT T1 LEFT JOIN T_ACCOUNT T2 ON T1.ACCOUNT_ID = T2.ACCOUNT_ID ";
 
 	/**
 	 * コンストラクタ
@@ -33,9 +33,9 @@ public class ContactDao extends BaseDao {
 		super(cp);
 	}
 
-	public Integer countForContactSearchDialog(ContactEntity param) throws Exception {
+	public Integer countForContactSearchListAndDialog(ContactEntity param) throws Exception {
 
-		try (PreparedStatement statement = cp.getPreparedStatement(COUNT_FOR_CONTACT_SEARCH_DIALOG + createWhereForContactList(param, null, false))) {
+		try (PreparedStatement statement = cp.getPreparedStatement(COUNT_FOR_CONTACT_SEARCH_LIST_DIALOG + createWhereForContactList(param, null, false))) {
 
 			// 姓
 			if (!StringValidater.isEmpty(param.getLastName())) {
@@ -67,9 +67,9 @@ public class ContactDao extends BaseDao {
 	 * @return
 	 * @throws Exception
 	 */
-	public List<ContactListEntity> selectForContactSearchDialog(ContactEntity param, Integer page) throws Exception {
+	public List<ContactListEntity> selectForContactSearchListAndDialog(ContactEntity param, Integer page) throws Exception {
 
-		try (PreparedStatement statement = cp.getPreparedStatement(SELECT_FOR_CONTACT_SEARCH_DIALOG + createWhereForContactList(param, page, true))) {
+		try (PreparedStatement statement = cp.getPreparedStatement(SELECT_FOR_CONTACT_SEARCH_LIST_DIALOG + createWhereForContactList(param, page, true))) {
 
 			// 姓
 			if (!StringValidater.isEmpty(param.getLastName())) {
@@ -96,6 +96,8 @@ public class ContactDao extends BaseDao {
 				entity.setContactName(ObjectConverter.stringValue(rs.getObject("CONTACT_NAME")));
 				// 取引先名
 				entity.setAccountName(ObjectConverter.stringValue(rs.getObject("ACCOUNT_NAME")));
+				// 携帯
+				entity.setMobilePhone(ObjectConverter.stringValue(rs.getObject("MOBILE_PHONE")));
 				// メール
 				entity.setMail(ObjectConverter.stringValue(rs.getObject("MAIL")));
 

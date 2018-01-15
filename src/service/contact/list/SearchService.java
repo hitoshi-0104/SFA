@@ -37,8 +37,8 @@ public class SearchService extends BaseSearchService {
 		Integer cnt = null;
 		List<ContactListEntity> list = null;
 		try (Connection conn = cp.getConnection()) {
-			cnt = dao.countForContactSearchDialog(entity);
-			list = dao.selectForContactSearchDialog(entity, getOffSet(dto.getPage()));
+			cnt = dao.countForContactSearchListAndDialog(entity);
+			list = dao.selectForContactSearchListAndDialog(entity, getOffSet(dto.getPage()));
 		}
 
 		// エンティティからDtoに変換
