@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+/* 一覧 */
+#contactlist {
+	display: none;
+}
+#contactlistheader {
+	background-color: #4169e1;
+	color: #FFFFFF;
+}
+#contactlistheader th,
+#contactlistbody td {
+	border: solid 1px #000000;
+	padding-left: 10px;
+}
+/* ページネーション */
+#contactlistpagination {
+	display: none;
+}
+.pagination {
+	margin-top: 15px;
+}
+/* ID */
+.idcolumn {
+	width: 150px;
+}
+/* 取引先担当者名 */
+.contactnamecolumn {
+	width: 400px
+}
+/* 取引先名 */
+.accountnamecolumn {
+	width: 530px
+}
+/* 携帯 */
+.mobilephonecolumn {
+	width: 200px
+}
+/* メール */
+.mailcolumn {
+	width: 200px
+}
