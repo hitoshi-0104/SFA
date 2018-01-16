@@ -10,6 +10,18 @@ $(function() {
 
 	});
 
+	// 取引先の検索ボタン押下処理
+	$('#accountsearchbutton').click(function() {
+		$('#retaccountid').val('#accountid');
+		$('#retaccountname').val('#account');
+	});
+
+	// 取引先のクリアボタン押下処理
+	$('#accountclearbutton').click(function() {
+		$('#accountid').val('');
+		$('#account').val('');
+	});
+
 });
 
 // 一覧検索処理

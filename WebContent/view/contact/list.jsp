@@ -46,7 +46,7 @@
 					</div>
 					<div class="content-item">
 						<label class="caption">名：</label>
-						<input class="text3" type="text" name="lastname" value="<%=listBean.getFirstName() == null ? "" : listBean.getFirstName() %>" />
+						<input class="text3" type="text" name="firstname" value="<%=listBean.getFirstName() == null ? "" : listBean.getFirstName() %>" />
 					</div>
 					<div class="content-item">
 						<label class="caption">取引先：</label>
