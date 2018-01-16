@@ -86,7 +86,7 @@ function contactSearch(curPage) {
 			// 行にカラムの設定
 			var id = '#row' + count;
 			// ID
-			$(id).append('<td id="col' + count + '1" class="contactidcolumn">' + data[count].ContactId + '</td>');
+			$(id).append('<td id="col' + count + '1" class="contactidcolumn"><a href="/SFA/contact.update.show.action?contactid=' + data[count].ContactId + '">' + data[count].ContactId + '</a></td>');
 			// 取引先担当者名
 			$(id).append('<td id="col' + count + '2" class="contactnamecolumn">' + moldingListItem(data[count].ContactName, 17) + '</td>');
 			// 取引先
