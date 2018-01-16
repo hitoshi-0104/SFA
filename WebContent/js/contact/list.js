@@ -6,14 +6,14 @@ $(function() {
 	// 検索ボタン押下時
 	$('#searchbutton').click(function() {
 
-		search(1);
+		contactSearch(1);
 
 	});
 
 });
 
 // 一覧検索処理
-function search(curPage) {
+function contactSearch(curPage) {
 
 	$.ajax({
 		url: 'SFA/contact.dialog.search.rest',
@@ -76,13 +76,13 @@ function search(curPage) {
 			// ID
 			$(id).append('<td id="col' + count + '1" class="contactidcolumn">' + data[count].ContactId + '</td>');
 			// 取引先担当者名
-			$(id).append('<td id="col' + count + '2" class="contactnamecolumn">' + moldingListItem(data[count].ContactName, 15) + '</td>');
+			$(id).append('<td id="col' + count + '2" class="contactnamecolumn">' + moldingListItem(data[count].ContactName, 17) + '</td>');
 			// 取引先
-			$(id).append('<td id="col' + count + '3" class="accountcolumn">' + moldingListItem(data[count].AccountName, 13) + '</td>');
+			$(id).append('<td id="col' + count + '3" class="accountcolumn">' + moldingListItem(data[count].AccountName, 25) + '</td>');
 			// 携帯
-			$(id).append('<td id="col' + count + '4" class="mobilephonecolumn">' + moldingListItem(data[count].MibolePhone, 13) + '</td>');
+			$(id).append('<td id="col' + count + '4" class="mobilephonecolumn">' + moldingListItem(data[count].MobilePhone, 13) + '</td>');
 			// メール
-			$(id).append('<td id="col' + count + '5" class="mailcolumn">' + moldingListItem(data[count].Mail, 13) + '</td>');
+			$(id).append('<td id="col' + count + '5" class="mailcolumn">' + moldingListItem(data[count].Mail, 23) + '</td>');
 
 			count++;
 		});
@@ -94,6 +94,6 @@ function search(curPage) {
 	}).fail(function(xhr, textStatus, error) {
 		window.alert(error);
 	}).always(function(xhr, settings) {
-		$('#contactsearchbutton').attr('disabled', false);
+		$('#searchbutton').attr('disabled', false);
 	});
 }
