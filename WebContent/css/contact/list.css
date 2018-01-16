@@ -29,7 +29,7 @@
 	margin-top: 15px;
 }
 /* ID */
-.idcolumn {
+.contactidcolumn {
 	width: 150px;
 }
 /* 取引先担当者名 */
@@ -37,14 +37,14 @@
 	width: 400px
 }
 /* 取引先名 */
-.accountnamecolumn {
+.accountcolumn {
 	width: 530px
 }
 /* 携帯 */
 .mobilephonecolumn {
-	width: 200px
+	width: 150px
 }
 /* メール */
 .mailcolumn {
-	width: 200px
+	width: 250px
 }
