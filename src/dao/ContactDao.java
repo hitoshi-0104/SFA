@@ -18,12 +18,16 @@ import util.validate.StringValidater;
  */
 public class ContactDao extends BaseDao {
 
-	/** insertメソッドで使用するSQL */
-	private static final String INSERT_SQL = "INSERT INTO T_CONTACT(LAST_NAME, FIRST_NAME, ACCOUNT_ID, DEPARTMENT, POSITION, PHONE, MOBILE_PHONE, FAX, MAIL, BOSS, NOTE, CREATE_DATE, CREATER_ID, UPDATE_DATE, UPDATER_ID) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-	/** selectForContactSearchDialogで使用するSQL */
-	private static final String SELECT_FOR_CONTACT_SEARCH_LIST_DIALOG = "SELECT T1.CONTACT_ID, T1.LAST_NAME || ' ' || T1.FIRST_NAME AS CONTACT_NAME, T2.ACCOUNT_NAME, T1.MOBILE_PHONE, T1.MAIL FROM T_CONTACT T1 LEFT JOIN T_ACCOUNT T2 ON T1.ACCOUNT_ID = T2.ACCOUNT_ID ";
 	/** countForContactSearchDialogで使用するSQL */
 	private static final String COUNT_FOR_CONTACT_SEARCH_LIST_DIALOG = "SELECT COUNT(*) FROM T_CONTACT T1 LEFT JOIN T_ACCOUNT T2 ON T1.ACCOUNT_ID = T2.ACCOUNT_ID ";
+	/** selectForContactSearchDialogで使用するSQL */
+	private static final String SELECT_FOR_CONTACT_SEARCH_LIST_DIALOG = "SELECT T1.CONTACT_ID, T1.LAST_NAME || ' ' || T1.FIRST_NAME AS CONTACT_NAME, T2.ACCOUNT_NAME, T1.MOBILE_PHONE, T1.MAIL FROM T_CONTACT T1 LEFT JOIN T_ACCOUNT T2 ON T1.ACCOUNT_ID = T2.ACCOUNT_ID ";
+	/** insertメソッドで使用するSQL */
+	private static final String INSERT_SQL = "INSERT INTO T_CONTACT(LAST_NAME, FIRST_NAME, ACCOUNT_ID, DEPARTMENT, POSITION, PHONE, MOBILE_PHONE, FAX, MAIL, BOSS, NOTE, CREATE_DATE, CREATER_ID, UPDATE_DATE, UPDATER_ID) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	/** updateメソッドで使用するSQL */
+	private static final String UPDATE_SQL = "UPDATE T_CONTACT SET LAST_NAME = ?, FIRST_NAME = ?, ACCOUNT_ID = ?, DEPARTMENT = ?, POSITION = ?, PHONE = ?, MOBILE_PHONE = ?, FAX = ?, MAIL = ?, BOSS = ?, NOTE = ?, UPDATE_DATE = ?, UPDATER_ID WHERE CONTACT_ID = ?";
+	/** deleteメソッドで使用するSQL */
+	private static final String DELETE_SQL = "DELETE FROM T_CONTACT WHERE CONTACT_ID = ?";
 
 	/**
 	 * コンストラクタ
@@ -33,6 +37,12 @@ public class ContactDao extends BaseDao {
 		super(cp);
 	}
 
+	/**
+	 * 取引先担当者検索件数
+	 * @param param
+	 * @return
+	 * @throws Exception
+	 */
 	public Integer countForContactSearchListAndDialog(ContactEntity param) throws Exception {
 
 		try (PreparedStatement statement = cp.getPreparedStatement(COUNT_FOR_CONTACT_SEARCH_LIST_DIALOG + createWhereForContactList(param, null, false))) {
@@ -63,7 +73,7 @@ public class ContactDao extends BaseDao {
 	}
 
 	/**
-	 * 取引先担当者ダイアログ用
+	 * 取引先担当者検索
 	 * @return
 	 * @throws Exception
 	 */
@@ -150,6 +160,67 @@ public class ContactDao extends BaseDao {
 			statement.setObject(14, entity.getUpdateDate());
 			//最終更新者ID
 			statement.setObject(15, entity.getUpdaterId());
+
+			statement.executeUpdate();
+		}
+
+	}
+
+	/**
+	 * 取引先担当者更新処理
+	 * @param entity
+	 * @throws Exception
+	 */
+	public void update (ContactEntity entity) throws Exception {
+
+		try (PreparedStatement statement = cp.getPreparedStatement(UPDATE_SQL)) {
+
+			//姓
+			statement.setObject(1, entity.getLastName());
+			//名
+			statement.setObject(2, entity.getFirstName());
+			//取引先
+			statement.setObject(3, entity.getAccountId());
+			//部署
+			statement.setObject(4, entity.getDepartment());
+			//役職
+			statement.setObject(5, entity.getPosition());
+			//電話
+			statement.setObject(6, entity.getPhone());
+			//携帯
+			statement.setObject(7, entity.getMobilePhone());
+			//FAX
+			statement.setObject(8, entity.getFax());
+			//メール
+			statement.setObject(9, entity.getMail());
+			//上司
+			statement.setObject(10, entity.getBoss());
+			//その他
+			statement.setObject(11, entity.getNote());
+			//最終更新日
+			statement.setObject(12, entity.getUpdateDate());
+			//最終更新者ID
+			statement.setObject(13, entity.getUpdaterId());
+
+			// ID
+			statement.setObject(14, entity.getId());
+
+			statement.executeUpdate();
+		}
+
+	}
+
+	/**
+	 * 取引先担当者の削除
+	 * @param entity
+	 * @throws Exception
+	 */
+	public void delete (ContactEntity entity) throws Exception {
+
+		try (PreparedStatement statement = cp.getPreparedStatement(DELETE_SQL)) {
+
+			// ID
+			statement.setObject(1, entity.getId());
 
 			statement.executeUpdate();
 		}
