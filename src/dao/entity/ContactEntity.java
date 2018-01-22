@@ -14,6 +14,8 @@ public class ContactEntity extends SingleTableBaseEntity {
 	private String firstName;
 	/** 取引先 */
 	private Integer accountId;
+	/** 取引先名 */
+	private String accountName;
 	/** 部署 */
 	private String department;
 	/** 役職 */
@@ -28,6 +30,8 @@ public class ContactEntity extends SingleTableBaseEntity {
 	private String mail;
 	/** 上司 */
 	private Integer boss;
+	/** 上司名 */
+	private String bossName;
 	/** その他 */
 	private String note;
 
@@ -66,6 +70,18 @@ public class ContactEntity extends SingleTableBaseEntity {
 	 */
 	public void setAccountId(Integer accountId) {
 		this.accountId = accountId;
+	}
+	/**
+	 * @return accountName
+	 */
+	public String getAccountName() {
+		return accountName;
+	}
+	/**
+	 * @param accountName セットする accountName
+	 */
+	public void setAccountName(String accountName) {
+		this.accountName = accountName;
 	}
 	/**
 	 * @return department
@@ -150,6 +166,18 @@ public class ContactEntity extends SingleTableBaseEntity {
 	 */
 	public void setBoss(Integer boss) {
 		this.boss = boss;
+	}
+	/**
+	 * @return bossName
+	 */
+	public String getBossName() {
+		return bossName;
+	}
+	/**
+	 * @param bossName セットする bossName
+	 */
+	public void setBossName(String bossName) {
+		this.bossName = bossName;
 	}
 	/**
 	 * @return note
