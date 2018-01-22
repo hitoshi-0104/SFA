@@ -20,6 +20,8 @@ public class ContactDao extends BaseDao {
 
 	/** countForContactSearchDialogで使用するSQL */
 	private static final String COUNT_FOR_CONTACT_SEARCH_LIST_DIALOG = "SELECT COUNT(*) FROM T_CONTACT T1 LEFT JOIN T_ACCOUNT T2 ON T1.ACCOUNT_ID = T2.ACCOUNT_ID ";
+	/** selectByIdメソッドで使用するSQL */
+	private static final String SELECT_BY_ID = "SELECT T1.CONTACT_ID, T1.LAST_NAME, T1.FIRST_NAME, T1.ACCOUNT_ID, T2.ACCOUNT_NAME, T1.DEPARTMENT, T1.POSITION, T1.PHONE, T1.MOBILE_PHONE, T1.FAX, T1.MAIL, T1.BOSS, T3.LAST_NAME || ' ' || T3.FIRST_NAME AS BOSS_NAME, T1.NOTE, T1.CREATE_DATE, T1.CREATER_ID, T1.UPDATE_DATE, T1.UPDATER_ID, T1.DELETE_FLAG FROM T_CONTACT T1 LEFT JOIN T_ACCOUNT T2 ON T1.ACCOUNT_ID = T2.ACCOUNT_ID LEFT JOIN T_CONTACT T3 ON T1.BOSS = T3.CONTACT_ID WHERE T1.CONTACT_ID = ?";
 	/** selectForContactSearchDialogで使用するSQL */
 	private static final String SELECT_FOR_CONTACT_SEARCH_LIST_DIALOG = "SELECT T1.CONTACT_ID, T1.LAST_NAME || ' ' || T1.FIRST_NAME AS CONTACT_NAME, T2.ACCOUNT_NAME, T1.MOBILE_PHONE, T1.MAIL FROM T_CONTACT T1 LEFT JOIN T_ACCOUNT T2 ON T1.ACCOUNT_ID = T2.ACCOUNT_ID ";
 	/** insertメソッドで使用するSQL */
@@ -68,6 +70,67 @@ public class ContactDao extends BaseDao {
 
 			return ret;
 
+		}
+
+	}
+
+	/**
+	 * IDを指定して取引先担当者を取得
+	 * @param id
+	 * @return
+	 * @throws Exception
+	 */
+	public ContactEntity selectById(Integer id) throws Exception {
+
+		try (PreparedStatement statement = cp.getPreparedStatement(SELECT_BY_ID)) {
+
+			statement.setObject(1, id);
+
+			ResultSet rs = statement.executeQuery();
+			ContactEntity en = new ContactEntity();
+			if (rs.next()) {
+
+				/** 取引先担当者ID */
+				en.setId(ObjectConverter.intValue(rs.getObject("CONTACT_ID")));
+				/** 姓 */
+				en.setLastName(ObjectConverter.stringValue(rs.getObject("LAST_NAME")));
+				/** 名 */
+				en.setFirstName(ObjectConverter.stringValue(rs.getObject("FIRST_NAME")));
+				/** 取引先 */
+				en.setAccountId(ObjectConverter.intValue(rs.getObject("ACCOUNT_ID")));
+				/** 取引先名 */
+				en.setAccountName(ObjectConverter.stringValue(rs.getObject("ACCOUNT_NAME")));
+				/** 部署 */
+				en.setDepartment(ObjectConverter.stringValue(rs.getObject("DEPARTMENT")));
+				/** 役職 */
+				en.setPosition(ObjectConverter.stringValue(rs.getObject("POSITION")));
+				/** 電話 */
+				en.setPhone(ObjectConverter.stringValue(rs.getObject("PHONE")));
+				/** 携帯 */
+				en.setMobilePhone(ObjectConverter.stringValue(rs.getObject("MOBILE_PHONE")));
+				/** FAX */
+				en.setFax(ObjectConverter.stringValue(rs.getObject("FAX")));
+				/** メール */
+				en.setMail(ObjectConverter.stringValue(rs.getObject("MAIL")));
+				/** 上司 */
+				en.setBoss(ObjectConverter.intValue(rs.getObject("BOSS")));
+				/** 上司名 */
+				en.setBossName(ObjectConverter.stringValue(rs.getObject("BOSS_NAME")));
+				/** その他 */
+				en.setNote(ObjectConverter.stringValue(rs.getObject("NOTE")));
+				/** 作成日 */
+				en.setCreateDate(ObjectConverter.stringValue(rs.getObject("CREATE_DATE")));
+				/** 作成者ID */
+				en.setCreaterId(ObjectConverter.intValue(rs.getObject("CREATER_ID")));
+				/** 最終更新日 */
+				en.setUpdateDate(ObjectConverter.stringValue(rs.getObject("UPDATE_DATE")));
+				/** 最終更新者ID */
+				en.setUpdaterId(ObjectConverter.intValue(rs.getObject("UPDATER_ID")));
+				/** 削除フラグ */
+				en.setUpdateDate(ObjectConverter.stringValue(rs.getObject("DELETE_FLAG")));
+
+			}
+			return en;
 		}
 
 	}
