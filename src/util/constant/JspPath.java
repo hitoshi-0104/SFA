@@ -57,4 +57,22 @@ public class JspPath {
 		public static final String LIST_ACTION = "/contact.list.show.action";
 	}
 
+	/**
+	 * 商談
+	 * @author yamazaki
+	 *
+	 */
+	public class Opportunity {
+		/** 商談新規登録 */
+		public static final String CREATE = "/view/opportunity/create.jsp";
+		/** 商談更新 */
+		public static final String UPDATE = "/view/opportunity/update.jsp";
+		/** 商談削除 */
+		public static final String DELETE = "/view/opportunity/delete.jsp";
+		/** 商談一覧 */
+		public static final String LIST = "/view/opportunity/list.jsp";
+		/** 商談一覧アクション */
+		public static final String LIST_ACTION = "/opportunity.list.show.action";
+	}
+
 }
