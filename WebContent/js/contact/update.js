@@ -5,17 +5,17 @@ $(function() {
 
 	// 更新ボタン押下
 	$('#updatebutton').click(function() {
-		submitAction('#accountform', '/SFA/contact.update.update.action');
+		submitAction('#contactform', '/SFA/contact.update.update.action');
 	});
 
 	// 削除ボタン押下
 	$('#deletebutton').click(function() {
-		submitAction('#accountform', '/SFA/contact.update.delete.action');
+		submitAction('#contactform', '/SFA/contact.update.delete.action');
 	});
 
 	// 戻るボタン押下
 	$('#returnbutton').click(function() {
-		submitAction('#accountform', '/SFA/contact.list.show.action');
+		submitAction('#contactform', '/SFA/contact.list.show.action');
 	});
 
 	// 取引先の検索ボタン押下処理

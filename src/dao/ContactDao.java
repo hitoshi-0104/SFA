@@ -27,7 +27,7 @@ public class ContactDao extends BaseDao {
 	/** insertメソッドで使用するSQL */
 	private static final String INSERT_SQL = "INSERT INTO T_CONTACT(LAST_NAME, FIRST_NAME, ACCOUNT_ID, DEPARTMENT, POSITION, PHONE, MOBILE_PHONE, FAX, MAIL, BOSS, NOTE, CREATE_DATE, CREATER_ID, UPDATE_DATE, UPDATER_ID) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	/** updateメソッドで使用するSQL */
-	private static final String UPDATE_SQL = "UPDATE T_CONTACT SET LAST_NAME = ?, FIRST_NAME = ?, ACCOUNT_ID = ?, DEPARTMENT = ?, POSITION = ?, PHONE = ?, MOBILE_PHONE = ?, FAX = ?, MAIL = ?, BOSS = ?, NOTE = ?, UPDATE_DATE = ?, UPDATER_ID WHERE CONTACT_ID = ?";
+	private static final String UPDATE_SQL = "UPDATE T_CONTACT SET LAST_NAME = ?, FIRST_NAME = ?, ACCOUNT_ID = ?, DEPARTMENT = ?, POSITION = ?, PHONE = ?, MOBILE_PHONE = ?, FAX = ?, MAIL = ?, BOSS = ?, NOTE = ?, UPDATE_DATE = ?, UPDATER_ID = ? WHERE CONTACT_ID = ?";
 	/** deleteメソッドで使用するSQL */
 	private static final String DELETE_SQL = "DELETE FROM T_CONTACT WHERE CONTACT_ID = ?";
 

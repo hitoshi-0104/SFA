@@ -49,7 +49,7 @@ public class DeleteAction extends UpdateBaseAction {
 		// 更新
 		delete();
 
-		return JspPath.Account.LIST_ACTION;
+		return JspPath.Contact.LIST_ACTION;
 	}
 
 	/**

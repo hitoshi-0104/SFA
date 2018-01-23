@@ -49,7 +49,7 @@ public class UpdateAction extends UpdateBaseAction {
 		// 更新
 		update();
 
-		return JspPath.Account.LIST_ACTION;
+		return JspPath.Contact.LIST_ACTION;
 	}
 
 	/**
@@ -67,29 +67,29 @@ public class UpdateAction extends UpdateBaseAction {
 		ContactDto dto = new ContactDto();
 
 		// 取引先担当者ID
-		dto.setId(StringConverter.toInteger(request.getParameter(ReqParam.Create.ID)));
+		dto.setId(StringConverter.toInteger(request.getParameter(ReqParam.Update.ID)));
 		// 姓
-		dto.setLastName(request.getParameter(ReqParam.Create.LAST_NAME));
+		dto.setLastName(request.getParameter(ReqParam.Update.LAST_NAME));
 		// 名
-		dto.setFirstName(request.getParameter(ReqParam.Create.FIRST_NAME));
+		dto.setFirstName(request.getParameter(ReqParam.Update.FIRST_NAME));
 		// 取引先
-		dto.setAccountId(StringConverter.toInteger(request.getParameter(ReqParam.Create.ACCOUNT_ID)));
+		dto.setAccountId(StringConverter.toInteger(request.getParameter(ReqParam.Update.ACCOUNT_ID)));
 		// 部署
-		dto.setDepartment(request.getParameter(ReqParam.Create.DEPARTMENT));
+		dto.setDepartment(request.getParameter(ReqParam.Update.DEPARTMENT));
 		// 役職
-		dto.setPosition(request.getParameter(ReqParam.Create.POSITION));
+		dto.setPosition(request.getParameter(ReqParam.Update.POSITION));
 		// 電話
-		dto.setPhone(request.getParameter(ReqParam.Create.PHONE));
+		dto.setPhone(request.getParameter(ReqParam.Update.PHONE));
 		// 携帯
-		dto.setMobilePhone(request.getParameter(ReqParam.Create.MOBILE_PHONE));
+		dto.setMobilePhone(request.getParameter(ReqParam.Update.MOBILE_PHONE));
 		// FAX
-		dto.setFax(request.getParameter(ReqParam.Create.FAX));
+		dto.setFax(request.getParameter(ReqParam.Update.FAX));
 		// メール
-		dto.setMail(request.getParameter(ReqParam.Create.MAIL));
+		dto.setMail(request.getParameter(ReqParam.Update.MAIL));
 		// 上司
-		dto.setBoss(StringConverter.toInteger(request.getParameter(ReqParam.Create.BOSS)));
+		dto.setBoss(StringConverter.toInteger(request.getParameter(ReqParam.Update.BOSS)));
 		// その他
-		dto.setNote(request.getParameter(ReqParam.Create.NOTE));
+		dto.setNote(request.getParameter(ReqParam.Update.NOTE));
 
     	// 入力チェック
 		ContactValidater valid = new ContactValidater();

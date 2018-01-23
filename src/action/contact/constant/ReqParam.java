@@ -63,9 +63,9 @@ public class ReqParam {
 		/** FAX */
 		public static final String FAX = "fax";
 		/** メール */
-		public static final String MAIL = "mail";
+		public static final String MAIL = "mailaddress";
 		/** 上司 */
-		public static final String BOSS = "boss";
+		public static final String BOSS = "bossid";
 		/** 上司名 */
 		public static final String BOSS_NAME = "bossname";
 		/** その他 */

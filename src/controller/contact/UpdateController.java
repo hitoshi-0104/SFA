@@ -39,7 +39,7 @@ public class UpdateController {
 	void dispatch(String action, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException,
 		SalesManagementApplicationException, SalesManagementSystemException, SalesManagementRuntimeException {
 
-		String dispatchUrl = JspPath.Account.UPDATE;
+		String dispatchUrl = JspPath.Contact.UPDATE;
 		try {
 			switch(action) {
 			// 初期表示
