@@ -42,6 +42,8 @@
 				<div class="twocolumns">
 					<div class="content-item">
 						<label class="caption">取引先担当者ID：</label>
+						<label class="text2"><%=updateBean.getId() == null ? "" : updateBean.getId() %></label>
+						<input type="hidden" name="contactid" value="<%=updateBean.getId() == null ? "" : updateBean.getId() %>" />
 					</div>
 					<div class="content-item">
 						<label class="caption">姓：</label>
