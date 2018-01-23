@@ -1,0 +1,8 @@
+@charset "UTF-8";
+
+#accountsearchbutton,
+#accountclearbutton,
+#bosssearchbutton,
+#bossclearbutton {
+	margin-left: 20px;
+}
