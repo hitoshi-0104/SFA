@@ -90,43 +90,43 @@ public class ContactDao extends BaseDao {
 			ContactEntity en = new ContactEntity();
 			if (rs.next()) {
 
-				/** 取引先担当者ID */
+				// 取引先担当者ID
 				en.setId(ObjectConverter.intValue(rs.getObject("CONTACT_ID")));
-				/** 姓 */
+				// 姓
 				en.setLastName(ObjectConverter.stringValue(rs.getObject("LAST_NAME")));
-				/** 名 */
+				// 名
 				en.setFirstName(ObjectConverter.stringValue(rs.getObject("FIRST_NAME")));
-				/** 取引先 */
+				// 取引先
 				en.setAccountId(ObjectConverter.intValue(rs.getObject("ACCOUNT_ID")));
-				/** 取引先名 */
+				// 取引先名
 				en.setAccountName(ObjectConverter.stringValue(rs.getObject("ACCOUNT_NAME")));
-				/** 部署 */
+				// 部署
 				en.setDepartment(ObjectConverter.stringValue(rs.getObject("DEPARTMENT")));
-				/** 役職 */
+				// 役職
 				en.setPosition(ObjectConverter.stringValue(rs.getObject("POSITION")));
-				/** 電話 */
+				// 電話
 				en.setPhone(ObjectConverter.stringValue(rs.getObject("PHONE")));
-				/** 携帯 */
+				// 携帯
 				en.setMobilePhone(ObjectConverter.stringValue(rs.getObject("MOBILE_PHONE")));
-				/** FAX */
+				// FAX
 				en.setFax(ObjectConverter.stringValue(rs.getObject("FAX")));
-				/** メール */
+				// メール
 				en.setMail(ObjectConverter.stringValue(rs.getObject("MAIL")));
-				/** 上司 */
+				// 上司
 				en.setBoss(ObjectConverter.intValue(rs.getObject("BOSS")));
-				/** 上司名 */
+				// 上司名
 				en.setBossName(ObjectConverter.stringValue(rs.getObject("BOSS_NAME")));
-				/** その他 */
+				// その他
 				en.setNote(ObjectConverter.stringValue(rs.getObject("NOTE")));
-				/** 作成日 */
+				// 作成日
 				en.setCreateDate(ObjectConverter.stringValue(rs.getObject("CREATE_DATE")));
-				/** 作成者ID */
+				// 作成者ID
 				en.setCreaterId(ObjectConverter.intValue(rs.getObject("CREATER_ID")));
-				/** 最終更新日 */
+				// 最終更新日
 				en.setUpdateDate(ObjectConverter.stringValue(rs.getObject("UPDATE_DATE")));
-				/** 最終更新者ID */
+				// 最終更新者ID
 				en.setUpdaterId(ObjectConverter.intValue(rs.getObject("UPDATER_ID")));
-				/** 削除フラグ */
+				// 削除フラグ
 				en.setUpdateDate(ObjectConverter.stringValue(rs.getObject("DELETE_FLAG")));
 
 			}
