@@ -107,8 +107,8 @@
 				<!-- ボタン -->
 				<div class="onecolumn">
 					<div class="buttonarea">
-						<button type="button" id="continuousbutton" class="btn btn-info button3">連続登録</button>
-						<button type="button" id="insertbutton" class="btn btn-primary button3">登録</button>
+						<button type="button" id="updatebutton" class="btn btn-primary button3">更新</button>
+						<button type="button" id="deletebutton" class="btn btn-danger button3">削除</button>
 						<button type="button" id="returnbutton" class="btn btn-default button3">戻る</button>
 					</div>
 				</div>
