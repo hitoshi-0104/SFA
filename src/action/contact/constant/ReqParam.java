@@ -50,6 +50,8 @@ public class ReqParam {
 		public static final String FIRST_NAME = "firstname";
 		/** 取引先ID */
 		public static final String ACCOUNT_ID = "accountid";
+		/** 取引先名 */
+		public static final String ACCOUNT_NAME = "accountname";
 		/** 部署 */
 		public static final String DEPARTMENT = "department";
 		/** 役職 */
@@ -64,6 +66,8 @@ public class ReqParam {
 		public static final String MAIL = "mail";
 		/** 上司 */
 		public static final String BOSS = "boss";
+		/** 上司名 */
+		public static final String BOSS_NAME = "bossname";
 		/** その他 */
 		public static final String NOTE = "note";
 	}
