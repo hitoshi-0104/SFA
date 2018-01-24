@@ -12,6 +12,7 @@ import controller.account.AccountController;
 import controller.base.BaseController;
 import controller.contact.ContactController;
 import controller.lead.LeadController;
+import controller.opportunity.OpportunityController;
 import exception.SalesManagementApplicationException;
 import exception.SalesManagementRuntimeException;
 import exception.SalesManagementSystemException;
@@ -31,6 +32,8 @@ public class FrontController extends BaseController {
 	private static final String ACCOUNT_MATCH = "account.*.action";
 	/** 取引先担当者機能の正規表現 */
 	private static final String CONTACT_MATCH = "contact.*.action";
+	/** 商談機能の正規表現 */
+	private static final String OPPORTUNITY_MATCH = "opportunity.*.action";
 
     /**
      * @see HttpServlet#HttpServlet()
@@ -120,6 +123,10 @@ public class FrontController extends BaseController {
 		} else if (action.matches(CONTACT_MATCH)) {
 			// 取引先担当者
 			ContactController dispatcher = new ContactController();
+			dispatcher.dispatch(action, request, response);
+		} else if (action.matches(OPPORTUNITY_MATCH)) {
+			// 商談
+			OpportunityController dispatcher = new OpportunityController();
 			dispatcher.dispatch(action, request, response);
 		}
 	}
