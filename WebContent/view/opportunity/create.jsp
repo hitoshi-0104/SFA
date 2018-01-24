@@ -89,7 +89,11 @@
 					</div>
 					<div class="content-item">
 						<label class="caption">フェーズ：</label>
-						<input class="text2" type="text" name="phase" value="<%=createBean.getPhase() == null ? "" : createBean.getPhase() %>" />
+						<select class="select1" name="leadsource">
+							<% for(Map.Entry<String, String> m : createBean.getPhaseMap().entrySet()) { %>
+							<option value="<%=m.getKey() %>" <%=m.getKey().equals(createBean.getPhase()) ? "selected" : "" %>><%=m.getValue() %></option>
+							<% } %>
+						</select>
 					</div>
 					<div class="content-item">
 						<label class="caption">確度：</label>
