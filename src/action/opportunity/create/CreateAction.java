@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletResponse;
 import action.base.BaseAction;
 import action.opportunity.bean.CreateBean;
 import exception.SalesManagementSystemException;
+import service.opportunity.common.GetSelectItems;
+import service.opportunity.dto.SelectItemsDto;
 
 /**
  * 商談新規登録の基底アクションクラス
@@ -34,18 +36,18 @@ public abstract class CreateAction extends BaseAction {
 	@Override
 	protected void initialize() throws SalesManagementSystemException {
 
-//		// セレクトボック用のアイテム取得
-//    	GetSelectItems logic = new GetSelectItems();
-//    	SelectItemsDto dto = logic.get();
-//
-//    	// DTOからBEANに設定
-//    	CreateBean bean = getCreateBeanInstance();
-//    	bean.setEvaluationMap(dto.getEstimationMap());
-//    	bean.setIndustryMap(dto.getIndustryMap());
-//    	bean.setDivisionMap(dto.getDivisionMap());
-//
-//    	// BEANのセット
-//    	request.setAttribute(CREATE_BEAN, bean);
+		// セレクトボック用のアイテム取得
+    	GetSelectItems logic = new GetSelectItems();
+    	SelectItemsDto dto = logic.get();
+
+    	// DTOからBEANに設定
+    	CreateBean bean = getCreateBeanInstance();
+    	bean.setTypeMap(dto.getTypeMap());
+    	bean.setLeadSourceMap(dto.getLeadSourceMap());
+    	bean.setPhaseMap(dto.getPhaseMap());
+
+    	// BEANのセット
+    	request.setAttribute(CREATE_BEAN, bean);
 
 	}
 
