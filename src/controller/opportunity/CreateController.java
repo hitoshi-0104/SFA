@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import action.opportunity.create.ShowAction;
 import exception.SalesManagementApplicationException;
 import exception.SalesManagementRuntimeException;
 import exception.SalesManagementSystemException;
@@ -47,8 +48,8 @@ public class CreateController {
 			switch(action) {
 			// 初期表示
 			case SHOW_MATCH:
-//				ShowAction scon = new ShowAction(request, response);
-//				dispatchUrl = scon.handle();
+				ShowAction scon = new ShowAction(request, response);
+				dispatchUrl = scon.handle();
 				break;
 			// 連続登録
 			case CONTINUOUS_MATCH:
